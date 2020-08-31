@@ -22,4 +22,13 @@ $tag-7: #000000;
 $tag-8: #000000;
 $tag-9: #000000;
 
+.bkgrd-accent {
+  background-color: $accent;
+}
+.button.border-accent {
+  border-color: $accent;
+}
 
+.font-white {
+  color: white;
+}
