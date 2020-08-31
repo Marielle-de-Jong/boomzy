@@ -1,4 +1,4 @@
-class Meeting < ApplicationRecord
+class Booking < ApplicationRecord
   belongs_to :user
   has_one :address, as: :addressable
   has_one :skill

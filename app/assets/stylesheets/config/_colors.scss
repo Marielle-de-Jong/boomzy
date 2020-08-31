@@ -14,12 +14,22 @@ $background: #F4F7F6;
 $accent: #49C5B6;
 $tag-1: #8153EF;
 $tag-2: #FF4E4E;
-$tag-3: #FF4E4E;
-$tag-4: #FF4E4E;
-$tag-5: #FF4E4E;
-$tag-6: #FF4E4E;
-$tag-7: #FF4E4E;
-$tag-8: #FF4E4E;
-$tag-9: #FF4E4E;
+$tag-3: black;
+$tag-4: black;
+$tag-5: black;
+$tag-6: black;
+$tag-7: black;
+$tag-8: black;
+$tag-9: black;
 
 
+.bkgrd-accent {
+  background-color: $accent;
+}
+.button.border-accent {
+  border-color: $accent;
+}
+
+.font-white {
+  color: white;
+}
