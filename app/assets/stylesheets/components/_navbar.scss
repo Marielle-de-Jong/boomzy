@@ -25,7 +25,7 @@
 
 a.nav-logo{
   text-decoration: none;
-  color: black;
+  color: $text;
   font-size: 60;
   align-text: center;
   font-size: 40px;
@@ -53,7 +53,7 @@ a.nav-logo{
 
 a.navbar-btn{
   text-decoration: none;
- color: black;
+ color: $text;
  &:hover{
   opacity: 0.8;
 
