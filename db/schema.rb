@@ -10,18 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_101624) do
+ActiveRecord::Schema.define(version: 2020_08_31_105412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "city"
+    t.string "postcode"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
+
   create_table "meetings", force: :cascade do |t|
     t.date "date"
-    t.string "status"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "Pending"
     t.index ["user_id"], name: "index_meetings_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.string "skill_level"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,4 +83,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_101624) do
   end
 
   add_foreign_key "meetings", "users"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "skills", "users"
 end
