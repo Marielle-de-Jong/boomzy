@@ -1,15 +1,46 @@
 <div class="footer-container">
-<div class="footer-logo">
-    <%= link_to "BOOMZY", "#",  class: "nav-logo" %>
-</div>
-<div class="footer-links"></div>
-  <div class="footer-link-column">
-    Links
+    <div class="footer-logo">
+      <li>
+        <%= link_to "BOOMZY", "#",  class: "nav-logo" %>
+      </li>
+      <li><p>©2020</p></li>
+      <li><p><%= link_to "Privacy & Terms", "#", class: "footer-link" %><p></li>
+    </div>
+
+
+    <div class="footer-links">
+      <div class="footer-link-column">
+        <ul>
+          <li class="footer-column-head">Categories</li>
+          <li><%= link_to "Mechanics", "#", class: "footer-link"%></li>
+          <li><%= link_to "Crafts", "#", class: "footer-link" %></li>
+          <li><%= link_to "Sports", "#", class: "footer-link" %></li>
+          <li><%= link_to "Woodworking", "#", class: "footer-link" %></li>
+          <li><%= link_to "Gardening", "#", class: "footer-link" %></li>
+        </ul>
+      </div>
+      <div class="footer-link-column">
+        <ul>
+          <li class="footer-column-head">Profile</li>
+          <li><%= link_to "My Profile", "#", class: "footer-link" %></li>
+          <li><%= link_to "Edit Profile", "#", class: "footer-link" %></li>
+          <li><%= link_to "Delete Profile", "#", class: "footer-link" %></li>
+          <li><%= link_to "Change Photo", "#", class: "footer-link" %></li>
+          <li><%= link_to "Complain", "#", class: "footer-link" %></li>
+        </ul>
+      </div>
+      <div class="footer-link-column">
+        <ul>
+          <li class="footer-column-head">Company</li>
+          <li><%= link_to "About", "#", class: "footer-link" %></li>
+          <li><%= link_to "Press", "#", class: "footer-link" %></li>
+          <li><%= link_to "Our Team", "#", class: "footer-link" %></li>
+          <li><%= link_to "Contact", "#", class: "footer-link" %></li>
+          <li><%= link_to "Careers", "#", class: "footer-link" %></li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="footer-link-column">
-    Links
-  </div>
-  <div class="footer-link-column">
-    Links
-  </div>
+<div class="footer-end">
+
 </div>
