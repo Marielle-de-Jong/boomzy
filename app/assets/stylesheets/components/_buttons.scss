@@ -1,1 +1,53 @@
-_button.scss
+.button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 15px;
+}
+
+// Standard (square-ish) buttons
+
+.button.standard {
+  border-radius: 8px;
+  border: 2px solid;
+  padding: 15px;
+}
+
+.button.standard.accent {
+  border-color: $accent;
+}
+
+.button.standard.accent a{
+  color: black;
+  text-decoration: none;
+}
+
+.button.standard.accent.fill{
+  background-color: $accent;
+}
+
+// Rounded buttons
+
+.button.round {
+  border-radius: 30px;
+  padding: 10px 15px;
+}
+
+.button.round.trans {
+  background-color: white;
+  color: black;
+  opacity: 50%;
+}
+.button.round.trans a {
+  color: black;
+  text-decoration: none;
+}
+.button.round.opaque {
+  background-color: white;
+  color: black;
+}
+.button.round.opaque a {
+  color: black;
+  text-decoration: none;
+}
+
