@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :address, as: :addressable
-  has_many :user_skills
+  has_many :listings
   has_many :bookings
 end

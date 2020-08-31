@@ -1,0 +1,17 @@
+<h1>Listings#show</h1>
+<p>Find me in app/views/listings/show.html.erb</p>
+
+
+<p> Title: <%= @listing.title %> </p>
+<p> Description: <%= @listing.description %> </p>
+<p> Skill level: <%= @listing.skill_level %> </p>
+<p> Lister first name: <%= @listing.user.first_name %> </p>
+<p> Lister last name: <%= @listing.user.last_name %> </p>
+<p> Lister bio: <%= @listing.user.bio %> </p>
+<p> Lister motivation: <%= @listing.user.motivation %> </p>
+<p> Lister LinkedIn <%= @listing.user.linkedin_link %> </p>
+<p> Lister Twitter <%= @listing.user.twitter_link %> </p>
+<p> Lister Instagram <%= @listing.user.instagram_link %> </p>
+<p> Lister Facebook <%= @listing.user.facebook_link %>  </p>
+
+<%= link_to 'Request Booking', new_tool_booking_path(@tool), class: "btn btn-flat" %>
