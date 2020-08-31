@@ -5,6 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :address, as: :addressable
   has_many :user_skills
-  has_many :meetings
-  has_many :reviews
+  has_many :bookings
 end
