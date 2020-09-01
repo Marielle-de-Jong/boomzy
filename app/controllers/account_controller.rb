@@ -14,6 +14,6 @@ class AccountController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :bio, :facebook_link, :instagram_link, :motivation, :twitter_link, :linkedin_link, :date_of_birth, :address)
+    params.require(:user).permit(:first_name, :last_name, :email, :bio, :facebook_link, :instagram_link, :motivation, :twitter_link, :linkedin_link, :date_of_birth, address_attributes: [:id, :city, :postcode, :address_line_1, :address_line_2, :addressable_id, :addressable_type])
   end
 end
