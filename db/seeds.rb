@@ -39,9 +39,6 @@ CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photo
 STATUS = %w(pending accepted denied)
 
 
-
-
-
 puts "creating new users..."
 i=0
 
@@ -59,14 +56,9 @@ i=0
     user.password = 'valid_password'
     user.password_confirmation = 'valid_password'
     user.address = address
-
-
     # file = URI.open("https://source.unsplash.com/900x900/?headshot")
     # user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
     user.save!
-
-
-
 
     4.times do
       skill = Skill.new

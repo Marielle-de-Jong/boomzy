@@ -36,12 +36,13 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    # @skill = Skill.find(params[:id])
+    @listing = Listing.find(params[:listing_id])
+    @user = current_user
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.skill = Skill.find(params[:skill_id])
+    @booking.listing = Listing.find(params[:listing_id])
     @booking.user = current_user
     @booking.status = "Pending"
 
@@ -53,6 +54,7 @@ class BookingsController < ApplicationController
     end
   end
 
+
   private
 
   def find_booking
@@ -60,6 +62,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require("booking").permit(:start_date, :end_date)
+    params.require("booking").permit(:date, :status)
   end
 end

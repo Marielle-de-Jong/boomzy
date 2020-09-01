@@ -2,17 +2,26 @@
 <p>Find me in app/views/listings/index.html.erb</p>
 
 
+<%= link_to "Create new listing", new_listing_path %>
+
 <% @listings.each do |listing| %>
-<p> Title: <%= listing.title %> </p>
-<p> Description: <%= listing.description %> </p>
-<p> Skill level: <%= listing.skill_level %> </p>
-<p> Lister first name: <%= listing.user.first_name %> </p>
-<p> Lister last name: <%= listing.user.last_name %> </p>
-<p> Lister bio: <%= listing.user.bio %> </p>
-<p> Lister motivation: <%= listing.user.motivation %> </p>
-<p> Lister LinkedIn <%= listing.user.linkedin_link %> </p>
-<p> Lister Twitter <%= listing.user.twitter_link %> </p>
-<p> Lister Instagram <%= listing.user.instagram_link %> </p>
-<p> Lister Facebook <%= listing.user.facebook_link %>  </p>
-<br>
+<div class="container">
+  <p> ID: <%= listing.id %>  </p>
+  <p> Title: <%= listing.title %> </p>
+  <p> Description: <%= listing.description %> </p>
+  <p> Skill level: <%= listing.skill_level %> </p>
+  <p> Lister first name: <%= listing.user.first_name %> </p>
+  <p> Lister last name: <%= listing.user.last_name %> </p>
+  <p> Lister bio: <%= listing.user.bio %> </p>
+  <p> Lister motivation: <%= listing.user.motivation %> </p>
+  <p> Lister LinkedIn <%= listing.user.linkedin_link %> </p>
+  <p> Lister Twitter <%= listing.user.twitter_link %> </p>
+  <p> Lister Instagram <%= listing.user.instagram_link %> </p>
+  <p> Lister Facebook <%= listing.user.facebook_link %>  </p>
+  <p> Review rating (to be finished once seeds are done) <%= listing.user %>  </p>
+  <%= link_to 'Edit', edit_listing_path(listing) %>
+  <%= link_to 'Details', listing_path(listing) %>
+  <br>
+  <br>
+</div>
 <% end %>
