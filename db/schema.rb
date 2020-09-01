@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_09_01_091752) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -110,10 +109,8 @@ ActiveRecord::Schema.define(version: 2020_09_01_091752) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "listings"
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-
+  add_foreign_key "bookings", "listings"
   add_foreign_key "bookings", "users"
   add_foreign_key "listings", "users"
   add_foreign_key "reviews", "users"

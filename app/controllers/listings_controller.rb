@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user = current_user
     if @listing.save
-      redirect_to listings_path
+      redirect_to account_path
     else
       render :new
     end
@@ -27,7 +27,7 @@ class ListingsController < ApplicationController
 
   def update
     if @listing.update(listing_params)
-      redirect_to listings_path
+      redirect_to account_path
     else
       render :new
     end
@@ -35,7 +35,7 @@ class ListingsController < ApplicationController
 
   def destroy
     @listing.destroy
-    redirect_to listings_path
+    redirect_to account_path
   end
 
   private

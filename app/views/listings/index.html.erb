@@ -2,7 +2,6 @@
 <p>Find me in app/views/listings/index.html.erb</p>
 
 
-<%= link_to "Create new listing", new_listing_path %>
 
 <% @listings.each do |listing| %>
 <div class="container">
@@ -19,8 +18,6 @@
   <p> Lister Instagram <%= listing.user.instagram_link %> </p>
   <p> Lister Facebook <%= listing.user.facebook_link %>  </p>
   <p> Review rating (to be finished once seeds are done) <%= listing.user %>  </p>
-  <%= link_to 'Edit', edit_listing_path(listing) %>
-  <%= link_to 'Details', listing_path(listing) %>
   <br>
   <br>
 </div>
