@@ -66,8 +66,6 @@ ActiveRecord::Schema.define(version: 2020_09_01_130936) do
     t.text "description"
     t.string "title"
     t.bigint "user_id", null: false
-    t.bigint "skill_id"
-    t.index ["skill_id"], name: "index_listings_on_skill_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -83,8 +81,10 @@ ActiveRecord::Schema.define(version: 2020_09_01_130936) do
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.string "category"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -113,4 +113,5 @@ ActiveRecord::Schema.define(version: 2020_09_01_130936) do
   add_foreign_key "bookings", "users"
   add_foreign_key "listings", "users"
   add_foreign_key "reviews", "users"
+  add_foreign_key "skills", "users"
 end

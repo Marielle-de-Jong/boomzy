@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :listings do
     resources :bookings, shallow: true
   end
+  get "/account", to: "account#show"
+  patch "/account", to: "account#update"
 end

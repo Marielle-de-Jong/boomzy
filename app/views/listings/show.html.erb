@@ -17,6 +17,8 @@
   <%= link_to @listing, method: :delete do %>
     <i class="far fa-trash-alt"></i>
   <% end %>
+
+  <%= link_to "Book listing", new_listing_booking_path(@listing) %>
 </div>
 
 

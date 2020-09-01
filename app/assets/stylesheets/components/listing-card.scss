@@ -1,0 +1,66 @@
+.listing-card{
+  margin: 10px;
+  height: 500px;
+  width: 350px;
+  display: flex-column;
+  background: $background;
+}
+
+.listing-card-img{
+  height: 250px;
+  width: 350px;
+  background: $card-background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img{
+  background-size: cover;
+  background-position: center;
+  height: 230px;
+  width: 330px;
+}
+
+.card-img h1{
+  color: $background;
+  font-size: 60px;
+  margin: 10px;
+}
+
+.listing-card-info{
+  height: 230px;
+  width: 310px;
+  margin: 20px;
+  font-size: 14px;
+
+}
+.card-description{
+  text-align: justify;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.card-level{
+  font-weight: lighter;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-categories{
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-category{
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 50px;
+  background: $accent;
+  border-radius: 20px;
+}
+
+
