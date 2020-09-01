@@ -26,10 +26,17 @@
     <%= f.input :photo, as: :file %>
     <%= f.input :date_of_birth, as: :date, html5: true,
                 input_html: { autocomplete: "Date of Birth" } %>
-    <%= f.input :address,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "address" }%>
+
+    <%= f.simple_fields_for :address_attributes, resource.build_address do |ff|%>
+      <%= ff.input :address_line_1 %>
+      <%= ff.input :address_line_2 %>
+      <%= ff.input :city %>
+      <%= ff.input :postcode %>
+    <% end %>
+
+
+
+
     <%= f.input :bio, as: :text,
                 required: true,
                 autofocus: true,
