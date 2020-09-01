@@ -44,6 +44,13 @@ MEETING_SZ = [
   ["Prinsengracht 279a", "1016 GW"]
 ]
 
+ADMIN_EMAILS = [
+  "marielle@test.com",
+  "tommy@test.com",
+  "will@test.com",
+  "alex@test.com"
+]
+
 
 
 puts "creating new users..."
