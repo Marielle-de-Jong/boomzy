@@ -24,7 +24,6 @@
     <% if !user_signed_in? %>
     <%= link_to "SIGN IN", new_user_session_path, class: "navbar-btn" %>
     <% else %>
-    <% raise %>
     <%= link_to "#{current_user.first_name}", "#", class: "navbar-btn" %>
   <% end %>
 </div>
