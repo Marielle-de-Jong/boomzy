@@ -119,7 +119,6 @@ User.all.each do |user|
   skill = Skill.create!(
     name: Faker::Job.title,
     category: CATEGORIES.sample,
-    user_id: user
   )
 end
 puts "[LOG] #{Skill.count} SKILLS created"
