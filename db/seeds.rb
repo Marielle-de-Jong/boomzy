@@ -116,16 +116,16 @@ puts "[LOG] #{Address.count} ADDRESSES created"
 # CREATE SKILLS
 # -------------
 
-# puts "----------------------------------------"
-# puts "[LOG] creating SKILLS..."
+puts "----------------------------------------"
+puts "[LOG] creating SKILLS..."
 
-# User.all.each do |user|
-#   skill = Skill.create!(
-#     name: Faker::Job.title,
-#     category: CATEGORIES.sample,
-#   )
-# end
-# puts "[LOG] #{Skill.count} SKILLS created"
+User.all.each do |user|
+  skill = Skill.create!(
+    name: Faker::Job.title,
+    category: CATEGORIES.sample,
+  )
+end
+puts "[LOG] #{Skill.count} SKILLS created"
 
 
 # ---------------
@@ -138,7 +138,7 @@ User.all.each do |user|
   listing = Listing.create!(
     title: Faker::Book.title,
     user_id: user.id,
-    # skill_id: Skill.all.sample.id,
+    skill_id: Skill.all.sample.id,
     skill_level: LEVELS.sample,
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
   )
