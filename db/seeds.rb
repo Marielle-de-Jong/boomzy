@@ -52,10 +52,31 @@ ADMIN_EMAILS = [
 ]
 
 
-
+# --------------------
+# CREATE USERS - ADMIN
+# --------------------
+puts "----------------------------------------"
 puts "creating new users..."
-i=0
 
+i = 0
+10.times do
+  user = User.new
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.email = Faker::Internet.email
+  user.password = 'admin1'
+  user.password_confirmation = 'admin1'
+  user.save!
+  i += i
+end
+puts "#{User.count} users created"
+
+
+# -------------------
+# CREATE USERS - TEST
+# -------------------
+puts "----------------------------------------"
+puts "creating new users..."
 10.times do
   user = User.new
   user.first_name = Faker::Name.first_name
@@ -63,62 +84,94 @@ i=0
   user.email = Faker::Internet.email
   user.password = 'test123'
   user.password_confirmation = 'test123'
-  address = Address.new
-  address.city = "Amsterdam"
-  address.postcode = STREETS_ZIPS[i][1]
-  address.address_line_1 = STREETS_ZIPS[i][0]
-  user.address = address
-
-
-  # file = URI.open("https://source.unsplash.com/900x900/?headshot")
-  # user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
   user.save!
-
-    3.times do
-      skill = Skill.new
-      skill.name = Faker::Games::Zelda.item
-      skill.category = CATEGORIES.sample
-      skill.user_id = user.id
-      # file = URI.open("https://source.unsplash.com/1600x900/?#{skill.name}")
-      # skill.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
-      # skill.user = user
-      skill.save!
-      user_skill = UserSkill.new
-      user_skill.skill_level = LEVEL.sample
-      user_skill.description = Faker::TvShows::Seinfeld
-      user_skill.title = skill.name
-    end
-
-    10.times do
-      booking = Booking.new
-      booking.date = Faker::Date.between(from: '2020-09-23', to: '2020-09-25')
-      # booking.end_date = Faker::Date.between(from: '2020-09-26', to: '2020-09-29')
-      booking.status = STATUS.sample
-      address2 = Address.new
-      address2.city = "Amsterdam"
-      address2.postcode = MEETING_SZ[i][1]
-      address2.address_line_1 = MEETING_SZ[i][0]
-      booking.address = address2
-
-      booking.user = user
-      booking.skill = skill
-
-      booking.save
-
-      3.times do
-        review = Review.new
-        review.content = Faker::TvShows::Seinfeld
-        review.rating = rand(1..5)
-        review.skill = skill
-        review.save
-
-      end
-    end
-  i += 1
 end
+puts "#{User.count} users created"
+
+# ------------
+# CREATE ADDRESSES
+# ------------
+puts "----------------------------------------"
+puts "creating new addresses..."
+User.all.each_with_index do |user, index|
+  address = Address.create(
+    city: "Amsterdam",
+    address_line_1: STREETS_ZIPS[index][0],
+    postcode: STREETS_ZIPS[index][1],
+    addressable: user
+  )
+end
+puts "#{Address.count} addresses created"
+# -------------
+# CREATE SKILLS
+# -------------
+
+
+# ---------------
+# CREATE LISTINGS
+# ---------------
+
+
+# ---------------
+# CREATE BOOKINGS
+# ---------------
+
+
+
+# ---------------
+# CREATE REVIEWS
+# ---------------
+
+#   # file = URI.open("https://source.unsplash.com/900x900/?headshot")
+#   # user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+#   user.save!
+
+#     3.times do
+#       skill = Skill.new
+#       skill.name = Faker::Games::Zelda.item
+#       skill.category = CATEGORIES.sample
+#       skill.user_id = user.id
+#       # file = URI.open("https://source.unsplash.com/1600x900/?#{skill.name}")
+#       # skill.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+#       # skill.user = user
+#       skill.save!
+#       user_skill = UserSkill.new
+#       user_skill.skill_level = LEVEL.sample
+#       user_skill.description = Faker::TvShows::Seinfeld
+#       user_skill.title = skill.name
+#     end
+
+#     10.times do
+#       booking = Booking.new
+#       booking.date = Faker::Date.between(from: '2020-09-23', to: '2020-09-25')
+#       # booking.end_date = Faker::Date.between(from: '2020-09-26', to: '2020-09-29')
+#       booking.status = STATUS.sample
+#       address2 = Address.new
+#       address2.city = "Amsterdam"
+#       address2.postcode = MEETING_SZ[i][1]
+#       address2.address_line_1 = MEETING_SZ[i][0]
+#       booking.address = address2
+
+#       booking.user = user
+#       booking.skill = skill
+
+#       booking.save
+
+#       3.times do
+#         review = Review.new
+#         review.content = Faker::TvShows::Seinfeld
+#         review.rating = rand(1..5)
+#         review.skill = skill
+#         review.save
+
+#       end
+#     end
+#   i += 1
+# end
 
 
 puts "#{User.count} users created"
+puts "#{Address.count} addresses created"
 puts "#{Skill.count} skills created"
 puts "#{Review.count} reviews created"
 puts "#{Booking.count} bookings created"
