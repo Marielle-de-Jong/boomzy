@@ -1,0 +1,77 @@
+<div class="container">
+
+
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">My listings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">My bookings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">My booking requests</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div>
+        <%= simple_form_for @user, url: account_path, method: "patch" do |f| %>
+        <% f.hidden_field :id, value: current_user.id %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :email %>
+        <%= f.input :date_of_birth %>
+        <%= f.input :bio %>
+        <%= f.input :address %>
+        <%= f.input :facebook_link %>
+        <%= f.input :linkedin_link %>
+        <%= f.input :instagram_link %>
+        <%= f.input :twitter_link %>
+        <%= f.input :motivation %>
+        <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <% @listings.each do |listing| %>
+        <div class="container border">
+          <p> Title: <%= listing.title %> </p>
+          <p> Description: <%= listing.description %> </p>
+          <p> Skill level: <%= listing.skill_level %> </p>
+          <p> Address: <%= listing.user.address.address_line_1 %> </p>
+          <p> <%= listing.user.address.address_line_2 %></p>
+          <p> <%= listing.user.address.postcode %> </p>
+          <p><%= listing.user.address.city  %></p>
+          <%= link_to listing, method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+          <% end %>
+          <%= link_to 'Edit', edit_listing_path(listing) %>
+          <%= link_to 'Details', listing_path(listing) %>
+        </div>
+      <% end %>
+      <%= link_to "Create new listing", new_listing_path %>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <% @user.bookings.each do |booking| %>
+      <div class="container border">
+        <p> Booking date: <%= booking.date %> </p>
+        <p> Booking user first name: <%= booking.user.first_name %> </p>
+        <p> Booking user last name: <%= booking.user.last_name %> </p>
+        <p> Booking status: <%= booking.status %> </p>
+        <p> Listing title: <%= booking.listing.title %> </p>
+        <p> Listing description: <%= booking.listing.description %> </p>
+        <p> Listing skill level: <%= booking.listing.skill_level %> </p>
+        <%= link_to "Details", booking_path(booking) %>
+        <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
+      </div>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <p>...</p>
+    </div>
+  </div>
+</div>
+
