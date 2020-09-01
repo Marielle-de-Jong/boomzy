@@ -29,7 +29,6 @@ STREETS_ZIPS = [
   ["Plantage Kerklaan 61", "1018 CX"],
   ["Javaplein 23", "1095 CJ"]
 ]
-
 # Addresses for booking location
 MEETING_SZ = [
   ["Museumstraat 1", "1071 XX"],
@@ -43,8 +42,6 @@ MEETING_SZ = [
   ["Keizersgracht 609", "1017 DS"],
   ["Prinsengracht 279a", "1016 GW"]
 ]
-
-
 
 puts "creating new users..."
 i=0

@@ -1,6 +1,8 @@
-<%= simple_form_for(@listing, method: :post) do |f| %>
+<%= simple_form_for(@listing) do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :skill_level %>
   <%= f.submit %>
 <% end %>
+
+
