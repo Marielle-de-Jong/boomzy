@@ -29,7 +29,6 @@ STREETS_ZIPS = [
   ["Plantage Kerklaan 61", "1018 CX"],
   ["Javaplein 23", "1095 CJ"]
 ]
-
 # Addresses for booking location
 MEETING_SZ = [
   ["Museumstraat 1", "1071 XX"],

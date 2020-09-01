@@ -1,0 +1,20 @@
+.banner{
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: $background;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding-left: 75px;
+  padding-right: 75px;
+  margin: 0px 0px 20px 0px;
+}
+
+.banner-header h1{
+  font-size: 62px;
+}
+
+.banner-buttons{
+  margin-left: -15px;
+}

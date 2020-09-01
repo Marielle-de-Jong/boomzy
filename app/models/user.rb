@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :address, as: :addressable
   has_many :listings
   has_many :bookings
+  has_one_attached :photo
 end

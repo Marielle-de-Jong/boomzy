@@ -1,2 +1,11 @@
 <h1>Bookings#index</h1>
 <p>Find me in app/views/bookings/index.html.erb</p>
+
+<%= link_to "Create new booking", new_listing_booking_path %>
+
+<% @bookings.each do |booking| %>
+<p> <%= booking.date %> </p>
+<p> <%= booking.status %> </p>
+<p> <%= booking.user_id %> </p>
+<% end %>
+
