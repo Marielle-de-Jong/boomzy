@@ -25,7 +25,13 @@
         <%= f.input :email %>
         <%= f.input :date_of_birth %>
         <%= f.input :bio %>
-        <%= f.input :address %>
+        <%= f.simple_fields_for :address_attributes, @user.address do |ff|%>
+                    <%= ff.hidden_field :id %>
+                    <%= ff.input :address_line_1 %>
+                    <%= ff.input :address_line_2 %>
+                    <%= ff.input :city %>
+                    <%= ff.input :postcode %>
+                  <% end %>
         <%= f.input :facebook_link %>
         <%= f.input :linkedin_link %>
         <%= f.input :instagram_link %>
