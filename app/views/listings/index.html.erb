@@ -3,25 +3,30 @@
 
 
 <%= link_to "Create new listing", new_listing_path %>
-
 <% @listings.each do |listing| %>
 <div class="container">
-  <p> ID: <%= listing.id %>  </p>
-  <p> Title: <%= listing.title %> </p>
-  <p> Description: <%= listing.description %> </p>
-  <p> Skill level: <%= listing.skill_level %> </p>
-  <p> Lister first name: <%= listing.user.first_name %> </p>
-  <p> Lister last name: <%= listing.user.last_name %> </p>
-  <p> Lister bio: <%= listing.user.bio %> </p>
-  <p> Lister motivation: <%= listing.user.motivation %> </p>
-  <p> Lister LinkedIn <%= listing.user.linkedin_link %> </p>
-  <p> Lister Twitter <%= listing.user.twitter_link %> </p>
-  <p> Lister Instagram <%= listing.user.instagram_link %> </p>
-  <p> Lister Facebook <%= listing.user.facebook_link %>  </p>
-  <p> Review rating (to be finished once seeds are done) <%= listing.user %>  </p>
-  <%= link_to 'Edit', edit_listing_path(listing) %>
-  <%= link_to 'Details', listing_path(listing) %>
-  <br>
-  <br>
+  <div class="listing-card">
+    <div class="listing-card-img">
+      <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+        <h1><%= listing.title %></h1>
+      </div>
+    </div>
+    <div class="listing-card-info">
+      <div class="card-description">
+        <p><%= listing.description %></p>
+      </div>
+      <div class="card-info">
+        <div class="card-categories">
+          <p class="card-category">cat 1</p>
+          <p class="card-category">cat 2</p>
+          <p class="card-category">cat 3</p>
+        </div>
+        <div class="card-level">
+          <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+          <p> Skill level: <%= listing.skill_level %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <% end %>
