@@ -123,6 +123,7 @@ User.all.each do |user|
 end
 puts "[LOG] #{Skill.count} SKILLS created"
 
+
 # ---------------
 # CREATE LISTINGS
 # ---------------
@@ -138,21 +139,43 @@ User.all.each do |user|
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
   )
 end
-puts "[LOG] #{Skill.count} SKILLS created"
+puts "[LOG] #{Listing.count} LISTINGS created"
+
 
 # ---------------
 # CREATE BOOKINGS
 # ---------------
+puts "----------------------------------------"
+puts "[LOG] creating BOOKINGS..."
 
-
+Listing.all.each do |listing|
+  booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: STATUS.sample,
+    listing_id: listing.id
+  )
+end
+puts "[LOG] #{Booking.count} BOOKINGS created"
 
 # ---------------
 # CREATE REVIEWS
 # ---------------
+puts "----------------------------------------"
+puts "[LOG] creating REVIEWS..."
 
+Booking.all.each do |booking|
+  review = Review.create!(
+    content: "My meeting was so great!",
+    rating: rand(1..5),
+    user_id: User.all.sample.id
+  )
+end
 
-# puts "----------------------------------------"
-# puts "[LOG] End time: #{Time.now}"
+puts "[LOG] #{Review.count} REVIEWS created"
+
+puts "----------------------------------------"
+puts "[LOG] End time: #{Time.now}"
 
 #   # file = URI.open("https://source.unsplash.com/900x900/?headshot")
 #   # user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
