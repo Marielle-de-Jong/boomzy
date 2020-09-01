@@ -5,25 +5,25 @@
     <%= image_tag "burger_menu", class: "burger-menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <% if user_signed_in? %>
-      <%= link_to "My Profile", "#", class: "dropdown-item" %>
-      <%= link_to "Home", "#", class: "dropdown-item" %>
-      <%= link_to "Messages", "#", class: "dropdown-item" %>
+      <%= link_to "My Profile", account_path, class: "dropdown-item" %>
+      <%= link_to "Home", root_path, class: "dropdown-item" %>
+      <%= link_to "TBC LINK", "#", class: "dropdown-item" %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       <% else %>
-      <%= link_to "Sign In", new_user_session_path, class: "dropdown-item" %>
-      <%= link_to "Link", "#", class: "dropdown-item" %>
+      <%= link_to "Log In", new_user_session_path, class: "dropdown-item" %>
+      <%= link_to "TBC LINK", "#", class: "dropdown-item" %>
       <% end %>
     </div>
   </div>
   <!-- central logo -->
   <div>
-    <%= link_to "BOOMZY", "#",  class: "nav-logo" %>
+    <%= link_to "BOOMZY", root_path,  class: "nav-logo" %>
   </div>
   </div>
   <!-- User menu on right -->
     <% if !user_signed_in? %>
     <%= link_to "SIGN IN", new_user_session_path, class: "navbar-btn" %>
     <% else %>
-    <%= link_to "#{current_user.first_name}", "#", class: "navbar-btn" %>
+    <%= link_to "#{current_user.first_name} #{current_user.last_name}", account_path, class: "navbar-btn" %>
   <% end %>
 </div>
