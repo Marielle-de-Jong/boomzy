@@ -6,7 +6,6 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
       t.string :address_line_1
       t.string :address_line_2
       t.references :addressable, polymorphic: true
-
       t.timestamps
     end
   end

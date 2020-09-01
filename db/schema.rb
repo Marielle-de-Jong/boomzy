@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_091752) do
+ActiveRecord::Schema.define(version: 2020_09_01_130936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_09_01_091752) do
     t.text "description"
     t.string "title"
     t.bigint "user_id", null: false
+    t.bigint "skill_id"
+    t.index ["skill_id"], name: "index_listings_on_skill_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -81,10 +83,8 @@ ActiveRecord::Schema.define(version: 2020_09_01_091752) do
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.string "category"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,7 +98,6 @@ ActiveRecord::Schema.define(version: 2020_09_01_091752) do
     t.string "first_name"
     t.string "last_name"
     t.date "date_of_birth"
-    t.string "address"
     t.text "bio"
     t.string "linkedin_link"
     t.string "twitter_link"
@@ -114,5 +113,4 @@ ActiveRecord::Schema.define(version: 2020_09_01_091752) do
   add_foreign_key "bookings", "users"
   add_foreign_key "listings", "users"
   add_foreign_key "reviews", "users"
-  add_foreign_key "skills", "users"
 end
