@@ -57,7 +57,7 @@ ADMINS = [
 # --------------------
 puts "----------------------------------------"
 puts "[LOG] creating ADMIN users..."
-
+a = 0
 ADMINS.each do |admin|
   User.create(
     first_name: admin[0],
@@ -66,15 +66,17 @@ ADMINS.each do |admin|
     password: 'admin1',
     password_confirmation: 'admin1'
   )
+  a += 1
 end
-puts "[LOG] ADMINS created"
+puts "[LOG] #{a} ADMINS created"
 
 
 # -------------------
 # CREATE USERS - TEST
 # -------------------
 puts "----------------------------------------"
-puts "[LOG] creating new TEST users..."
+puts "[LOG] creating TEST users..."
+i = 0
 10.times do
   user = User.new
   user.first_name = Faker::Name.first_name
@@ -83,15 +85,19 @@ puts "[LOG] creating new TEST users..."
   user.password = 'test123'
   user.password_confirmation = 'test123'
   user.save!
+  i += 1
 end
+
+puts "[LOG] #{i} USERS created"
+puts "----------------------------------------"
 puts "[LOG] #{User.count} TOTAL users created"
 
 
-# ------------
+# ----------------
 # CREATE ADDRESSES
-# ------------
+# ----------------
 puts "----------------------------------------"
-puts "[LOG] creating new addresses..."
+puts "[LOG] creating ADDRESSES..."
 User.all.each_with_index do |user, index|
   Address.create(
     city: "Amsterdam",
@@ -100,13 +106,24 @@ User.all.each_with_index do |user, index|
     addressable: user
   )
 end
-puts "[LOG] #{Address.count} addresses created"
+puts "[LOG] #{Address.count} ADDRESSES created"
 
 
 # -------------
 # CREATE SKILLS
 # -------------
 
+puts "----------------------------------------"
+puts "[LOG] creating SKILLS..."
+
+User.all.each do |user|
+  skill = Skill.create!(
+    name: Faker::Job.title,
+    category: CATEGORIES.sample,
+    user_id: user
+  )
+end
+puts "[LOG] #{Skill.count} SKILLS created"
 
 # ---------------
 # CREATE LISTINGS
