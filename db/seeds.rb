@@ -14,7 +14,7 @@ User.destroy_all
 
 CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening)
 STATUS = %w(Pending Accepted Denied)
-LEVEL = %w(Master Advanced Recreational Beginner Novice)
+LEVELS = %w(Master Advanced Recreational Beginner Novice)
 
 # Addresses for user. Not sure how Polymorphic assoc. affects these, if at all.
 STREETS_ZIPS = [
@@ -126,7 +126,19 @@ puts "[LOG] #{Skill.count} SKILLS created"
 # ---------------
 # CREATE LISTINGS
 # ---------------
+puts "----------------------------------------"
+puts "[LOG] creating LISTINGS..."
 
+User.all.each do |user|
+  listing = Listing.create!(
+    title: Faker::Book.title,
+    user_id: user.id,
+    skill_id: Skill.all.sample.id,
+    skill_level: LEVELS.sample,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+  )
+end
+puts "[LOG] #{Skill.count} SKILLS created"
 
 # ---------------
 # CREATE BOOKINGS
