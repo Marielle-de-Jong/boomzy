@@ -51,6 +51,10 @@ ADMINS = [
 ]
 
 
+
+puts "[LOG] STARTING SEED GENERATION..."
+
+
 # --------------------
 # CREATE USERS - ADMIN
 # --------------------
