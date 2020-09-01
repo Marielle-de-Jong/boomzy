@@ -14,7 +14,7 @@ User.destroy_all
 
 CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening)
 STATUS = %w(Pending Accepted Denied)
-LEVEL = %w(Master Advanced Recreational Beginner Novice)
+LEVELS = %w(Master Advanced Recreational Beginner Novice)
 
 # Addresses for user. Not sure how Polymorphic assoc. affects these, if at all.
 STREETS_ZIPS = [
@@ -43,76 +43,141 @@ MEETING_SZ = [
   ["Prinsengracht 279a", "1016 GW"]
 ]
 
-puts "creating new users..."
-i=0
+ADMINS = [
+  ["Marielle", "marielle@test.com"],
+  ["Tommy", "tommy@test.com"],
+  ["Will", "will@test.com"],
+  ["Alex", "alex@test.com"]
+]
 
+
+
+puts "[LOG] STARTING SEED GENERATION..."
+
+
+# --------------------
+# CREATE USERS - ADMIN
+# --------------------
+puts "----------------------------------------"
+puts "[LOG] creating ADMIN users..."
+a = 0
+ADMINS.each do |admin|
+  User.create(
+    first_name: admin[0],
+    last_name: "Admin",
+    email: admin[1],
+    password: 'admin1',
+    password_confirmation: 'admin1'
+  )
+  a += 1
+end
+puts "[LOG] #{a} ADMINS created"
+
+
+# -------------------
+# CREATE USERS - TEST
+# -------------------
+puts "----------------------------------------"
+puts "[LOG] creating TEST users..."
+i = 0
 10.times do
   user = User.new
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.last_name
   user.email = Faker::Internet.email
-  user.password = 'valid_password'
-  user.password_confirmation = 'valid_password'
-  address = Address.new
-  address.city = "Amsterdam"
-  address.postcode = STREETS_ZIPS[i][1]
-  address.address_line_1 = STREETS_ZIPS[i][0]
-  user.address = address
-
-
-  # file = URI.open("https://source.unsplash.com/900x900/?headshot")
-  # user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+  user.password = 'test123'
+  user.password_confirmation = 'test123'
   user.save!
-
-    3.times do
-      skill = Skill.new
-      skill.name = Faker::Games::Zelda.item
-      skill.category = CATEGORIES.sample
-      skill.user_id = user.id
-      # file = URI.open("https://source.unsplash.com/1600x900/?#{skill.name}")
-      # skill.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
-      # skill.user = user
-      skill.save!
-      user_skill = UserSkill.new
-      user_skill.skill_level = LEVEL.sample
-      user_skill.description = Faker::TvShows::Seinfeld
-      user_skill.title = skill.name
-    end
-
-    10.times do
-      booking = Booking.new
-      booking.date = Faker::Date.between(from: '2020-09-23', to: '2020-09-25')
-      # booking.end_date = Faker::Date.between(from: '2020-09-26', to: '2020-09-29')
-      booking.status = STATUS.sample
-      address2 = Address.new
-      address2.city = "Amsterdam"
-      address2.postcode = MEETING_SZ[i][1]
-      address2.address_line_1 = MEETING_SZ[i][0]
-      booking.address = address2
-
-      booking.user = user
-      booking.skill = skill
-
-      booking.save
-
-      3.times do
-        review = Review.new
-        review.content = Faker::TvShows::Seinfeld
-        review.rating = rand(1..5)
-        review.skill = skill
-        review.save
-
-      end
-    end
   i += 1
 end
 
+puts "[LOG] #{i} USERS created"
+puts "----------------------------------------"
+puts "[LOG] #{User.count} TOTAL users created"
 
-puts "#{User.count} users created"
-puts "#{Skill.count} skills created"
-puts "#{Review.count} reviews created"
-puts "#{Booking.count} bookings created"
+
+# ----------------
+# CREATE ADDRESSES
+# ----------------
+puts "----------------------------------------"
+puts "[LOG] creating ADDRESSES..."
+User.all.each_with_index do |user, index|
+  Address.create(
+    city: "Amsterdam",
+    address_line_1: STREETS_ZIPS.sample[0],
+    postcode: STREETS_ZIPS.sample[1],
+    addressable: user
+  )
+end
+puts "[LOG] #{Address.count} ADDRESSES created"
+
+
+# -------------
+# CREATE SKILLS
+# -------------
 
 puts "----------------------------------------"
-puts "End time #{Time.now}"
+puts "[LOG] creating SKILLS..."
+
+User.all.each do |user|
+  skill = Skill.create!(
+    name: Faker::Job.title,
+    category: CATEGORIES.sample,
+  )
+end
+puts "[LOG] #{Skill.count} SKILLS created"
+
+
+# ---------------
+# CREATE LISTINGS
+# ---------------
+puts "----------------------------------------"
+puts "[LOG] creating LISTINGS..."
+
+User.all.each do |user|
+  listing = Listing.create!(
+    title: Faker::Book.title,
+    user_id: user.id,
+    skill_id: Skill.all.sample.id,
+    skill_level: LEVELS.sample,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+  )
+end
+puts "[LOG] #{Listing.count} LISTINGS created"
+
+
+# ---------------
+# CREATE BOOKINGS
+# ---------------
+puts "----------------------------------------"
+puts "[LOG] creating BOOKINGS..."
+
+Listing.all.each do |listing|
+  booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: STATUS.sample,
+    listing_id: listing.id
+  )
+end
+puts "[LOG] #{Booking.count} BOOKINGS created"
+
+# ---------------
+# CREATE REVIEWS
+# ---------------
+puts "----------------------------------------"
+puts "[LOG] creating REVIEWS..."
+
+Booking.all.each do |booking|
+  review = Review.create!(
+    content: "My meeting was so great!",
+    rating: rand(1..5),
+    user_id: User.all.sample.id
+  )
+end
+
+puts "[LOG] #{Review.count} REVIEWS created"
+
+puts "----------------------------------------"
+puts "[LOG] End time: #{Time.now}"
 

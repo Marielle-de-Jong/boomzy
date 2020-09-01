@@ -42,18 +42,22 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.listing = Listing.find(params[:listing_id])
+    @listing = Listing.find(params[:listing_id])
+    @booking.listing = @listing
     @booking.user = current_user
     @booking.status = "Pending"
-
     if @booking.save
-      redirect_to account_path
+      redirect_to listing_path(@listing)
       flash[:notice] = "Your booking request has been processed!"
     else
       render :new
     end
   end
 
+  def destroy
+    @booking.destroy
+    redirect_to account_path
+  end
 
   private
 
