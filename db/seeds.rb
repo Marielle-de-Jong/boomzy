@@ -44,11 +44,11 @@ MEETING_SZ = [
   ["Prinsengracht 279a", "1016 GW"]
 ]
 
-ADMIN_EMAILS = [
-  "marielle@test.com",
-  "tommy@test.com",
-  "will@test.com",
-  "alex@test.com"
+ADMINS = [
+  ["Marielle", "marielle@test.com"],
+  ["Tommy", "tommy@test.com"],
+  ["Will", "will@test.com"],
+  ["Alex", "alex@test.com"]
 ]
 
 
@@ -56,27 +56,25 @@ ADMIN_EMAILS = [
 # CREATE USERS - ADMIN
 # --------------------
 puts "----------------------------------------"
-puts "creating new users..."
+puts "[LOG] creating ADMIN users..."
 
-i = 0
-10.times do
-  user = User.new
-  user.first_name = Faker::Name.first_name
-  user.last_name = Faker::Name.last_name
-  user.email = Faker::Internet.email
-  user.password = 'admin1'
-  user.password_confirmation = 'admin1'
-  user.save!
-  i += i
+ADMINS.each do |admin|
+  User.create(
+    first_name: admin[0],
+    last_name: "Admin",
+    email: admin[1],
+    password: 'admin1',
+    password_confirmation: 'admin1'
+  )
 end
-puts "#{User.count} users created"
+puts "[LOG] ADMINS created"
 
 
 # -------------------
 # CREATE USERS - TEST
 # -------------------
 puts "----------------------------------------"
-puts "creating new users..."
+puts "[LOG] creating new TEST users..."
 10.times do
   user = User.new
   user.first_name = Faker::Name.first_name
@@ -86,22 +84,25 @@ puts "creating new users..."
   user.password_confirmation = 'test123'
   user.save!
 end
-puts "#{User.count} users created"
+puts "[LOG] #{User.count} TOTAL users created"
+
 
 # ------------
 # CREATE ADDRESSES
 # ------------
 puts "----------------------------------------"
-puts "creating new addresses..."
+puts "[LOG] creating new addresses..."
 User.all.each_with_index do |user, index|
-  address = Address.create(
+  Address.create(
     city: "Amsterdam",
-    address_line_1: STREETS_ZIPS[index][0],
-    postcode: STREETS_ZIPS[index][1],
+    address_line_1: STREETS_ZIPS.sample[0],
+    postcode: STREETS_ZIPS.sample[1],
     addressable: user
   )
 end
-puts "#{Address.count} addresses created"
+puts "[LOG] #{Address.count} addresses created"
+
+
 # -------------
 # CREATE SKILLS
 # -------------
@@ -121,6 +122,10 @@ puts "#{Address.count} addresses created"
 # ---------------
 # CREATE REVIEWS
 # ---------------
+
+
+# puts "----------------------------------------"
+# puts "[LOG] End time: #{Time.now}"
 
 #   # file = URI.open("https://source.unsplash.com/900x900/?headshot")
 #   # user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
@@ -169,13 +174,4 @@ puts "#{Address.count} addresses created"
 #   i += 1
 # end
 
-
-puts "#{User.count} users created"
-puts "#{Address.count} addresses created"
-puts "#{Skill.count} skills created"
-puts "#{Review.count} reviews created"
-puts "#{Booking.count} bookings created"
-
-puts "----------------------------------------"
-puts "End time #{Time.now}"
 
