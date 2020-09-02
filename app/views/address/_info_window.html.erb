@@ -1,4 +1,9 @@
-<h2><%= address.address_line_1 %></h2>
-<p>
-<%= address.addressable.first_name %>
-</p>
+<div class="map-user">
+  <h4><%= address.addressable.first_name %></h4>
+  <img src="<%= cl_image_path address.addressable.photo.key %>" alt="avatar">
+</div>
+<p><%= address.address_line_1 %></p>
+
+
+
+
