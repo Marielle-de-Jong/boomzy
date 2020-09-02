@@ -87,6 +87,8 @@ i = 0
   user.email = Faker::Internet.email
   user.password = 'test123'
   user.password_confirmation = 'test123'
+  file = URI.open("https://source.unsplash.com/900x900/?headshot")
+  user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
   user.save!
   i += 1
 end
