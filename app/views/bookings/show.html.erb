@@ -1,20 +1,25 @@
 <h1>Bookings#show</h1>
 
-<h3>Booking Details</h3>
-<h6>Date: <%= @booking.date  %></h6>
-<h6>Status: <%= @booking.status  %></h6>
+<h4>Booking Details</h4>
+<div class="date-time">
+  <h6>Date: <%= @booking.date  %></h6>
+  <h6>Status: <%= @booking.status  %></h6>
+</div>
 
-<h3>Teacher's Details</h3>
-<%= @booking.listing.user.first_name %>
-<%= @booking.listing.user.last_name %>
-<%= @booking.listing.user.email %>
-<!-- link_to "User's Profile", users_path(@booking.listing.user) -->
+<div class="teacher-card">
+  <h6>Teacher's Details</h6>
+    <% if @booking.listing.user.photo.attached? %>
+      <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
+    <% end %>
+    <div class="teacher-name">
+      <%= @booking.listing.user.first_name %>
+    </div>
+    <div class="user-bio">
+      <h6>Bio</h6>
+     <%=  @booking.user.bio %>
+    </div>
+  <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent' %>
+</div>
 
-<h3>Student's Details</h3>
-<%= @booking.user.first_name %>
-<%= @booking.user.last_name %>
-<%= @booking.user.email %>
-<!-- link_to "Student's Profile", users_path(@booking.user)  -->
 
-
-<%= link_to 'Back to My Profile', account_path, class: 'btn btn-primary' %>
+<%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
