@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    search_results = Unsplash::Collection.search("tree", page = 1, per_page = 10)
+    search_results = Unsplash::Collection.search("kickboxing", page = 1, per_page = 10)
     collection = search_results.first
     @urls = collection.photos.map { |photo| photo.urls.raw }
   end
