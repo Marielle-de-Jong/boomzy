@@ -7,6 +7,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @chatroom = @booking.chatroom
+    @message = Message.new
     # COMMENTED OUT FOR DEVELOPMENT THIS GENERATES A NEW ROOM FOR EACH BOOKING
     # build_video_call_url
   end
@@ -48,6 +50,9 @@ class BookingsController < ApplicationController
     @booking.listing = @listing
     @booking.user = current_user
     @booking.status = "Pending"
+    chatroom = Chatroom.new
+    chatroom.booking = @booking
+    chatroom.save
     if @booking.save
       redirect_to listing_path(@listing)
       flash[:notice] = "Your booking request has been processed!"

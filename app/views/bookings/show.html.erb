@@ -1,9 +1,9 @@
 
 
 
-
 <h1>Bookings#show</h1>
 
+<p>Find me in app/views/bookings/show.html.erb</p>
 
 <h4>Booking Details</h4>
 <div class="date-time">
@@ -28,6 +28,11 @@
 
 
 <%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
+
+<h1>Chat Time</h1>
+
+<%= render "chatrooms/views", chatroom: @chatroom, message: @message %>
+
 
 <div class="video-call">
   <script src="https://unpkg.com/@daily-co/daily-js"></script>
