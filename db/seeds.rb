@@ -12,9 +12,10 @@ User.destroy_all
 
 
 
+
 CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening)
 STATUS = %w(Pending Accepted Denied)
-LEVELS = %w(Master Advanced Recreational Beginner Novice)
+LEVELS = %w(Beginner Intermediate Advanced Master)
 
 # Addresses for user. Not sure how Polymorphic assoc. affects these, if at all.
 STREETS_ZIPS = [
