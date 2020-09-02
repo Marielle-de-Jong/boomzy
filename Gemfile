@@ -33,7 +33,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 # Faker for seed file
 gem 'faker'
-
+# Geocoding for address to coordinates
+gem 'geocoder'
 # Cloundinary image hosting
 gem 'cloudinary', '~> 1.16.0'
 

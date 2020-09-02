@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   get "/account", to: "account#show"
   patch "/account", to: "account#update"
+  get "/users/map", to: "address#index"
 end
