@@ -3,7 +3,6 @@
   width: 80%;
   padding: 15px;
   margin: 10px;
-  height: 430px;
   width: 350px;
   display: flex-column;
   background: $background;
@@ -12,4 +11,11 @@
   display: inline;
   font-size: 35px;
   vertical-align: middle;
+}
+
+.date-time {
+  border: solid black 2px;
+  width: 350px;
+  padding: 15px;
+  margin: 10px;
 }
