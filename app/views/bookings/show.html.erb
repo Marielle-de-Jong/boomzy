@@ -1,4 +1,9 @@
+
+
+
+
 <h1>Bookings#show</h1>
+
 
 <h4>Booking Details</h4>
 <div class="date-time">
@@ -23,3 +28,35 @@
 
 
 <%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
+
+<div class="video-call">
+  <script src="https://unpkg.com/@daily-co/daily-js"></script>
+    <button class="button standard accent fill" onclick="run()"><i class="fas fa-phone-alt"></i></button>
+    <script>
+
+      async function run() {
+        // COMMENTED OUT FOR DEVELOPMENT ADD THIS TO USE UNIQUE ROOMS
+        // room = {url: `<%= @room %>`}
+        room = { url: "https://boomzy.daily.co/qMLWks2AEI4wJhM57bf4" }
+        window.callFrame = window.DailyIframe.createFrame({
+          iframeStyle: {
+            position: 'fixed',
+            border: 0,
+            top: 0, left: 0,
+            width: '100%',
+            height: '100%'
+          }
+        });
+        await callFrame.join({
+          url: room.url,
+          showLeaveButton: true
+        });
+
+        function leave(e) {
+          showEvent(e);
+          callFrame.destroy();
+        }
+      }
+    </script>
+</div>
+<%= link_to 'Back to Profile', account_path, class: 'btn btn-primary' %>

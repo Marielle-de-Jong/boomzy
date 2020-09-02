@@ -1,9 +1,9 @@
 .listing-card{
-  margin: 10px;
+  margin: 10px 0px;
   height: 430px;
   width: 350px;
   display: flex-column;
-  background: $background;
+  background: $white;
 }
 
 .listing-card-img{
@@ -29,45 +29,57 @@
 }
 
 .listing-card-info{
-  height: 160px;
-  width: 310px;
   margin: 20px;
   font-size: 14px;
 
-}
-.card-description{
-  text-align: justify;
-  font-weight: bold;
-  font-style: italic;
 }
 
 .card-level{
   font-weight: lighter;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.card-description > p {
+  margin: 0px 0px 6px 0px;
+  min-height: 63px;
 }
 
 .card-categories{
   display: flex;
-  justify-content: space-around;
 }
 
 .card-user{
   display: flex;
   justify-content: center;
+  align-items: center;
+  border-top: 1px solid #F4F7F6;
+  padding: 6px 0px;
+}
 
+.card-user > p {
+  margin: 0 0 0 6px;
+  align-items: center;
 }
 
 
 .card-category{
+  margin-right: 5px;
   font-weight: lighter;
+  color: $white;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20px;
-  width: 50px;
-  background: $accent;
+  padding: 2px 5px;
+  height: auto;
+  width: auto;
+  background: $purple;
   border-radius: 20px;
+  font-size: small;
 }
 
+.skill-level-info {
+  margin: 0px;
+}
 

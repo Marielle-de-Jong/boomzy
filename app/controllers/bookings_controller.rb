@@ -7,6 +7,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    # COMMENTED OUT FOR DEVELOPMENT THIS GENERATES A NEW ROOM FOR EACH BOOKING
+    # build_video_call_url
   end
 
   def status?
@@ -68,4 +70,23 @@ class BookingsController < ApplicationController
   def booking_params
     params.require("booking").permit(:date, :status)
   end
+
+  def build_video_call_url
+      url = URI("https://api.daily.co/v1/rooms")
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      request = Net::HTTP::Post.new(url)
+      request["content-type"] = 'application/json'
+      request["authorization"] = VIDEO_TOKEN
+      request.body = "{\"properties\":{\"autojoin\":false},\"name\":\"#{@booking.user.authentication_token}#{@booking.id}\"}"
+
+      response = http.request(request)
+      if JSON.parse(response.read_body)["info"].include? "already exists"
+        @room = "https://boomzy.daily.co/#{@booking.user.authentication_token}#{@booking.id}"
+      else
+        @room = JSON.parse(response.read_body)["url"]
+      end
+    end
 end

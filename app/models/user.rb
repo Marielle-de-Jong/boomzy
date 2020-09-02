@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :bookings
   has_one_attached :photo
   accepts_nested_attributes_for :address
+  acts_as_token_authenticatable
 end

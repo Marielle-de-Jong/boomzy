@@ -12,35 +12,36 @@ User.destroy_all
 
 
 
+
 CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening)
 STATUS = %w(Pending Accepted Denied)
-LEVELS = %w(Master Advanced Recreational Beginner Novice)
+LEVELS = %w(Beginner Intermediate Advanced Master)
 
 # Addresses for user. Not sure how Polymorphic assoc. affects these, if at all.
 STREETS_ZIPS = [
-  ["Westzaanstraat 10", "1013 NG"],
-  ["Willem Passtoorsstraat 104", "1073 HX"],
-  ["Rooseveltlaan 124", "1078 NW"],
-  ["Meteorensingel 156", "1033 CC"],
-  ["IJsbaanpad 9", "1076 CV"],
-  ["Korte Leidsedwarsstraat 111", "1017 PX"],
-  ["Prinsenstraat 22", "1015 DD"],
-  ["Lindengracht 75", "1015 KD"],
-  ["Plantage Kerklaan 61", "1018 CX"],
-  ["Javaplein 23", "1095 CJ"]
+  ["Westzaanstraat 10", "1013NG"],
+  ["Willem Passtoorsstraat 104", "1073HX"],
+  ["Rooseveltlaan 124", "1078NW"],
+  ["Meteorensingel 156", "1033CC"],
+  ["IJsbaanpad 9", "1076CV"],
+  ["Korte Leidsedwarsstraat 111", "1017PX"],
+  ["Prinsenstraat 22", "1015DD"],
+  ["Lindengracht 75", "1015KD"],
+  ["Plantage Kerklaan 61", "1018CX"],
+  ["Javaplein 23", "1095CJ"]
 ]
 # Addresses for booking location
 MEETING_SZ = [
-  ["Museumstraat 1", "1071 XX"],
-  ["Dam 20", "1012 NP Amsterdam"],
-  ["Nieuwezijds Voorburgwal 147", "1012 RJ"],
-  ["Museumplein 6", "1071 DJ"],
-  ["Kalverstraat 92", "1012 PH"],
-  ["Prinsengracht 279", "1016 GW"],
-  ["Dam 1", "1012 JS Amsterdam"],
-  ["Rokin 78", "1012 KW"],
-  ["Keizersgracht 609", "1017 DS"],
-  ["Prinsengracht 279a", "1016 GW"]
+  ["Museumstraat 1", "1071XX"],
+  ["Dam 20", "1012NP"],
+  ["Nieuwezijds Voorburgwal 147", "1012RJ"],
+  ["Museumplein 6", "1071DJ"],
+  ["Kalverstraat 92", "1012PH"],
+  ["Prinsengracht 279", "1016GW"],
+  ["Dam 1", "1012JS"],
+  ["Rokin 78", "1012KW"],
+  ["Keizersgracht 609", "1017DS"],
+  ["Prinsengracht 279a", "1016GW"]
 ]
 
 ADMINS = [
@@ -112,6 +113,8 @@ User.all.each_with_index do |user, index|
     postcode: STREETS_ZIPS.sample[1],
     addressable: user
   )
+# Address.create!(address_line_1: "Elandsgracht 86", postcode: "1016TZ", city: "Amsterdam", addressable_type: "User", addressable_id: User.first.id)
+
 end
 puts "[LOG] #{Address.count} ADDRESSES created"
 
