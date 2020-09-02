@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   get "/account", to: "account#show"
   patch "/account", to: "account#update"
+  get "/users/map", to: "address#index"
 end
