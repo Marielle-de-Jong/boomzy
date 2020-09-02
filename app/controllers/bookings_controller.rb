@@ -84,7 +84,7 @@ class BookingsController < ApplicationController
 
       request = Net::HTTP::Post.new(url)
       request["content-type"] = 'application/json'
-      request["authorization"] = VIDEO_TOKEN
+      request["authorization"] = "Bearer #{VIDEO_TOKEN}"
       request.body = "{\"properties\":{\"autojoin\":false},\"name\":\"#{@booking.user.authentication_token}#{@booking.id}\"}"
 
       response = http.request(request)
