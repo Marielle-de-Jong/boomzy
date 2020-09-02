@@ -1,5 +1,20 @@
 <h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+
+<h3>Booking Details</h3>
+<h6>Date: <%= @booking.date  %></h6>
+<h6>Status: <%= @booking.status  %></h6>
+
+<h3>Teacher's Details</h3>
+<%= @booking.listing.user.first_name %>
+<%= @booking.listing.user.last_name %>
+<%= @booking.listing.user.email %>
+<!-- link_to "User's Profile", users_path(@booking.listing.user) -->
+
+<h3>Student's Details</h3>
+<%= @booking.user.first_name %>
+<%= @booking.user.last_name %>
+<%= @booking.user.email %>
+<!-- link_to "Student's Profile", users_path(@booking.user)  -->
 
 
-<%= link_to 'Back to Profile', account_path, class: 'btn btn-primary' %>
+<%= link_to 'Back to My Profile', account_path, class: 'btn btn-primary' %>
