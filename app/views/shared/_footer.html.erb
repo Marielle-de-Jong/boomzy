@@ -1,7 +1,8 @@
-<div class="footer-container">
-    <div class="footer-logo">
+<!-- <div class="footer-container"> -->
+  <div class="container d-flex flex-wrap justify-content-between">
+    <div class="footer-logo p-0">
       <li>
-        <%= link_to "BOOMZY", "#",  class: "nav-logo" %>
+        <%= link_to "BOOMZY", root_path,  class: "nav-logo" %>
       </li>
       <li><p>©2020</p></li>
       <li><p><%= link_to "Privacy & Terms", "#", class: "footer-link" %><p></li>
@@ -22,11 +23,11 @@
       <div class="footer-link-column">
         <ul>
           <li class="footer-column-head">Profile</li>
-          <li><%= link_to "My Profile", "#", class: "footer-link" %></li>
-          <li><%= link_to "Edit Profile", "#", class: "footer-link" %></li>
-          <li><%= link_to "Delete Profile", "#", class: "footer-link" %></li>
-          <li><%= link_to "Change Photo", "#", class: "footer-link" %></li>
-          <li><%= link_to "Complain", "#", class: "footer-link" %></li>
+          <li><%= link_to "My Profile", account_path, class: "footer-link" %></li>
+          <li><%= link_to "Edit Profile", account_path, class: "footer-link" %></li>
+          <li><%= link_to "Delete Profile", account_path, class: "footer-link" %></li>
+          <li><%= link_to "Change Photo", account_path, class: "footer-link" %></li>
+          <li><%= link_to "Complain", account_path, class: "footer-link" %></li>
         </ul>
       </div>
       <div class="footer-link-column">
@@ -42,5 +43,5 @@
     </div>
   </div>
   <div class="footer-end">
-
-</div>
+  </div>
+<!-- </div> -->

@@ -12,9 +12,10 @@ User.destroy_all
 
 
 
+
 CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening)
 STATUS = %w(Pending Accepted Denied)
-LEVELS = %w(Master Advanced Recreational Beginner Novice)
+LEVELS = %w(Beginner Intermediate Advanced Master)
 
 # Addresses for user. Not sure how Polymorphic assoc. affects these, if at all.
 STREETS_ZIPS = [
@@ -62,13 +63,15 @@ puts "----------------------------------------"
 puts "[LOG] creating ADMIN users..."
 a = 0
 ADMINS.each do |admin|
-  User.create(
-    first_name: admin[0],
-    last_name: "Admin",
-    email: admin[1],
-    password: 'admin1',
-    password_confirmation: 'admin1'
-  )
+  user = User.new
+  user.first_name = admin[0]
+  user.last_name = "Admin"
+  user.email = admin[1]
+  user.password = 'admin1'
+  user.password_confirmation = 'admin1'
+  file_admin = URI.open("https://source.unsplash.com/900x900/?headshot")
+  user.photo.attach(io: file_admin, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+  user.save!
   a += 1
 end
 puts "[LOG] #{a} ADMINS created"
@@ -87,6 +90,8 @@ i = 0
   user.email = Faker::Internet.email
   user.password = 'test123'
   user.password_confirmation = 'test123'
+  file = URI.open("https://source.unsplash.com/900x900/?headshot")
+  user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
   user.save!
   i += 1
 end
