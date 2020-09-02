@@ -1,6 +1,6 @@
 .listing-card{
   margin: 10px;
-  height: 500px;
+  height: 430px;
   width: 350px;
   display: flex-column;
   background: $background;
@@ -29,7 +29,7 @@
 }
 
 .listing-card-info{
-  height: 230px;
+  height: 160px;
   width: 310px;
   margin: 20px;
   font-size: 14px;
@@ -51,6 +51,13 @@
   display: flex;
   justify-content: space-around;
 }
+
+.card-user{
+  display: flex;
+  justify-content: center;
+
+}
+
 
 .card-category{
   font-weight: lighter;

@@ -20,7 +20,14 @@
           <p class="card-category">cat 3</p>
         </div>
         <div class="card-level">
-          <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+          <div class="card-user">
+            <% if listing.user.photo.attached? %>
+            <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar" />
+            <% else %>
+            <img src="<%= image_path 'avatar' %>" class="avatar" />
+            <% end %>
+            <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+          </div>
           <p> Skill level: <%= listing.skill_level %> </p>
         </div>
       </div>
