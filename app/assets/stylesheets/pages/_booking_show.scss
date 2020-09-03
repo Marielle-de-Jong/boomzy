@@ -1,12 +1,12 @@
 .booking-show-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100px 454px 500fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 455px 500px;
   gap: 10px 10px;
   grid-template-areas:
-    "booking-details teacher-bio"
-    "listing-card teacher-bio"
-    "map map";
+    "booking-details teacher-bio teacher-bio"
+    "listing-card teacher-bio teacher-bio"
+    "map map map";
   justify-items: center;
   align-items: stretch;
   margin: 0 150px;
@@ -15,9 +15,8 @@
 .booking-details {
   grid-area: booking-details;
   height: 100px;
-  display: flex-column;
-  justify-content: center;
-  background-color: red;
+  text-justify: center;
+  text-align: center;
 }
 
 .teacher-bio {
@@ -28,7 +27,6 @@
 .listing-card-wide {
   grid-area: listing-card;
   align-self: start;
-  background-color: green;
 }
 
 .map {
