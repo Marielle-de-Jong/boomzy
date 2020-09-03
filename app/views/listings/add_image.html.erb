@@ -2,26 +2,29 @@
   <div class="row justify-content-center my-5">
     <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-6">
       <h3 class="text-center">Type a keyword for your image</h3>
+
+      <%= simple_form_for @listing, method: :get, url: add_image_path do |f| %>
+        <%= f.input :image_keyword %>
+        <%= f.submit %>
+      <% end %>
       <br>
-      <form class="simple_form edit_listing" id="edit_listing_1" novalidate="novalidate" action="/listings/1/add_image" accept-charset="UTF-8" method="get">
+      <form class="simple_form edit_listing" id="edit_listing_1" novalidate="novalidate" action="<%= post_add_image_path(@listing) %>" accept-charset="UTF-8" method="post">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <div class="form-group string optional listing_image_keyword">
-          <label class="string optional" for="listing_image_keyword">Image keyword
-          </label>
-          <input class="form-control string optional" type="text" name="listing[image_keyword]" id="listing_image_keyword"></div>
           <fieldset class="form-group radio_buttons optional listing_listing_image">
             <legend class="col-form-label pt-0">
               Listing image
             </legend>
             <input type="hidden" name="listing[listing_image]" value="">
             <div class="radio-button-image-grid">
-              <% @urls.each_with_index do |url, index| %>
+                <% @urls.each_with_index do |url, index| %>
                 <div class="form-check">
                   <input class="form-check-input radio_buttons optional" name="listing[listing_image]" type="radio" value="<%= url %>" id="url-<%= index %>">
                   <label class="form-check-label collection_radio_buttons" for="url-<%= index %>">
                     <%= image_tag url %>
                   </label>
                 </div>
-              <% end %>
+                <% end %>
             </div>
           </fieldset>
           <input type="submit" name="commit" value="Let's Teach!" class="button standard accent" data-disable-with="Let's Teach!">
@@ -31,10 +34,3 @@
   </div>
 
 
-<!-- <div class="new-listing-image d-flex flex-wrap">
-  <% @urls.each_with_index do |url, index | %>
-    <%= image_tag url, width: 200 %>
-  <% end %>
-</div> -->
-
-<!-- @urls.map { |url| "#{image_tag('url')}".html_safe } -->
