@@ -1,73 +1,65 @@
-
-
-
 <h1>Bookings#show</h1>
 
 <p>Find me in app/views/bookings/show.html.erb</p>
 
-<h4>Booking Details</h4>
-<div class="date-time">
-  <h6>Date: <%= @booking.date  %></h6>
-  <h6>Status: <%= @booking.status  %></h6>
-</div>
-
-<div class="listing-card mx-auto">
-  <div class="listing-card-img">
-    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
-      <h1><%= @booking.listing.title %></h1>
-    </div>
+<div class="booking-show-grid">
+  <div class="booking-details">
+    <h6>Date: <%= @booking.date  %></h6>
+    <h6>Status: <%= @booking.status  %></h6>
   </div>
-  <div class="listing-card-info">
-    <div class="card-description">
-      <p><%= @booking.listing.description %></p>
-    </div>
-    <div class="card-info">
-      <div class="card-categories">
-        <p class="card-category">Horse riding (TBF)</p>
-      </div>
-      <div class="card-level">
-        <div class="card-user">
-          <% if @booking.listing.user.photo.attached? %>
-          <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar" />
-          <% else %>
-          <img src="<%= image_path 'avatar' %>" class="avatar" />
-          <% end %>
-          <p><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
+  <div class="teacher-bio">
+    <div class="teacher-card">
+      <h6>Teacher's Details</h6>
+        <% if @booking.listing.user.photo.attached? %>
+          <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
+        <% end %>
+        <div class="teacher-name">
+          <%= @booking.listing.user.first_name %>
         </div>
-        <p class="skill-level-info"> Skill level: <%= @booking.listing.skill_level %> </p>
-      </div>
+        <div class="user-bio">
+          <h6>Bio</h6>
+         <%=  @booking.user.bio %>
+        </div>
+      <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent' %>
     </div>
   </div>
-</div>
-
-<div class="teacher-card">
-  <h6>Teacher's Details</h6>
-  <% if @booking.listing.user.photo.attached? %>
-  <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
-  <% end %>
-  <div class="teacher-name">
-    <%= @booking.listing.user.first_name %>
+  <div class="listing-card-wide">
+      <%= link_to @booking.listing do %>
+      <div class="listing-card-img">
+        <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+          <h1><%= @booking.listing.title %></h1>
+        </div>
+      </div>
+      <div class="listing-card-info">
+        <div class="card-description">
+          <p><%= @booking.listing.description %></p>
+        </div>
+        <div class="card-info">
+          <div class="card-categories">
+            <p class="card-category">Horse riding (TBF)</p>
+          </div>
+          <div class="card-level">
+            <div class="card-user">
+              <% if @booking.listing.user.photo.attached? %>
+              <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar" />
+              <% else %>
+              <img src="<%= image_path 'avatar' %>" class="avatar" />
+              <% end %>
+              <p><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
+            </div>
+            <p class="skill-level-info"> Skill level: <%= @booking.listing.skill_level %> </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <div class="user-bio">
-    <h6>Bio</h6>
-    <%=  @booking.listing.user.bio %>
+  <div class="map">
+    <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+     </div>
   </div>
-  <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent' %>
-</div>
-
-<div class="teacher-card">
-  <h6>Student's Details</h6>
-  <% if @booking.user.photo.attached? %>
-  <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
-  <% end %>
-  <div class="teacher-name">
-    <%= @booking.user.first_name %>
-  </div>
-  <div class="user-bio">
-    <h6>Bio</h6>
-    <%=  @booking.user.bio %>
-  </div>
-  <%= link_to "Student's Profile", account_path(@booking.user), class: 'button standard accent' %>
 </div>
 
 <div class="chat-card">
@@ -77,7 +69,6 @@
     <button data-key="<%= @room %>" class="button standard accent fill" id="vid-call-btn"><i class="fas fa-phone-alt"></i></button>
   </div>
 </div>
-
 
 <%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
 
