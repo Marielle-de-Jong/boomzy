@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row justify-content-center my-5">
-    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-6">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <h3 class="text-center">Type a keyword for your image</h3>
 
-      <%= simple_form_for @listing, method: :get, url: add_image_path do |f| %>
+      <%= simple_form_for @listing, method: :get, url: add_image_path, wrapper: :inline_form,
+        html: { class: "form-inline" } do |f| %>
         <%= f.input :image_keyword %>
-        <%= f.submit %>
+        <%= f.submit 'Submit', class: "button standard accent" %>
       <% end %>
       <br>
       <form class="simple_form edit_listing" id="edit_listing_1" novalidate="novalidate" action="<%= post_add_image_path(@listing) %>" accept-charset="UTF-8" method="post">
