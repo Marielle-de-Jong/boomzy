@@ -91,3 +91,17 @@
   margin: 0px;
 }
 
+.listing-card-wide{
+  width: 100%;
+  display: flex-column;
+  background: $white;
+  border: solid 2px black;
+}
+
+.listing-card-wide a:link{
+  text-decoration: none;
+}
+
+.listing-card-wide a{
+  color: $text;
+}

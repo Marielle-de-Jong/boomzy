@@ -23,8 +23,44 @@
       <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent' %>
     </div>
   </div>
-
+  <div class="listing-card-wide">
+    <div class="listing-card mx-auto">
+      <%= link_to @booking.listing do %>
+      <div class="listing-card-img">
+        <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+          <h1><%= @booking.listing.title %></h1>
+        </div>
+      </div>
+      <div class="listing-card-info">
+        <div class="card-description">
+          <p><%= @booking.listing.description %></p>
+        </div>
+        <div class="card-info">
+          <div class="card-categories">
+            <p class="card-category">Horse riding (TBF)</p>
+          </div>
+          <div class="card-level">
+            <div class="card-user">
+              <% if @booking.listing.user.photo.attached? %>
+              <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar" />
+              <% else %>
+              <img src="<%= image_path 'avatar' %>" class="avatar" />
+              <% end %>
+              <p><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
+            </div>
+            <p class="skill-level-info"> Skill level: <%= @booking.listing.skill_level %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
   <div class="map">
+    <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+     </div>
   </div>
 </div>
 
