@@ -92,6 +92,7 @@ i = 0
   user.password = 'test123'
   user.password_confirmation = 'test123'
   user.bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo imperdiet turpis, eget imperdiet dolor facilisis quis. Nam sed iaculis purus. Praesent tincidunt congue ex, ut congue lacus rutrum faucibus. Nullam posuere urna eget enim rhoncus imperdiet. Aenean ut blandit nulla. Aenean dapibus non lectus et gravida. Curabitur at urna vestibulum, mattis risus vitae, consectetur elit. Morbi fringilla neque nec libero dapibus, non dapibus dui dignissim."
+  user.motivation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo imperdiet turpis, eget imperdiet dolor facilisis quis. Nam sed iaculis purus. Praesent tincidunt congue ex, ut congue lacus rutrum faucibus."
   file = URI.open("https://source.unsplash.com/900x900/?headshot")
   user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
   user.save!

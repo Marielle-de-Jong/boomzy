@@ -1,40 +1,38 @@
 .booking-show-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 100px 455px 500px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 500px 1fr;
   gap: 10px 10px;
   grid-template-areas:
-    "booking-details teacher-bio teacher-bio"
-    "listing-card teacher-bio teacher-bio"
-    "map map map";
+    "booking-details teacher-bio"
+    "listing-card teacher-bio"
+    "map map";
   justify-items: center;
-  align-items: stretch;
+  align-content: stretch;
   margin: 0 150px;
 }
-
 .booking-details {
   grid-area: booking-details;
-  height: 100px;
-  text-justify: center;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 .teacher-bio {
   grid-area: teacher-bio;
   background-color: blue;
 }
-
 .listing-card-wide {
   grid-area: listing-card;
-  align-self: start;
 }
-
 .map {
   grid-area: map;
   background-color: purple;
 }
-
 .booking-details{
-  border: solid 2px black;
+  border: solid 1px black;
   width: 100%;
+  margin: auto;
+  background-color: yellow;
 }

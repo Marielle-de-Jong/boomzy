@@ -1,5 +1,5 @@
 .teacher-card {
-  border: solid black 2px;
+  border: solid black 1px;
   height: 100%;
   padding: 15px;
   background: $background;
@@ -8,6 +8,10 @@
   display: inline;
   font-size: 35px;
   vertical-align: middle;
+}
+
+.user-bio {
+  margin-top: 15px;
 }
 
 .date-time {
