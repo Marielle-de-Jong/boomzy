@@ -6,6 +6,14 @@
   background: $white;
 }
 
+.listing-card a:link{
+  text-decoration: none;
+}
+
+.listing-card a{
+  color: $text;
+}
+
 .listing-card-img{
   height: 250px;
   width: 350px;

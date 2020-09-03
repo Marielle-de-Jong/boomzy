@@ -1,6 +1,12 @@
   <h1>Listings#index</h1>
   <p>Find me in app/views/listings/index.html.erb</p>
-  <%= link_to "Create new listing", new_listing_path %>
+
+  <div class="top-buttons">
+    <div class="button standard accent fill"><%= link_to "Create new listing", new_listing_path %></div>
+    <div class="button standard accent"><%= link_to "Back", root_path %></div>
+  </div>
+
+
 
 
 
@@ -8,36 +14,39 @@
   <div class="container d-flex flex-wrap justify-content-between">
     <div class="row">
       <div class="col-12">
-      <% @listings.each do |listing| %>
-      <div class="listing-card mx-auto">
-        <div class="listing-card-img">
-          <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
-            <h1><%= listing.title %></h1>
-          </div>
-        </div>
-        <div class="listing-card-info">
-          <div class="card-description">
-            <p><%= listing.description %></p>
-          </div>
-          <div class="card-info">
-            <div class="card-categories">
-              <p class="card-category">Horse riding (TBF)</p>
-            </div>
-            <div class="card-level">
-              <div class="card-user">
-                <% if listing.user.photo.attached? %>
-                <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar" />
-                <% else %>
-                <img src="<%= image_path 'avatar' %>" class="avatar" />
-                <% end %>
-                <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+        <% @listings.each do |listing| %>
+
+          <div class="listing-card mx-auto">
+            <%= link_to listing do %>
+            <div class="listing-card-img">
+              <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+                <h1><%= listing.title %></h1>
               </div>
-              <p class="skill-level-info"> Skill level: <%= listing.skill_level %> </p>
+            </div>
+            <div class="listing-card-info">
+              <div class="card-description">
+                <p><%= listing.description %></p>
+              </div>
+              <div class="card-info">
+                <div class="card-categories">
+                  <p class="card-category">Horse riding (TBF)</p>
+                </div>
+                <div class="card-level">
+                  <div class="card-user">
+                    <% if listing.user.photo.attached? %>
+                    <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar" />
+                    <% else %>
+                    <img src="<%= image_path 'avatar' %>" class="avatar" />
+                    <% end %>
+                    <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+                  </div>
+                  <p class="skill-level-info"> Skill level: <%= listing.skill_level %> </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
