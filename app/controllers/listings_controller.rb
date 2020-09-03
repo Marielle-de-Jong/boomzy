@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :find_listing, only: [:show, :edit, :destroy, :update]
+  before_action :find_listing, only: [:show, :edit, :destroy, :update, :add_image]
 
   def index
     @listings = Listing.all
@@ -10,9 +10,6 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    search_results = Unsplash::Collection.search("kickboxing", page = 1, per_page = 10)
-    collection = search_results.first
-    @urls = collection.photos.map { |photo| photo.urls.raw }
   end
 
   def create
@@ -39,6 +36,21 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     redirect_to account_path
+  end
+
+  def add_image
+    if params[:listing]
+      search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
+      collection = search_results.first
+      @urls = collection.photos.map { |photo| photo.urls.small }
+    else
+      search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
+      collection = search_results.first
+      @urls = collection.photos.map { |photo| photo.urls.small }
+    end
+    # @image_tags = @urls.map do |url|
+    #   "<img src='#{url}' />"
+    # end
   end
 
   private
