@@ -1,0 +1,13 @@
+
+.radio-button-image-grid label {
+   border: 5px solid transparent;
+
+}
+
+.radio-button-image-grid input:checked ~ label {
+ border: 5px solid red;
+}
+
+.radio-button-image-grid input[type="radio"] {
+  display: none;
+}

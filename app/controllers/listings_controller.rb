@@ -39,9 +39,18 @@ class ListingsController < ApplicationController
   end
 
   def add_image
-    search_results = Unsplash::Collection.search("kickboxing", page = 1, per_page = 10)
-    collection = search_results.first
-    @urls = collection.photos.map { |photo| photo.urls.raw }
+    if params[:listing]
+      search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
+      collection = search_results.first
+      @urls = collection.photos.map { |photo| photo.urls.small }
+    else
+      search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
+      collection = search_results.first
+      @urls = collection.photos.map { |photo| photo.urls.small }
+    end
+    # @image_tags = @urls.map do |url|
+    #   "<img src='#{url}' />"
+    # end
   end
 
   private
