@@ -1,4 +1,27 @@
 <div class="container">
+  <%= image_tag(@listing.listing_image, alt: "banner", class:"listings-show-image") %>
+  <br>
+  <br>
+  <h2><%= @listing.title %></h2>
+  <br>
+  <p><i class="fas fa-star"></i> 4.5 (5) </p>
+  <%= link_to 'Add an image to your listing', listings_path(@listing) %>
+  <p> Description: <%= @listing.description %> </p>
+  <p> Skill level: <%= @listing.skill_level %> </p>
+  <p> Lister first name: <%= @listing.user.first_name %> </p>
+  <p> Lister last name: <%= @listing.user.last_name %> </p>
+  <p> Lister bio: <%= @listing.user.bio %> </p>
+  <p> Lister motivation: <%= @listing.user.motivation %> </p>
+  <p> Lister LinkedIn <%= @listing.user.linkedin_link %> </p>
+  <p> Lister Twitter <%= @listing.user.twitter_link %> </p>
+  <p> Lister Instagram <%= @listing.user.instagram_link %> </p>
+  <p> Lister Facebook <%= @listing.user.facebook_link %>  </p>
+
+  <%= link_to "Book", new_listing_booking_path(@listing), class: "button standard accent fill" %>
+  <div>
+    <%= link_to 'Edit', edit_listing_path(@listing), class: "button standard accent" %>
+    <%= link_to @listing, class: "button standard accent", method: :delete do %>
+      <i class="far fa-trash-alt"></i>
 <h1><%= @listing.title %></h1>
   <% if @listing.description? %>
     <p> <%= @listing.description %> </p>

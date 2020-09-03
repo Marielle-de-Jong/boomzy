@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   patch "/account", to: "account#update"
   get "/users/map", to: "address#index"
   get "/listings/:id/add_image", to: "listings#add_image", as: :add_image
+  post "/listings/:id/add_image", to: "listings#post_add_image", as: :post_add_image
+
 end
