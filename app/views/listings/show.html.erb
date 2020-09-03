@@ -13,12 +13,15 @@
   <p> Lister Twitter <%= @listing.user.twitter_link %> </p>
   <p> Lister Instagram <%= @listing.user.instagram_link %> </p>
   <p> Lister Facebook <%= @listing.user.facebook_link %>  </p>
-  <%= link_to 'Edit', edit_listing_path(@listing) %>
-  <%= link_to @listing, method: :delete do %>
-    <i class="far fa-trash-alt"></i>
-  <% end %>
 
-  <%= link_to "Book listing", new_listing_booking_path(@listing) %>
+  <%= link_to "Book", new_listing_booking_path(@listing), class: "button standard accent fill" %>
+  <div>
+    <%= link_to 'Edit', edit_listing_path(@listing), class: "button standard accent" %>
+    <%= link_to @listing, class: "button standard accent", method: :delete do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+  </div>
+  <%= link_to 'Back', listings_path, class: "button standard accent" %>
 </div>
 
 
