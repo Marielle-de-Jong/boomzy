@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
     @message = Message.new
     # COMMENTED OUT FOR DEVELOPMENT THIS GENERATES A NEW ROOM FOR EACH BOOKING
     # build_video_call_url
+    @room = "https://boomzy.daily.co/qMLWks2AEI4wJhM57bf4"
   end
 
   def status?

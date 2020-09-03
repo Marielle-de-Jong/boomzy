@@ -1,13 +1,22 @@
+.radio-button-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 
 .radio-button-image-grid label {
    border: 5px solid transparent;
-
 }
 
 .radio-button-image-grid input:checked ~ label {
- border: 5px solid red;
+ border: 5px solid $accent;
 }
 
 .radio-button-image-grid input[type="radio"] {
   display: none;
+}
+
+.form-check-label > img {
+  width: 300px;
+  object-fit: cover;
+  height: 300px;
 }

@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   has_one :skill
   has_many :reviews
   belongs_to :listing
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
   validates :date, presence: true
   validates :status, presence: true
 end
