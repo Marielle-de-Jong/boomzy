@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :find_listing, only: [:show, :edit, :destroy, :update, :add_image]
+  before_action :find_listing, only: [:show, :edit, :destroy, :update, :add_image, :post_add_image]
 
   def index
     @listings = Listing.all
@@ -41,16 +41,25 @@ class ListingsController < ApplicationController
   def add_image
     if params[:listing]
       search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
-      collection = search_results.first
-      @urls = collection.photos.map { |photo| photo.urls.small }
+      if search_results.any?
+        collection = search_results.first
+        @urls = collection.photos.map { |photo| photo.urls.small }
+      else
+        @urls = []
+      end
+    # else
+    #   search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
+    #   collection = search_results.first
+    #   @urls = collection.photos.map { |photo| photo.urls.small }
     else
-      search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
-      collection = search_results.first
-      @urls = collection.photos.map { |photo| photo.urls.small }
+      @urls = []
     end
-    # @image_tags = @urls.map do |url|
-    #   "<img src='#{url}' />"
-    # end
+  end
+
+  def post_add_image
+    @listing.listing_image = params[:listing][:listing_image]
+    @listing.save
+    redirect_to listing_path(@listing)
   end
 
   private
