@@ -1,31 +1,32 @@
-
-
-
 <h1>Bookings#show</h1>
 
 <p>Find me in app/views/bookings/show.html.erb</p>
 
-<h4>Booking Details</h4>
-<div class="date-time">
-  <h6>Date: <%= @booking.date  %></h6>
-  <h6>Status: <%= @booking.status  %></h6>
-</div>
-
-<div class="teacher-card">
-  <h6>Teacher's Details</h6>
-    <% if @booking.listing.user.photo.attached? %>
-      <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
-    <% end %>
-    <div class="teacher-name">
-      <%= @booking.listing.user.first_name %>
+<div class="booking-show-grid">
+  <div class="booking-details">
+    <h6>Date: <%= @booking.date  %></h6>
+    <h6>Status: <%= @booking.status  %></h6>
+  </div>
+  <div class="teacher-bio">
+    <div class="teacher-card">
+      <h6>Teacher's Details</h6>
+        <% if @booking.listing.user.photo.attached? %>
+          <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
+        <% end %>
+        <div class="teacher-name">
+          <%= @booking.listing.user.first_name %>
+        </div>
+        <div class="user-bio">
+          <h6>Bio</h6>
+         <%=  @booking.user.bio %>
+        </div>
+      <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent' %>
     </div>
-    <div class="user-bio">
-      <h6>Bio</h6>
-     <%=  @booking.user.bio %>
-    </div>
-  <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent' %>
-</div>
+  </div>
 
+  <div class="map">
+  </div>
+</div>
 
 <%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
 
