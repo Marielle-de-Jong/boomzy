@@ -11,57 +11,77 @@
   <h6>Status: <%= @booking.status  %></h6>
 </div>
 
+<div class="listing-card mx-auto">
+  <div class="listing-card-img">
+    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+      <h1><%= @booking.listing.title %></h1>
+    </div>
+  </div>
+  <div class="listing-card-info">
+    <div class="card-description">
+      <p><%= @booking.listing.description %></p>
+    </div>
+    <div class="card-info">
+      <div class="card-categories">
+        <p class="card-category">Horse riding (TBF)</p>
+      </div>
+      <div class="card-level">
+        <div class="card-user">
+          <% if @booking.listing.user.photo.attached? %>
+          <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar" />
+          <% else %>
+          <img src="<%= image_path 'avatar' %>" class="avatar" />
+          <% end %>
+          <p><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
+        </div>
+        <p class="skill-level-info"> Skill level: <%= @booking.listing.skill_level %> </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="teacher-card">
   <h6>Teacher's Details</h6>
-    <% if @booking.listing.user.photo.attached? %>
-      <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
-    <% end %>
-    <div class="teacher-name">
-      <%= @booking.listing.user.first_name %>
-    </div>
-    <div class="user-bio">
-      <h6>Bio</h6>
-     <%=  @booking.user.bio %>
-    </div>
+  <% if @booking.listing.user.photo.attached? %>
+  <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
+  <% end %>
+  <div class="teacher-name">
+    <%= @booking.listing.user.first_name %>
+  </div>
+  <div class="user-bio">
+    <h6>Bio</h6>
+    <%=  @booking.listing.user.bio %>
+  </div>
   <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent' %>
+</div>
+
+<div class="teacher-card">
+  <h6>Student's Details</h6>
+  <% if @booking.user.photo.attached? %>
+  <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar-large"/>
+  <% end %>
+  <div class="teacher-name">
+    <%= @booking.user.first_name %>
+  </div>
+  <div class="user-bio">
+    <h6>Bio</h6>
+    <%=  @booking.user.bio %>
+  </div>
+  <%= link_to "Student's Profile", account_path(@booking.user), class: 'button standard accent' %>
+</div>
+
+<div class="chat-card">
+  <%= render "chatrooms/views", chatroom: @chatroom, message: @message %>
+  <div class="video-call">
+    <script src="https://unpkg.com/@daily-co/daily-js"></script>
+    <button data-key="<%= @room %>" class="button standard accent fill" id="vid-call-btn"><i class="fas fa-phone-alt"></i></button>
+  </div>
 </div>
 
 
 <%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
 
-<h1>Chat Time</h1>
-
-<%= render "chatrooms/views", chatroom: @chatroom, message: @message %>
 
 
-<div class="video-call">
-  <script src="https://unpkg.com/@daily-co/daily-js"></script>
-    <button class="button standard accent fill" onclick="run()"><i class="fas fa-phone-alt"></i></button>
-    <script>
 
-      async function run() {
-        // COMMENTED OUT FOR DEVELOPMENT ADD THIS TO USE UNIQUE ROOMS
-        // room = {url: `<%= @room %>`}
-        room = { url: "https://boomzy.daily.co/qMLWks2AEI4wJhM57bf4" }
-        window.callFrame = window.DailyIframe.createFrame({
-          iframeStyle: {
-            position: 'fixed',
-            border: 0,
-            top: 0, left: 0,
-            width: '100%',
-            height: '100%'
-          }
-        });
-        await callFrame.join({
-          url: room.url,
-          showLeaveButton: true
-        });
 
-        function leave(e) {
-          showEvent(e);
-          callFrame.destroy();
-        }
-      }
-    </script>
-</div>
-<%= link_to 'Back to Profile', account_path, class: 'btn btn-primary' %>
