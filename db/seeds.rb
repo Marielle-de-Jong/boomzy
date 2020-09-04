@@ -190,10 +190,23 @@ Listing.all.each do |listing|
     date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
     user_id: User.all.sample.id,
     status: STATUS.sample,
-    listing_id: listing.id
+    listing_id: listing.id,
   )
 end
 puts "[LOG] #{Booking.count} BOOKINGS created"
+
+# ---------------
+# CREATE CHATROOMS
+# ---------------
+puts "----------------------------------------"
+puts "[LOG] creating CHATROOMS..."
+
+    Booking.all.each do |booking|
+      chatroom = Chatroom.new
+      chatroom.booking = booking
+      chatroom.save
+    end
+    puts "[LOG] #{Chatroom.count} CHATROOMS created"
 
 # ---------------
 # CREATE REVIEWS
