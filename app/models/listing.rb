@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-  has_one :skill, dependent: :destroy
+  has_one :skill
   belongs_to :user
   has_many :bookings, dependent: :delete_all
   has_one :address, as: :addressable, dependent: :destroy
