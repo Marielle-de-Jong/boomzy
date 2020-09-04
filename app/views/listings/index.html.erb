@@ -10,42 +10,37 @@
 
 
 
-
-    <div class="row">
-      <% @listings.each do |listing| %>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="listing-card">
-          <%= link_to listing do %>
-          <div class="listing-card-img">
-            <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
-              <h1><%= listing.title %></h1>
-            </div>
+<div class="listing-index-grid">
+  <% @listings.each do |listing| %>
+    <div class="listing-card">
+      <%= link_to listing do %>
+      <div class="listing-card-img">
+        <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+          <h1><%= listing.title %></h1>
+        </div>
+      </div>
+      <div class="listing-card-info">
+        <div class="card-description">
+          <p><%= listing.description %></p>
+        </div>
+        <div class="card-info">
+          <div class="card-categories">
+            <p class="card-category">Horse riding (TBF)</p>
           </div>
-          <div class="listing-card-info">
-            <div class="card-description">
-              <p><%= listing.description %></p>
+          <div class="card-level">
+            <div class="card-user">
+              <% if listing.user.photo.attached? %>
+              <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar" />
+              <% else %>
+              <img src="<%= image_path 'avatar' %>" class="avatar" />
+              <% end %>
+              <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
             </div>
-            <div class="card-info">
-              <div class="card-categories">
-                <p class="card-category">Horse riding (TBF)</p>
-              </div>
-              <div class="card-level">
-                <div class="card-user">
-                  <% if listing.user.photo.attached? %>
-                  <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar" />
-                  <% else %>
-                  <img src="<%= image_path 'avatar' %>" class="avatar" />
-                  <% end %>
-                  <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
-                </div>
-                <p class="skill-level-info"> Skill level: <%= listing.skill_level %> </p>
-              </div>
-            </div>
+            <p class="skill-level-info"> Skill level: <%= listing.skill_level %> </p>
           </div>
         </div>
-        <% end %>
-
-      <% end %>
       </div>
-
+      <% end %>
     </div>
+  <% end %>
+</div>
