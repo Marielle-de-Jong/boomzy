@@ -1,90 +1,79 @@
 <div class="container">
   <% if @listing.listing_image %>
+  <div class="listings-show-banner">
     <%= image_tag(@listing.listing_image, alt: "banner", class:"listings-show-image") %>
+    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent fill" %>
+  </div>
   <% else %>
+  <div class="listings-show-banner">
     <%= image_tag('homepage_banner.jpg', class:"listings-show-image") %>
+    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent fill" %>
+  </div>
   <% end %>
   <br>
   <br>
   <h2><%= @listing.title %></h2>
+  <div class="listing-top-infos d-flex", style="color:grey;">
+    <p class="mr-5"><i class="fas fa-star"></i> 4.5 (5) </p>
+    <p class="mr-5"><%= @listing.address.city %></p>
+    <p class="mr-5"> <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
+    <p class="mr-5"> <%= @listing.skill_level %> class</p>
+  </div>
   <br>
-  <p><i class="fas fa-star"></i> 4.5 (5) </p>
-  <%= link_to 'Add an image to your listing', listings_path(@listing) %>
-  <p> Description: <%= @listing.description %> </p>
-  <p> Skill level: <%= @listing.skill_level %> </p>
-  <p> Lister first name: <%= @listing.user.first_name %> </p>
-  <p> Lister last name: <%= @listing.user.last_name %> </p>
-  <p> Lister bio: <%= @listing.user.bio %> </p>
-  <p> Lister motivation: <%= @listing.user.motivation %> </p>
-  <p> Lister LinkedIn <%= @listing.user.linkedin_link %> </p>
-  <p> Lister Twitter <%= @listing.user.twitter_link %> </p>
-  <p> Lister Instagram <%= @listing.user.instagram_link %> </p>
-  <p> Lister Facebook <%= @listing.user.facebook_link %>  </p>
-
+  <%= @listing.description %> </p>
+  <br>
+  <h6>About <%= @listing.user.first_name %></h6>
+  <p> <%= @listing.user.bio %> </p>
+  <br>
+  <h6><%= @listing.user.first_name %> offers this class because </h6>
+  <p> <%= @listing.user.motivation %> </p>
+  <br>
+  <% if @listing.user.has_socials? %>
+    <h6><%= @listing.user.first_name %> socials</h6>
+    <div class="listing-socials d-flex socials">
+      <% if @listing.user.linkedin_link? %>
+        <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <% elsif @listing.user.twitter_link? %>
+        <a href="<%= @listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
+      <% elsif @listing.user.instagram_link? %>
+        <a href="<%= @listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <% elsif @listing.user.facebook_link?%>
+        <a href="<%= @listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
+      <% end %>
+    </div>
+  <% end %>
   <%= link_to "Book", new_listing_booking_path(@listing), class: "button standard accent fill" %>
   <div>
     <%= link_to 'Edit', edit_listing_path(@listing), class: "button standard accent" %>
     <%= link_to @listing, class: "button standard accent", method: :delete do %>
-      <i class="far fa-trash-alt"></i>
-<h1><%= @listing.title %></h1>
-  <% if @listing.description? %>
+    <i class="far fa-trash-alt"></i>
+    <h1><%= @listing.title %></h1>
+    <% if @listing.description? %>
     <p> <%= @listing.description %> </p>
-  <% end %>
-  <% if @listing.skill_level? %>
+    <% end %>
+    <% if @listing.skill_level? %>
     <p> Skill level: <%= @listing.skill_level %></p>
-  <% end %>
-  <div class="user-details">
-    <p><%= @listing.user.first_name %> <%= @listing.user.last_name %></p>
-    <% if @listing.user.bio? %>
+    <% end %>
+    <div class="user-details">
+      <p><%= @listing.user.first_name %> <%= @listing.user.last_name %></p>
+      <% if @listing.user.bio? %>
       <p> Lister bio: <%= @listing.user.bio %> </p>
-    <% end %>
-    <% if @listing.user.motivation? %>
-    <p> Lister motivation: <%= @listing.user.motivation %> </p>
-    <% end %>
-    <div class="socials">
-      <ul>
-        <% if @listing.user.linkedin_link? %>
-          <li>
-            <a href="<%= @listing.user.linkedin_link %>" target="_blank">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </li>
-        <% end %>
-        <% if @listing.user.twitter_link? %>
-          <li>
-            <a href="<%= @listing.user.twitter_link %>" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-        <% end %>
-         <% if @listing.user.facebook_link? %>
-          <li>
-            <a href="<%= @listing.user.facebook_link %>" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-        <% end %>
-         <% if @listing.user.instagram_link? %>
-          <li>
-            <a href="<%= @listing.user.instagram_link %>" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <% end %>
-
-  <div class="listing-buttons">
-    <%= link_to "Book", new_listing_booking_path(@listing), class: "button standard accent fill" %>
-    <div>
-      <%= link_to 'Edit', edit_listing_path(@listing), class: "button standard accent" %>
-      <%= link_to @listing, class: "button standard accent", method: :delete do %>
-        <i class="far fa-trash-alt"></i>
+      <% end %>
+      <% if @listing.user.motivation? %>
+      <p> Lister motivation: <%= @listing.user.motivation %> </p>
       <% end %>
     </div>
-    <%= link_to 'Back', listings_path, class: "button standard accent" %>
+    <% end %>
+
+    <div class="listing-buttons">
+      <%= link_to "Book", new_listing_booking_path(@listing), class: "button standard accent fill" %>
+      <div>
+        <%= link_to 'Edit', edit_listing_path(@listing), class: "button standard accent" %>
+        <%= link_to @listing, class: "button standard accent", method: :delete do %>
+        <i class="far fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <%= link_to 'Back', listings_path, class: "button standard accent" %>
+    </div>
   </div>
-</div>
 

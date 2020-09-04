@@ -4,3 +4,13 @@
   object-fit: cover;
   margin-top: 30px;
 }
+
+.listings-show-banner {
+  position: relative;
+}
+
+.listings-show-banner > a {
+  position: absolute;
+  top: 77%;
+  left: 2%;
+}

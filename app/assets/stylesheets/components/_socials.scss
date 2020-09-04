@@ -1,9 +1,7 @@
-.socials {
-  ul {
-    list-style: none;
-  }
-  ul li {
-    display: inline;
-    padding: 10px;
-  }
+.socials > a {
+  list-style: none;
+  display: inline;
+  margin-right: 10px;
+  padding: 6px 0px;
+  color: black;
 }
