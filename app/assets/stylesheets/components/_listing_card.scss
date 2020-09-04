@@ -3,7 +3,7 @@
   height: 430px;
   width: 350px;
   display: flex-column;
-  background: $white;
+  background: $background;
 }
 
 .listing-card a:link{
@@ -17,7 +17,7 @@
 .listing-card-img{
   height: 250px;
   width: 350px;
-  background: $card-background;
+  background: $background;
   display: flex;
   justify-content: center;
   align-items: center;
