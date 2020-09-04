@@ -13,11 +13,16 @@
 .button.standard {
   border-radius: 5px;
   border: 2px solid;
-  padding: 15px;
+  padding: 6px 12px;
 }
 
 .button.standard.accent {
   border-color: $accent;
+  color: $accent;
+  background-color: transparent;
+  &:hover {
+    color: black;
+  }
 }
 
 .button.standard.accent a{
@@ -32,8 +37,9 @@
 
 .button.standard.accent.fill{
   background-color: $accent;
+  color: white;
   &:hover {
-    color: white;
+    color: black;
   }
 }
 
