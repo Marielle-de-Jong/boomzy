@@ -5,17 +5,7 @@
     <h6>Date: <%= @booking.date  %></h6>
     <h6>Status: <%= @booking.status  %></h6>
   </div>
-   <div class="chat-card">
-    <div class="video-call">
-      <script src="https://unpkg.com/@daily-co/daily-js"></script>
-      <h1>
-      <%=   @booking.user.first_name %> Meet <%= @booking.listing.user.first_name %>
-        <button data-key="<%= @room %>" class="button standard accent fill" id="vid-call-btn"><i class="fas fa-phone-alt"></i></button>
-      </h1>
-    </div>
-    <%= render "chatrooms/views", chatroom: @chatroom, message: @message %>
 
-  </div>
   <div class="teacher-bio">
     <div class="teacher-card">
       <h6>Teacher's Details</h6>
@@ -66,6 +56,17 @@
       </div>
     </div>
     <% end %>
+  </div>
+  <div class="chat-card">
+    <div class="video-call">
+      <script src="https://unpkg.com/@daily-co/daily-js"></script>
+      <h1>
+      <%=   @booking.user.first_name %> Meet <%= @booking.listing.user.first_name %>
+        <button data-key="<%= @room %>" class="button standard accent fill" id="vid-call-btn"><i class="fas fa-phone-alt"></i></button>
+      </h1>
+    </div>
+    <%= render "chatrooms/views", chatroom: @chatroom, message: @message %>
+
   </div>
 
 

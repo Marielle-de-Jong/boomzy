@@ -45,6 +45,7 @@
         <% end %>
       </div>
     </div>
+
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <div class="row">
         <% @listings.each do |listing| %>
@@ -86,9 +87,10 @@
           <% end %>
         </div>
       </div>
-    </div>
+
     <%= link_to "Create new listing", new_listing_path %>
-  </div>
+    </div>
+
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
     <% @user.bookings.each do |booking| %>
     <div class="container border">
@@ -108,5 +110,5 @@
     <p>...</p>
   </div>
 </div>
-</div>
+  </div>
 
