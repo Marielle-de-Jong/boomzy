@@ -18,10 +18,17 @@
       <div class="listing-card">
         <%= link_to listing do %>
         <div class="listing-card-img">
-          <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
-            <h1><%= listing.title %></h1>
-          </div>
+          <% if listing.listing_image.present? %>
+            <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= listing.listing_image %>);">
+              <h1><%= listing.title %></h1>
+            </div>
+          <% else %>
+            <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+                <h1><%= listing.title %></h1>
+            </div>
+          <% end %>
         </div>
+
         <div class="listing-card-info">
           <div class="card-description">
             <p><%= listing.description %></p>
@@ -48,3 +55,4 @@
     <% end %>
   </div>
 </div>
+
