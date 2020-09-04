@@ -1,4 +1,4 @@
-<h1>Bookings#show</h1>
+<h1>Booking Details</h1>
 
 <div class="booking-show-grid">
   <div class="booking-details">
@@ -23,7 +23,7 @@
         <h5>Motivation</h5>
         <p><%=  @booking.user.motivation %></p>
       </div>
-      <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent teacher profile'%>
+      <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button fill standard accent teacher profile'%>
     </div>
   </div>
 
@@ -51,7 +51,7 @@
             <% end %>
             <p><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
           </div>
-          <p class="skill-level-info"> Skill level: <%= @booking.listing.skill_level %> </p>
+          <p class="skill-level-info"> <%= @booking.listing.skill_level %> </p>
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
 
 
   <div class="nav-buttons">
-    <%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
+    <%= link_to 'Back to My Profile', account_path, class: 'button standard accent fill' %>
   </div>
 
 
