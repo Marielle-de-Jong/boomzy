@@ -13,7 +13,12 @@ class AccountController < ApplicationController
 
   def update
     @user = User.find_by(email: params[:user][:email])
-    @user.update(user_params)
+    if @user.update(user_params)
+      redirect_to account_path(@user)
+      flash[:notice] = "Your profile has been updated!"
+    else
+      render :update
+    end
   end
 
   private
@@ -22,7 +27,6 @@ class AccountController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :bio, :facebook_link, :instagram_link,
                                  :motivation, :twitter_link, :linkedin_link, :date_of_birth,
                                  address_attributes: [:id, :city, :postcode, :address_line_1, :address_line_2,
-                                 :addressable_id, :addressable_type],
-                                 skill_attributes: [:name, :category])
+                                 :addressable_id, :addressable_type])
   end
 end
