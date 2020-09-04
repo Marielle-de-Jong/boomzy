@@ -25,6 +25,10 @@
         <%= f.input :email %>
         <%= f.input :date_of_birth %>
         <%= f.input :bio %>
+        <%= f.simple_fields_for :skill_attributes, @skill do |ff|%>
+                    <%= ff.input :name %>
+                    <%= ff.input :category %>
+                  <% end %>
         <%= f.simple_fields_for :address_attributes, @user.address do |ff|%>
                     <%= ff.hidden_field :id %>
                     <%= ff.input :address_line_1 %>
@@ -47,10 +51,8 @@
           <p> Title: <%= listing.title %> </p>
           <p> Description: <%= listing.description %> </p>
           <p> Skill level: <%= listing.skill_level %> </p>
-          <p> Address: <%= listing.user.address.address_line_1 %> </p>
-          <p> <%= listing.user.address.address_line_2 %></p>
-          <p> <%= listing.user.address.postcode %> </p>
-          <p><%= listing.user.address.city  %></p>
+          <p> Proposed Address: <%= listing.address.city %></p>
+
           <%= link_to listing, method: :delete do %>
           <i class="far fa-trash-alt"></i>
           <% end %>
