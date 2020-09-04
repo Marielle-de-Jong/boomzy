@@ -17,10 +17,14 @@
           <%= @booking.listing.user.first_name %>
         </div>
         <div class="user-bio">
-          <h6>Bio</h6>
-         <%=  @booking.user.bio %>
+          <h5>Bio</h5>
+         <p><%=  @booking.user.bio %></p>
         </div>
-      <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent' %>
+        <div class="user-motivation">
+          <h5>Motivation</h5>
+         <p><%=  @booking.user.motivation %></p>
+        </div>
+      <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button standard accent teacher profile'%>
     </div>
   </div>
   <div class="listing-card-wide">
@@ -39,7 +43,7 @@
             <p class="card-category">Horse riding (TBF)</p>
           </div>
           <div class="card-level">
-            <div class="card-user">
+            <div class="listing-card-wide-user">
               <% if @booking.listing.user.photo.attached? %>
               <img src="<%= cl_image_path @booking.listing.user.photo.key %>" class="avatar" />
               <% else %>
@@ -62,16 +66,10 @@
   </div>
 </div>
 
-<div class="chat-card">
-  <%= render "chatrooms/views", chatroom: @chatroom, message: @message %>
-  <div class="video-call">
-    <script src="https://unpkg.com/@daily-co/daily-js"></script>
-    <button data-key="<%= @room %>" class="button standard accent fill" id="vid-call-btn"><i class="fas fa-phone-alt"></i></button>
-  </div>
+
+<div class="nav-buttons">
+  <%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
 </div>
-
-<%= link_to 'Back to My Profile', account_path, class: 'button standard accent' %>
-
 
 
 
