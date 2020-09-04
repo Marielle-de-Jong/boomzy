@@ -201,12 +201,12 @@ puts "[LOG] #{Booking.count} BOOKINGS created"
 puts "----------------------------------------"
 puts "[LOG] creating CHATROOMS..."
 
-    Booking.all.each do |booking|
-      chatroom = Chatroom.new
-      chatroom.booking = booking
-      chatroom.save
-    end
-    puts "[LOG] #{Chatroom.count} CHATROOMS created"
+Booking.all.each do |booking|
+  chatroom = Chatroom.new
+  chatroom.booking = booking
+  chatroom.save
+end
+puts "[LOG] #{Chatroom.count} CHATROOMS created"
 
 # ---------------
 # CREATE REVIEWS

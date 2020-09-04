@@ -2,7 +2,12 @@
   border: solid black 1px;
   height: 100%;
   padding: 15px;
-  background: $background;
+  // background: white;
+
+  // &:hover {
+  //   background: $accent;
+  //   opacity: .8;
+  // }
 }
 .teacher-name {
   display: inline;
@@ -17,7 +22,7 @@
   margin-top: 25px;
 }
 .date-time {
-  border: solid black 2px;
+  // border: solid black 2px;
   width: 350px;
   padding: 15px;
   margin: 10px;

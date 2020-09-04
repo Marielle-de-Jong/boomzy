@@ -55,7 +55,7 @@ class BookingsController < ApplicationController
     chatroom.booking = @booking
     chatroom.save
     if @booking.save
-      redirect_to listing_path(@listing)
+      redirect_to booking_path(@booking)
       flash[:notice] = "Your booking request has been processed!"
     else
       render :new
