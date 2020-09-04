@@ -1,5 +1,24 @@
 <div class="container">
 
+    <div class="teacher-bio">
+    <div class="teacher-card">
+      <% if @user.photo.attached? %>
+        <img src="<%= cl_image_path @user.photo.key %>" class="avatar-large"/>
+      <% end %>
+      <div class="teacher-name">
+        <%= @user.first_name %>
+      </div>
+      <div class="user-bio">
+        <h5>Bio</h5>
+       <p><%=  @user.bio %></p>
+      </div>
+      <div class="user-motivation">
+        <h5>Motivation</h5>
+       <p><%=  @user.motivation %></p>
+      </div>
+    </div>
+  </div>
+
 
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item">
