@@ -1,4 +1,9 @@
 <div class="container">
+  <% if @listing.listing_image %>
+    <%= image_tag(@listing.listing_image, alt: "banner", class:"listings-show-image") %>
+  <% else %>
+    <%= image_tag('homepage_banner.jpg', class:"listings-show-image") %>
+  <% end %>
   <br>
   <br>
   <h2><%= @listing.title %></h2>

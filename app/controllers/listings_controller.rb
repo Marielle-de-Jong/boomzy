@@ -48,10 +48,6 @@ class ListingsController < ApplicationController
       else
         @urls = []
       end
-    # else
-    #   search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
-    #   collection = search_results.first
-    #   @urls = collection.photos.map { |photo| photo.urls.small }
     else
       @urls = []
     end
