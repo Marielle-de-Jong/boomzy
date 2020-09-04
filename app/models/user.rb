@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :address, as: :addressable
-  has_many :listings
+  has_many :listings, dependent: :destroy
   has_many :bookings
+  has_many :skills, dependent: :destroy
+  accepts_nested_attributes_for :skills
   has_one_attached :photo
   accepts_nested_attributes_for :address
   acts_as_token_authenticatable

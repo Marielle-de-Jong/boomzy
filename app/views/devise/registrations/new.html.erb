@@ -40,6 +40,10 @@
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "tell us about motivations" }%>
+                <%= f.simple_fields_for :skill_attributes, resource.build_skill do |ff|%>
+                    <%= ff.input :name %>
+                    <%= ff.input :category %>
+                  <% end %>
     <%= f.input :facebook_link,
                 required: false,
                 autofocus: true,

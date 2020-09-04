@@ -93,15 +93,16 @@
 
 
 // ------------------------
-//          WIDE
+//   WIDE (Booking#Show)
 // ------------------------
 
 
 .listing-card-wide{
   width: 100%;
   display: flex-column;
-  background: $white;
-  border: solid 2px black;
+  justify-content: center;
+  background-color: $white;
+  border: solid 1px black;
 }
 
 .listing-card-wide a:link{

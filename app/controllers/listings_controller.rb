@@ -14,6 +14,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+
     @listing.user = current_user
     if @listing.save
       redirect_to account_path
@@ -65,6 +66,6 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :skill_level)
+    params.require(:listing).permit(:title, :description, :skill_level, address_attributes: [:address_line_1, :address_line_2, :city, :postcode], skill_attributes: [:name, :category])
   end
 end

@@ -13,4 +13,8 @@ class AddressController < ApplicationController
       }
     end
   end
+
+  def index_listings
+    @listing_addresses = Address.where(addressable_type: "Listing")
+  end
 end
