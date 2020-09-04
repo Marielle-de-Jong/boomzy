@@ -2,12 +2,10 @@
 const initVideoCall = () => {
  const vidCallButton = document.querySelector("#vid-call-btn")
  vidCallButton.addEventListener("click", () => {
-  console.log("clicked")
   run(vidCallButton);
 });
 
 async function run(vidCallButton) {
-  console.log("Inside the thing")
 
         let room = { url: vidCallButton.dataset.key }
         window.callFrame = window.DailyIframe.createFrame({
@@ -16,7 +14,7 @@ async function run(vidCallButton) {
             border: 0,
             top: 0, left: 0,
             width: '100%',
-            height: '100%'
+            height: '100%',
           }
         });
         await callFrame.join({
@@ -24,9 +22,12 @@ async function run(vidCallButton) {
           showLeaveButton: true
         });
 
+        window.callFrame.on('left-meeting', leave);
+
+
         function leave(e) {
-          showEvent(e);
           callFrame.destroy();
+          document.querySelector("iframe").remove()
         }
       }
 };
