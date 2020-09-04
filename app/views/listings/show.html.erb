@@ -10,41 +10,55 @@
     <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent fill" %>
   </div>
   <% end %>
-  <br>
-  <br>
-  <h2><%= @listing.title %></h2>
-  <div class="listing-top-infos d-flex", style="color:grey;">
-    <p class="mr-5"><i class="fas fa-star"></i> 4.5 (5) </p>
-    <p class="mr-5"><%= @listing.address.city%>, The Netherlands</p>
-    <p class="mr-5"><%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
-    <p class="mr-5"> <%= @listing.skill_level %> class</p>
-  </div>
-  <%= link_to "Book experience", new_listing_booking_path(@listing), class: "button standard accent fill" %>
-  <br>
-  <br>
-  <%= @listing.description %> </p>
-  <br>
-  <h6>About <%= @listing.user.first_name %></h6>
-  <p> <%= @listing.user.bio %> </p>
-  <br>
-  <h6><%= @listing.user.first_name %> offers this class because </h6>
-  <p> <%= @listing.user.motivation %> </p>
-  <br>
-  <% if @listing.user.has_socials? %>
-    <h6><%= @listing.user.first_name %> socials</h6>
-    <div class="listing-socials d-flex socials">
-      <% if @listing.user.linkedin_link? %>
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="listing-infos col-8">
+      <h2><%= @listing.title %></h2>
+      <div class="listing-top-infos d-flex", style="color:grey;">
+        <p class="mr-5"><i class="fas fa-star"></i> 4.5 (5) </p>
+        <p class="mr-5"><%= @listing.address.city%>, The Netherlands</p>
+        <p class="mr-5">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
+        <p class="mr-5"> <%= @listing.skill_level %> class</p>
+      </div>
+      <%= link_to "Book experience", new_listing_booking_path(@listing), class: "button standard accent fill" %>
+      <br>
+      <br>
+      <%= @listing.description %> </p>
+      <br>
+      <h6>About <%= @listing.user.first_name %></h6>
+      <p> <%= @listing.user.bio %> </p>
+      <br>
+      <h6><%= @listing.user.first_name %> offers this class because </h6>
+      <p> <%= @listing.user.motivation %> </p>
+      <br>
+      <% if @listing.user.has_socials? %>
+      <h6><%= @listing.user.first_name %> socials</h6>
+      <div class="listing-socials d-flex socials">
+        <% if @listing.user.linkedin_link? %>
         <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      <% elsif @listing.user.twitter_link? %>
+        <% elsif @listing.user.twitter_link? %>
         <a href="<%= @listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
-      <% elsif @listing.user.instagram_link? %>
+        <% elsif @listing.user.instagram_link? %>
         <a href="<%= @listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <% elsif @listing.user.facebook_link?%>
+        <% elsif @listing.user.facebook_link?%>
         <a href="<%= @listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
+        <% end %>
+      </div>
       <% end %>
     </div>
-  <% end %>
-  <%= link_to 'Back', listings_path, class: "button standard accent" %>
+    <div class="listing-booking-form col-4">
+      <h5>Book this learning experience</h5>
+      <%= simple_form_for([@listing, @booking]) do |f| %>
+        <%= f.input :date %>
+        <%= f.submit %>
+      <% end %>
     </div>
   </div>
+  <%= link_to 'Back', listings_path, class: "button standard accent" %>
+</div>
+</div>
+
 
