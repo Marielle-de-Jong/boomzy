@@ -11,4 +11,10 @@ class User < ApplicationRecord
   has_one_attached :photo
   accepts_nested_attributes_for :address
   acts_as_token_authenticatable
+
+  def has_socials?
+    if linkedin_link || twitter_link || instagram_link || facebook_link
+      return true
+    end
+  end
 end

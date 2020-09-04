@@ -54,7 +54,7 @@ class ListingsController < ApplicationController
   end
 
   def post_add_image
-    @listing.listing_image = params[:listing][:listing_image]
+    @listing.listing_image = params[:listing][:listing_image].gsub("400", "1080")
     @listing.save
     redirect_to listing_path(@listing)
   end
