@@ -2,6 +2,10 @@
   display: inline-block;
   text-align: center;
   text-decoration: none;
+  &:hover {
+    text-decoration: none;
+
+  }
 }
 
 // Standard (square-ish) buttons
@@ -28,6 +32,9 @@
 
 .button.standard.accent.fill{
   background-color: $accent;
+  &:hover {
+    color: white;
+  }
 }
 
 // Rounded buttons
