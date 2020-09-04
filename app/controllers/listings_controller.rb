@@ -16,7 +16,6 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
 
     @listing.user = current_user
-    raise
     if @listing.save
       redirect_to account_path
     else
