@@ -5,7 +5,7 @@
   gap: 10px 10px;
   grid-template-areas:
     "booking-details teacher-bio"
-    "listing-card teacher-bio"
+    "listing-card-wide teacher-bio"
     "map map";
   justify-items: center;
   align-content: stretch;
@@ -23,7 +23,7 @@
   grid-area: teacher-bio;
 }
 .listing-card-wide {
-  grid-area: listing-card;
+  grid-area: listing-card-wide;
 }
 .map {
   grid-area: map;
