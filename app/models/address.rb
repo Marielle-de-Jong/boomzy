@@ -8,7 +8,7 @@ class Address < ApplicationRecord
   after_validation :geocode
 
   def full_address
-    "#{address_line_1} #{postcode} #{city}"
+    "#{address_line_1}, #{postcode} #{city}"
   end
 end
 
