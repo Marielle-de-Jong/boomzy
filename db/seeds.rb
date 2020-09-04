@@ -7,6 +7,7 @@ puts "Emptying database"
 
 Review.destroy_all
 Booking.destroy_all
+Listing.destroy_all
 Skill.destroy_all
 User.destroy_all
 
@@ -110,16 +111,18 @@ puts "[LOG] #{User.count} TOTAL users created"
 puts "----------------------------------------"
 puts "[LOG] creating ADDRESSES..."
 User.all.each_with_index do |user, index|
+  location = STREETS_ZIPS.sample
   Address.create(
     city: "Amsterdam",
-    address_line_1: STREETS_ZIPS.sample[0],
-    postcode: STREETS_ZIPS.sample[1],
+    address_line_1: location[0],
+    postcode: location[1],
     addressable: user
   )
 # Address.create!(address_line_1: "Elandsgracht 86", postcode: "1016TZ", city: "Amsterdam", addressable_type: "User", addressable_id: User.first.id)
 
 end
 puts "[LOG] #{Address.count} ADDRESSES created"
+
 
 
 # -------------
@@ -133,6 +136,7 @@ User.all.each do |user|
   skill = Skill.create!(
     name: Faker::Job.title,
     category: CATEGORIES.sample,
+    user_id: user.id
   )
 end
 puts "[LOG] #{Skill.count} SKILLS created"
@@ -155,6 +159,23 @@ User.all.each do |user|
 end
 puts "[LOG] #{Listing.count} LISTINGS created"
 
+# ------------------------
+# CREATE LISTING ADDRESSES
+# ------------------------
+puts "----------------------------------------"
+puts "[LOG] creating LISTING ADDRESSES..."
+Listing.all.each_with_index do |listing, index|
+  location = MEETING_SZ.sample
+  Address.create(
+    city: "Amsterdam",
+    address_line_1: location[0],
+    postcode: location[1],
+    addressable: listing
+  )
+# Address.create!(address_line_1: "Elandsgracht 86", postcode: "1016TZ", city: "Amsterdam", addressable_type: "User", addressable_id: User.first.id)
+
+end
+puts "[LOG] #{Address.count} ADDRESSES created"
 
 # ---------------
 # CREATE BOOKINGS

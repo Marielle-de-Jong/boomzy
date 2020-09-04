@@ -7,6 +7,13 @@
         <%= f.input :title %>
         <%= f.input :description %>
         <%= f.input :skill_level, collection: ["Beginner", "Intermediate", "Advanced", "Master"] %>
+        <%= f.simple_fields_for :address_attributes, @listing.address do |ff|%>
+                    <%= ff.hidden_field :id %>
+                    <%= ff.input :address_line_1 %>
+                    <%= ff.input :address_line_2 %>
+                    <%= ff.input :city %>
+                    <%= ff.input :postcode %>
+                  <% end %>
         <%= f.submit "Let's Teach!", :class => "button standard accent" %>
         <% end %>
     </div>
