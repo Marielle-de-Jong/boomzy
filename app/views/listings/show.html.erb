@@ -2,12 +2,12 @@
   <% if @listing.listing_image %>
   <div class="listings-show-banner">
     <%= image_tag(@listing.listing_image, alt: "banner", class:"listings-show-image") %>
-    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent fill" %>
+    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent" %>
   </div>
   <% else %>
   <div class="listings-show-banner">
     <%= image_tag('homepage_banner.jpg', class:"listings-show-image") %>
-    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent fill" %>
+    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent" %>
   </div>
   <% end %>
 </div>
@@ -15,15 +15,14 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="listing-infos col-8">
+    <div class="listing-infos col-12 col-sm-12 col-md-8 col-lg-8">
       <h2><%= @listing.title %></h2>
       <div class="listing-top-infos d-flex", style="color:grey;">
-        <p class="mr-5"><i class="fas fa-star"></i> 4.5 (5) </p>
-        <p class="mr-5"><%= @listing.address.city%>, The Netherlands</p>
-        <p class="mr-5">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
-        <p class="mr-5"> <%= @listing.skill_level %> class</p>
+        <p class="mr-4"><i class="fas fa-star"></i> 4.5 (5) </p>
+        <p class="mr-4"><%= @listing.address.city%>, The Netherlands</p>
+        <p class="mr-4">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
+        <p class="mr-4"> <%= @listing.skill_level %> class</p>
       </div>
-      <%= link_to "Book experience", new_listing_booking_path(@listing), class: "button standard accent fill" %>
       <br>
       <br>
       <%= @listing.description %> </p>
@@ -49,15 +48,14 @@
       </div>
       <% end %>
     </div>
-    <div class="listing-booking-form col-4">
-      <h5>Book this learning experience</h5>
+    <div class="listing-booking-form col-12 col-sm-12 col-md-4 col-lg-4">
+      <h5>Free experience</h5>
       <%= simple_form_for([@listing, @booking]) do |f| %>
-        <%= f.input :date %>
-        <%= f.submit %>
+      <%= f.input :date %>
+      <%= f.submit 'Reserve', class: "button standard accent fill"%>
       <% end %>
     </div>
   </div>
-  <%= link_to 'Back', listings_path, class: "button standard accent" %>
 </div>
 </div>
 
