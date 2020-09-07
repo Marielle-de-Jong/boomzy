@@ -1,5 +1,15 @@
 .chat-card{
-  border: 1px solid black;
   padding: 15px;
   background: $white;
+  width: 380px;
+}
+
+
+.chat-button{
+  display: flex;
+}
+
+.chat-call-buttons{
+  display: flex;
+  justify-content: space-evenly;
 }
