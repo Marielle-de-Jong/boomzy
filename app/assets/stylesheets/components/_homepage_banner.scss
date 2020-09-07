@@ -1,7 +1,7 @@
 .banner{
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: calc(100vh - 80px);
   color: $background;
   font-weight: bold;
   display: flex;
@@ -19,3 +19,4 @@
 .banner-buttons{
   margin-left: -15px;
 }
+
