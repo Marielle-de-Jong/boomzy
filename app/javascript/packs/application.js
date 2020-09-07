@@ -33,6 +33,7 @@ import "bootstrap";
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initVideoCall } from '../plugins/init_videocall';
+import { initStarRating } from '../plugins/init_star_rating';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -42,6 +43,7 @@ document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   initMapbox();
   initVideoCall();
+  initStarRating();
 });
 
 
