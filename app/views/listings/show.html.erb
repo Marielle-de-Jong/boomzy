@@ -17,7 +17,6 @@
   <div class="row">
     <div class="listing-infos col-12 col-sm-12 col-md-8 col-lg-8">
       <h2><%= @listing.title %></h2>
-      <h2><%= @average_rating %></h2>
       <div class="listing-top-infos d-flex", style="color:grey;">
         <!-- render "shared/review-score", user: @average_rating -->
         <% @average_rating = @listing.user.average_rating(@listing.user) %>
