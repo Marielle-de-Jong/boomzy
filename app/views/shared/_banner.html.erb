@@ -1,14 +1,16 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path "homepage_banner.jpg" %>);">
-  <div class="banner-details">
-    <div class="banner-header">
-      <h1>Master what other people already know</h1>
+  <div class="container">
+    <div class="banner-details">
+      <div class="banner-header">
+        <h1>Master what other people already know</h1>
+      </div>
+      <div class="banner-buttons">
+        <div class="button standard accent fill mr-3 mt-3 larger-button"><%= link_to 'I want to learn', listings_path,class: ""%></div>
+        <div class="button standard accent whitetext mr-3 mt-3 larger-button"><%= link_to 'I want to teach', new_listing_path, class: ""%></div>
+      </div>
+      <section class="demo">
+        <a href="#" data-location="#section-2" id="scroll-button" class="scroll"><span></span></a>
+      </section>
     </div>
-    <div class="banner-buttons">
-      <div class="button standard accent fill m-3"><%= link_to 'I WANT TO LEARN', listings_path,class: ""%></div>
-      <div class="button standard accent whitetext "><%= link_to 'I WANT TO TEACH', new_listing_path, class: ""%></div>
-    </div>
-    <section class="demo">
-      <a href="#" data-location="#section-2" id="scroll-button" class="scroll"><span></span></a>
-    </section>
   </div>
 </div>

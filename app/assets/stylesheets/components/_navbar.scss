@@ -30,8 +30,9 @@ a.nav-logo{
   font-size: 60;
   align-text: center;
   font-size: 40px;
+  font-family: 'Hind', sans-serif;
+  font-weight: lighter;
 }
-
 
 .burger-menu{
   height: 50px;
@@ -54,6 +55,7 @@ a.nav-logo{
 
 a.navbar-btn{
   text-decoration: none;
+  font-size: 3vh;
  color: $text;
  &:hover{
   opacity: 0.8;
