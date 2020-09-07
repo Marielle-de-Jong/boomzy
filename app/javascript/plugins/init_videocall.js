@@ -1,6 +1,9 @@
 
 const initVideoCall = () => {
  const vidCallButton = document.querySelector("#vid-call-btn")
+
+if (vidCallButton){
+
  vidCallButton.addEventListener("click", () => {
   run(vidCallButton);
 });
@@ -30,6 +33,7 @@ async function run(vidCallButton) {
           document.querySelector("iframe").remove()
         }
       }
+    }
 };
 
  export { initVideoCall };
