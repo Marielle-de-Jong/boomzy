@@ -17,8 +17,11 @@
   <div class="row">
     <div class="listing-infos col-12 col-sm-12 col-md-8 col-lg-8">
       <h2><%= @listing.title %></h2>
+      <h2><%= @average_rating %></h2>
       <div class="listing-top-infos d-flex", style="color:grey;">
-        <p class="mr-4"><i class="fas fa-star"></i> 4.5 (5) </p>
+        <!-- render "shared/review-score", user: @average_rating -->
+        <% @average_rating = @listing.user.average_rating(@listing.user) %>
+        <p class="mr-4"><i class="fas fa-star"></i> <%= @average_rating %> (<%= @listing.user.reviews.count %>)</p>
         <p class="mr-4"><%= @listing.address.city%>, The Netherlands</p>
         <p class="mr-4">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
         <p class="mr-4"> <%= @listing.skill_level %> class</p>
@@ -33,19 +36,23 @@
       <h6><%= @listing.user.first_name %> offers this class because </h6>
       <p> <%= @listing.user.motivation %> </p>
       <br>
+      <h6><%= @listing.user.first_name %>'s Reviews </h6>
+      <% @listing.user.reviews.each do |review| %>
+        <p> - "<%= review.content %>" </p>
+      <% end %>
       <% if @listing.user.has_socials? %>
-      <h6><%= @listing.user.first_name %> socials</h6>
-      <div class="listing-socials d-flex socials">
-        <% if @listing.user.linkedin_link? %>
-        <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <% elsif @listing.user.twitter_link? %>
-        <a href="<%= @listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
-        <% elsif @listing.user.instagram_link? %>
-        <a href="<%= @listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <% elsif @listing.user.facebook_link?%>
-        <a href="<%= @listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
-        <% end %>
-      </div>
+        <h6><%= @listing.user.first_name %> socials</h6>
+        <div class="listing-socials d-flex socials">
+          <% if @listing.user.linkedin_link? %>
+          <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <% elsif @listing.user.twitter_link? %>
+          <a href="<%= @listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
+          <% elsif @listing.user.instagram_link? %>
+          <a href="<%= @listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <% elsif @listing.user.facebook_link?%>
+          <a href="<%= @listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <div class="listing-booking-form col-12 col-sm-12 col-md-4 col-lg-4">
@@ -57,7 +64,6 @@
     </div>
   </div>
 </div>
-<% raise %>
-</div>
+
 
 
