@@ -12,6 +12,93 @@ Skill.destroy_all
 User.destroy_all
 
 
+puts "----------------------------------------"
+puts "[LOG] creating BRIAN..."
+
+brian = User.new
+brian.first_name = "Brian"
+brian.last_name = "Stephens"
+brian.email = "brian.stephens@gmail.com"
+brian.password = 'test123'
+brian.password_confirmation = 'test123'
+brian.bio = "My name's Brian, originally from Pennsylvania, I've been a mechanic for more than 40 years. Retired last year to spend time with my wife, family and 3 dogs – Albert, James and Edward."
+brian.motivation = "Some kind of knowledge as a mechanic is a life skill, I want to teach others how to fix up a car a bike or boat so they can get the most out of it."
+file = URI.open(`https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-v9LCpss0okuO61n9fM0DVoxY4xc3tw6ClA&usqp=CAU`)
+brian.photo.attach(io: file, filename: "#{brian.first_name.downcase}.jpg", content_type: 'image/jpg')
+brian.save!
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Westzaanstraat 10",
+    postcode: "1013NG",
+    addressable: user
+    )
+
+puts "----------------------------------------"
+puts "[LOG] creating BRIAN's skills, listings and bookings..."
+
+skill = Skill.create!(
+    name: Car Maintenace,
+    category: Mechanics,
+    user_id: brian.id
+    )
+
+listing = Listing.create!(
+    title: Fixing your car with Brian,
+    user_id: brian.id,
+    skill_id: skill,
+    skill_level: "Master",
+    description: "I've been fixing cars for 40 years, come along and we'll discuss what's wrong with your car and how to get it back on the road!"
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Westzaanstraat 10",
+    postcode: "1013NG",
+    addressable: listing
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: STATUS.sample,
+    listing_id: listing.id,
+    )
+
+
+skill = Skill.create!(
+    name: Bike Maintenace,
+    category: Mechanics,
+    user_id: brian.id
+    )
+
+listing = Listing.create!(
+    title: Fixing your bike,
+    user_id: brian.id,
+    skill_id: skill,
+    skill_level: "Master",
+    description: "Bikes are the gateway to mechanics, I can teach you to change a tyre or realign your gears and everything in between."
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Westzaanstraat 10",
+    postcode: "1013NG",
+    addressable: listing
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: STATUS.sample,
+    listing_id: listing.id,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] BRIAN Completed ..."
+
+
+
 
 
 CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening)
@@ -119,7 +206,7 @@ User.all.each_with_index do |user, index|
     address_line_1: location[0],
     postcode: location[1],
     addressable: user
-  )
+    )
 # Address.create!(address_line_1: "Elandsgracht 86", postcode: "1016TZ", city: "Amsterdam", addressable_type: "User", addressable_id: User.first.id)
 
 end
@@ -139,7 +226,7 @@ User.all.each do |user|
     name: Faker::Job.title,
     category: CATEGORIES.sample,
     user_id: user.id
-  )
+    )
 end
 puts "[LOG] #{Skill.count} SKILLS created"
 
@@ -157,7 +244,7 @@ User.all.each do |user|
     skill_id: Skill.all.sample.id,
     skill_level: LEVELS.sample,
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-  )
+    )
 end
 puts "[LOG] #{Listing.count} LISTINGS created"
 
@@ -173,7 +260,7 @@ Listing.all.each_with_index do |listing, index|
     address_line_1: location[0],
     postcode: location[1],
     addressable: listing
-  )
+    )
 # Address.create!(address_line_1: "Elandsgracht 86", postcode: "1016TZ", city: "Amsterdam", addressable_type: "User", addressable_id: User.first.id)
 
 end
@@ -191,7 +278,7 @@ Listing.all.each do |listing|
     user_id: User.all.sample.id,
     status: STATUS.sample,
     listing_id: listing.id,
-  )
+    )
 end
 puts "[LOG] #{Booking.count} BOOKINGS created"
 
@@ -219,7 +306,7 @@ Booking.all.each do |booking|
     content: "My meeting was so great!",
     rating: rand(1..5),
     user_id: User.all.sample.id
-  )
+    )
 end
 
 puts "[LOG] #{Review.count} REVIEWS created"
