@@ -18,9 +18,7 @@
     <div class="listing-infos col-12 col-sm-12 col-md-8 col-lg-8">
       <h2><%= @listing.title %></h2>
       <div class="listing-top-infos d-flex", style="color:grey;">
-        <!-- render "shared/review-score", user: @average_rating -->
-        <% @average_rating = @listing.user.average_rating(@listing.user) %>
-        <p class="mr-4"><i class="fas fa-star"></i> <%= @average_rating %> (<%= @listing.user.reviews.count %>)</p>
+        <p class="mr-4"> <%= render "shared/review-score", user: @average_rating %> | Reviews: <%= @listing.user.reviews.count %></p>
         <p class="mr-4"><%= @listing.address.city%>, The Netherlands</p>
         <p class="mr-4">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
         <p class="mr-4"> <%= @listing.skill_level %> class</p>
@@ -39,6 +37,7 @@
       <% @listing.user.reviews.each do |review| %>
         <p> - "<%= review.content %>" </p>
       <% end %>
+      <%= link_to 'Leave a review', new_listing_review_path(@listing.user), class: "button standard accent fill" %>
       <% if @listing.user.has_socials? %>
         <h6><%= @listing.user.first_name %> socials</h6>
         <div class="listing-socials d-flex socials">
