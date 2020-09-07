@@ -20,5 +20,8 @@ Rails.application.routes.draw do
   get "/users/map", to: "address#index"
   get "/listings/:id/add_image", to: "listings#add_image", as: :add_image
   post "/listings/:id/add_image", to: "listings#post_add_image", as: :post_add_image
+  post "/confirm", to: "bookings#confirm"
+  post "/decline", to: "bookings#decline"
+  post "/cancel", to: "bookings#cancel"
 
 end

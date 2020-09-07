@@ -31,10 +31,10 @@
       <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">My listings</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">My bookings</a>
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-confirmed-bookings" role="tab" aria-controls="pills-contact" aria-selected="false">My bookings</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">My booking requests</a>
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-requested-bookings" role="tab" aria-controls="pills-contact" aria-selected="false">My booking requests</a>
     </li>
   </ul>
   <div class="tab-content" id="pills-tabContent">
@@ -113,8 +113,11 @@
         <%= link_to "Create new listing", new_listing_path %>
       </div>
 
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <div class="tab-pane fade" id="pills-confirmed-bookings" role="tabpanel" aria-labelledby="pills-contact-tab">
         <% @user.bookings.each do |booking| %>
+        <% if @user.bookings.nil? %>
+          <h3>You do not currently have any bookings. <%= link_to 'Search Listings', listings_path, class: "button standard accent fill" %></h3>
+        <% end %>
         <div class="container border">
           <p> Booking date: <%= booking.date %> </p>
           <p> Teacher name: <%= booking.listing.user.first_name %> </p>
@@ -129,22 +132,27 @@
         </div>
         <% end %>
       </div>
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <div class="tab-pane fade" id="pills-requested-bookings" role="tabpanel" aria-labelledby="pills-contact-tab">
         <% @user.listings.each do |listing| %>
-        <% listing.bookings.each do |booking| %>
-        <div class="container border">
-          <p> Booking date: <%= booking.date %> </p>
-          <p> Booking user first name: <%= booking.user.first_name %> </p>
-          <p> Booking user last name: <%= booking.user.last_name %> </p>
-          <p> Booking status: <%= booking.status %> </p>
-          <p> Listing title: <%= booking.listing.title %> </p>
-          <p> Listing description: <%= booking.listing.description %> </p>
-          <p> Listing skill level: <%= booking.listing.skill_level %> </p>
-          <%= link_to "Details", booking_path(booking) %>
-          <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
-        </div>
-        <% end %>
-
+          <% listing.bookings.each do |booking| %>
+          <div class="container border">
+            <p><%= booking.listing.title %></p>
+            <p> Booking date: <%= booking.date %> | <%= booking.status %></p>
+            <p> <%= booking.user.first_name %> <%= booking.user.last_name %> wants to sign up for a class with you!</p>
+            <p> <%= booking.listing.description %> </p>
+            <p> | <%= booking.listing.skill_level %> |</p>
+            <div class="status-btns">
+              <% if booking.status == "Pending" %>
+              <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "button standard accent fill"%></div>
+              <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "button standard accent fill"%></div>
+              <% end %>
+              <% if booking.status != "Cancelled" %>
+                <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "button standard accent fill"%></div>
+              <% end %>
+              <div class="status-btn"><%= link_to 'Booking Details', booking_path(booking), method: :get, class: "btn btn-outline-primary"%></div>
+            </div>
+          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
