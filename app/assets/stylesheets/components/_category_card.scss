@@ -1,0 +1,27 @@
+.category-card {
+  width: 100px;
+  height: 230px;
+  margin-bottom: 16px;
+}
+
+.category-card > img {
+  width: 100%;
+  height: 90%;
+  left: 80px;
+  bottom: 344px;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.category-title {
+  background-color: white;
+  padding: 5px 0px;
+}
+
+.category-title > h6 {
+  padding: 0px 0px 0px 8px;
+  margin: 0px;
+}
+
+
