@@ -1,0 +1,15 @@
+
+<div class="search-bar">
+  <%= simple_form_for @listing, method: :get, url: add_image_path, wrapper: :inline_form, remote: true,
+  html: { class: "form-inline" } do |f| %>
+  <div class="img-search-box">
+    <%= f.input :image_keyword, :placeholder => "Enter word (e.g. 'car')"  %>
+  </div>
+  <%= f.submit 'Submit', class: "button standard accent" %>
+  <% end %>
+</div>
+
+<br>
+
+<div id="img-grid">
+</div>

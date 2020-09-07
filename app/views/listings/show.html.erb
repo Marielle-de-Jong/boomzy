@@ -2,15 +2,20 @@
   <% if @listing.listing_image %>
   <div class="listings-show-banner">
     <%= image_tag(@listing.listing_image, alt: "banner", class:"listings-show-image") %>
-    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent" %>
+    <button type="button" class="button standard accent" id="change-image-button" data-toggle="modal" data-target="#exampleModalCenter">Change Image </button>
   </div>
   <% else %>
   <div class="listings-show-banner">
     <%= image_tag('homepage_banner.jpg', class:"listings-show-image") %>
-    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent" %>
+    <button type="button" class="button standard accent" id="change-image-button" data-toggle="modal" data-target="#exampleModalCenter">Change Image </button>
   </div>
   <% end %>
 </div>
+
+<%= render "modal_image"  %>
+
+</div>
+
 <br>
 <br>
 <div class="container">

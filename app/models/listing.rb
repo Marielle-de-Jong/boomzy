@@ -16,7 +16,7 @@ class Listing < ApplicationRecord
     }
 
   def show_photo
-    @search_result = Unsplash::Photo.search(query, page = 1, per_page = 10)
+    @search_result = Unsplash::Photo.search(query, page = 1, per_page = 9)
   end
 end
 

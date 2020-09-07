@@ -57,7 +57,7 @@ class ListingsController < ApplicationController
 
   def add_image
     if params[:listing]
-      search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 10)
+      search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 9)
       if search_results.any?
         collection = search_results.first
         @urls = collection.photos.map { |photo| photo.urls.small }
