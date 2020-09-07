@@ -1,14 +1,14 @@
 <%= render 'shared/banner' %>
 
-<%= simple_form_for :listing, url: listings_path,
+<%= simple_form_for :listing, url: listings_path, method: :get,
   wrapper: :inline_form,
   html: { class: "form-inline" },
   wrapper_mappings: {
     boolean: :inline_boolean
   } do |f| %>
 
-  <%= f.input :skills, collection: %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening), input_html: { class: "mb-2 mr-sm-2" } %>
-  <%= f.input :address, input_html: { class: "mb-2 mr-sm-2" } %>
+  <%= f.input :skills, collection: %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening), input_html: { class: "mb-2 mr-sm-2", name: "skill" } %>
+  <%= f.input :address, input_html: { class: "mb-2 mr-sm-2", name: "address" } %>
 
   <%= f.button :submit, class: "btn-primary mb-2" %>
 <% end %>

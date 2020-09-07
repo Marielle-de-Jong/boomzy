@@ -2,7 +2,17 @@ class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :edit, :destroy, :update, :add_image, :post_add_image]
 
   def index
-    @listings = Listing.all
+    if params[:address].present?
+      @listings = Listing.search_by_address(params[:address])
+    else
+      @listings = Listing.all
+    end
+
+    if params[:skill].present?
+      @listings = @listings.joins(:skill).where(skills: {category: params[:skill]})
+    else
+      @listings = @listings
+    end
   end
 
   def show
