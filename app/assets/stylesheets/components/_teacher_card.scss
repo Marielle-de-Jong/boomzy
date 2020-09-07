@@ -1,7 +1,25 @@
-.teacher-card {
-  border: solid black 1px;
+.teacher-bio{
   height: 100%;
   padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  }
+
+
+.teacher-card-image{
+  width: 200px;
+  margin-right: 10px;
+  text-align: center;
+  padding: 10px;
+  background-color: $background;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.teacher-card-image img {
+  height: 180px;
+  width: 180px;
   // background: white;
 
   // &:hover {
@@ -9,10 +27,19 @@
   //   opacity: .8;
   // }
 }
+
+
 .teacher-name {
   display: inline;
   font-size: 35px;
   vertical-align: middle;
+}
+
+.teacher-card-details{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .user-bio {

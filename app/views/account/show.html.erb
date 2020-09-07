@@ -1,20 +1,23 @@
 <div class="container">
 
-    <div class="teacher-bio">
-    <div class="teacher-card">
+  <div class="teacher-bio">
+    <div class="teacher-card-image">
       <% if @user.photo.attached? %>
-        <img src="<%= cl_image_path @user.photo.key %>" class="avatar-large"/>
+      <img src="<%= cl_image_path @user.photo.key %>"/>
       <% end %>
       <div class="teacher-name">
-        <%= @user.first_name %>
+        <%= @user.first_name %> <%= @user.last_name %>
       </div>
+       <p> Member for <%= (Date.parse("#{@user.created_at}") - Date.today).to_i %> days </p>
+    </div>
+    <div class="teacher-card-details">
       <div class="user-bio">
         <h5>Bio</h5>
-       <p><%=  @user.bio %></p>
+        <p><%=  @user.bio %></p>
       </div>
       <div class="user-motivation">
         <h5>Motivation</h5>
-       <p><%=  @user.motivation %></p>
+        <p><%=  @user.motivation %></p>
       </div>
     </div>
   </div>
@@ -94,40 +97,56 @@
                     <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
                   </div>
                   <p>
-                  <%= link_to listing, method: :delete do %>
-                <i class="far fa-trash-alt"></i>
-                <% end %>
-                <%= link_to 'Edit', edit_listing_path(listing) %></p>
+                    <%= link_to listing, method: :delete do %>
+                    <i class="far fa-trash-alt"></i>
+                    <% end %>
+                    <%= link_to 'Edit', edit_listing_path(listing) %></p>
+                  </div>
                 </div>
               </div>
             </div>
+            <% end %>
+            <% end %>
           </div>
-          <% end %>
-          <% end %>
         </div>
+
+        <%= link_to "Create new listing", new_listing_path %>
       </div>
 
-    <%= link_to "Create new listing", new_listing_path %>
-    </div>
+      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <% @user.bookings.each do |booking| %>
+        <div class="container border">
+          <p> Booking date: <%= booking.date %> </p>
+          <p> Teacher name: <%= booking.listing.user.first_name %> </p>
+          <p> Booking user first name: <%= booking.user.first_name %> </p>
+          <p> Booking user last name: <%= booking.user.last_name %> </p>
+          <p> Booking status: <%= booking.status %> </p>
+          <p> Listing title: <%= booking.listing.title %> </p>
+          <p> Listing description: <%= booking.listing.description %> </p>
+          <p> Listing skill level: <%= booking.listing.skill_level %> </p>
+          <%= link_to "Details", booking_path(booking) %>
+          <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
+        </div>
+        <% end %>
+      </div>
+      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <% @user.listings.each do |listing| %>
+        <% listing.bookings.each do |booking| %>
+        <div class="container border">
+          <p> Booking date: <%= booking.date %> </p>
+          <p> Booking user first name: <%= booking.user.first_name %> </p>
+          <p> Booking user last name: <%= booking.user.last_name %> </p>
+          <p> Booking status: <%= booking.status %> </p>
+          <p> Listing title: <%= booking.listing.title %> </p>
+          <p> Listing description: <%= booking.listing.description %> </p>
+          <p> Listing skill level: <%= booking.listing.skill_level %> </p>
+          <%= link_to "Details", booking_path(booking) %>
+          <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
+        </div>
+        <% end %>
 
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-    <% @user.bookings.each do |booking| %>
-    <div class="container border">
-      <p> Booking date: <%= booking.date %> </p>
-      <p> Booking user first name: <%= booking.user.first_name %> </p>
-      <p> Booking user last name: <%= booking.user.last_name %> </p>
-      <p> Booking status: <%= booking.status %> </p>
-      <p> Listing title: <%= booking.listing.title %> </p>
-      <p> Listing description: <%= booking.listing.description %> </p>
-      <p> Listing skill level: <%= booking.listing.skill_level %> </p>
-      <%= link_to "Details", booking_path(booking) %>
-      <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
+        <% end %>
+      </div>
     </div>
-    <% end %>
-  </div>
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-    <p>...</p>
-  </div>
-</div>
   </div>
 
