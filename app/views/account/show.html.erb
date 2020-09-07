@@ -118,7 +118,7 @@
         <% if @user.bookings.nil? %>
           <h3>You do not currently have any bookings. <%= link_to 'Search Listings', listings_path, class: "button standard accent fill" %></h3>
         <% end %>
-        <div class="container border">
+        <div class="container border booking-card">
           <p> Booking date: <%= booking.date %> </p>
           <p> Teacher name: <%= booking.listing.user.first_name %> </p>
           <p> Booking user first name: <%= booking.user.first_name %> </p>
