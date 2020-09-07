@@ -7,10 +7,17 @@ class User < ApplicationRecord
   has_many :listings, dependent: :destroy
   has_many :bookings
   has_many :skills, dependent: :destroy
+  has_many :reviews
   accepts_nested_attributes_for :skills
   has_one_attached :photo
   accepts_nested_attributes_for :address
   acts_as_token_authenticatable
+
+  def average_rating(user)
+    review_array = []
+    user.reviews.each { |review| review_array << review.rating }
+    average_rating = review_array.sum / user.reviews.size
+  end
 
   def has_socials?
     if linkedin_link || twitter_link || instagram_link || facebook_link

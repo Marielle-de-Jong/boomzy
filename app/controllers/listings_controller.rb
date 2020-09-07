@@ -7,6 +7,11 @@ class ListingsController < ApplicationController
 
   def show
     @booking = Booking.new
+    if @listing.user.reviews.length > 0
+      @average_rating = @listing.user.average_rating(@listing.user)
+    else
+      @average_rating = "No reviews."
+    end
   end
 
   def new
