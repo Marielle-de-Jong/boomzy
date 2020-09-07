@@ -8,7 +8,7 @@
       <div class="teacher-name">
         <%= @user.first_name %> <%= @user.last_name %>
       </div>
-       <p> Member for <%= (Date.parse("#{@user.created_at}") - Date.today).to_i %> days </p>
+       <p> Member for <%= (Date.today - Date.parse("#{@user.created_at}")).to_i %> days </p>
     </div>
     <div class="teacher-card-details">
       <div class="user-bio">
