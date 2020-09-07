@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :destroy]
+  before_action :find_format, only: [:confirm, :cancel, :decline]
 
   def index
     @bookings = Booking.all
@@ -71,6 +72,10 @@ class BookingsController < ApplicationController
 
   def find_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def find_format
+    @booking = Booking.find(params[:format])
   end
 
   def booking_params
