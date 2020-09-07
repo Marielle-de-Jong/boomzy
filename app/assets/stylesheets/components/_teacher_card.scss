@@ -1,14 +1,15 @@
 .teacher-bio{
   height: 100%;
-  padding: 15px;
+  // padding: 15px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   }
 
 
 .teacher-card-image{
   width: 200px;
-  margin-right: 10px;
+  // margin-right: 10px;
   text-align: center;
   padding: 10px;
   background-color: $background;
@@ -36,7 +37,8 @@
 }
 
 .teacher-card-details{
-  padding: 10px;
+  padding: 5px;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -44,12 +46,14 @@
 
 .user-bio {
   margin-top: 15px;
+  margin-left: 5px;
 }
 .user-motivation {
   margin-top: 25px;
+  margin-left: 5px;
 }
 .date-time {
-  // border: solid black 2px;
+  border: solid black 2px;
   width: 350px;
   padding: 15px;
   margin: 10px;
