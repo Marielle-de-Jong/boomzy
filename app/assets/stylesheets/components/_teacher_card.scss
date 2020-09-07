@@ -2,7 +2,7 @@
   height: 100%;
   // padding: 15px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
   }
 
@@ -37,8 +37,9 @@
 }
 
 .teacher-card-details{
-  padding: 5px;
-  width: 60%;
+  padding: 15px;
+  margin-bottom: 20px;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

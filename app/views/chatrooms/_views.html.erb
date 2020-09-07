@@ -17,11 +17,10 @@
     <%= simple_form_for([ @chatroom, @message ], remote: true) do |f| %>
     <%= f.input :content, label: false, placeholder: "Your message" %>
     <div class="call-button">
-      <%= f.submit class: "button standard accent fill" %>
+      <%= f.submit class: "button standard accent fill", value: "Send Message" %>
       <button data-key="<%= @room %>" class="button standard accent fill" id="vid-call-btn"><i class="fas fa-phone-alt"></i> Start a video call now</button>
     </div>
     <% end %>
   </div>
-
 </div>
 

@@ -12,6 +12,13 @@ class BookingsController < ApplicationController
     # COMMENTED OUT FOR DEVELOPMENT THIS GENERATES A NEW ROOM FOR EACH BOOKING
     # build_video_call_url
     @room = "https://boomzy.daily.co/qMLWks2AEI4wJhM57bf4"
+    # Map
+     @marker =
+      [{
+        lat: @booking.listing.address.latitude,
+        lng: @booking.listing.address.longitude,
+        image_url: helpers.asset_url('icons/sewing-machine.svg')
+      }]
   end
 
   def status?
