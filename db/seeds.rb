@@ -139,7 +139,7 @@ Address.create(
 booking = Booking.create(
     date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
     user_id: User.all.sample.id,
-    status: STATUS.sample,
+    status: "Accepted",
     listing_id: listing.id,
     )
 
@@ -159,7 +159,7 @@ user.password = 'test123'
 user.password_confirmation = 'test123'
 user.bio = "I have been a photographer for over 40 years and I am always looking for new subjects. I moved to Amsterdam last year with my partner and am still looking to build a community here."
 user.motivation = "Photography and art are so important in difficult times like these. I hope to share the knowledge I've gained with people eager to learn!"
-file = URI.open("https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80")
+file = URI.open("https://images.unsplash.com/photo-1495580621852-5de0cc907d2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1530&q=80")
 user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
 user.save!
 
@@ -189,7 +189,7 @@ listing = Listing.create!(
     user_id: user.id,
     skill_id: skill.id,
     skill_level: "Master",
-    description: "I have been a professional photographer for years, let me teach you about lighting and field of depth, "
+    description: "I have been a professional photographer for years, let me teach you about lighting and field of depth, my specialties"
     )
 
 Address.create(
@@ -202,13 +202,201 @@ Address.create(
 booking = Booking.create(
     date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
     user_id: User.all.sample.id,
-    status: STATUS.sample,
+    status: "Pending",
     listing_id: listing.id,
     )
 
 puts "----------------------------------------"
 puts "[LOG] SUSAN Completed ..."
 
+puts "----------------------------------------"
+puts "[LOG] creating Katya..."
+
+user = User.new
+user.first_name = "Katya"
+user.last_name = "Rosa"
+# Email should be first_name@boomzy.me
+user.email = "katya@boomzy.me"
+# Password should be test123
+user.password = 'test123'
+user.password_confirmation = 'test123'
+user.bio = "I have been a photographer for over 40 years and I am always looking for new subjects. I moved to Amsterdam last year with my partner and am still looking to build a community here."
+user.motivation = "Photography and art are so important in difficult times like these. I hope to share the knowledge I've gained with people eager to learn!"
+file = URI.open("https://images.unsplash.com/photo-1547212371-eb5e6a4b590c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80")
+user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+user.save!
+
+puts "----------------------------------------"
+puts "[LOG] creating KATYA's address..."
+
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Rooseveltlaan 124",
+    postcode: "1078NW",
+    addressable: user,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] creating KATYA's first skill, listings and bookings..."
+
+
+skill = Skill.create!(
+    name: "Needlepoint",
+    category: "Crafts",
+    user_id: user.id,
+    )
+
+listing = Listing.create!(
+    title: "Needlepoint for Beginners",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "Come learn with me! I have always enjoyed teaching and miss meeting new people."
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Prinsengracht 279",
+    postcode: "1016GW",
+    addressable: listing
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: "Pending",
+    listing_id: listing.id,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] KATYA Completed ..."
+
+puts "----------------------------------------"
+puts "[LOG] creating HANS..."
+
+user = User.new
+user.first_name = "Hans"
+user.last_name = "de Vrij"
+# Email should be first_name@boomzy.me
+user.email = "hans@boomzy.me"
+# Password should be test123
+user.password = 'test123'
+user.password_confirmation = 'test123'
+user.bio = "Recently retired contracter. Just passed on the reigns of my business to my daughter, but hoping to continue to teach new people my craft!"
+user.motivation = "Now that I am retired I can focus on building projects that bring joy. I could use an apprentice, for the talks, the joy of teaching, and the heavy lifting"
+file = URI.open("https://images.manmadediy.com/ihUorZzi3I-w0F39kfzjaAljHuGgfxZvM0QlhcM4bUQ/w:800/plain/http://s3.amazonaws.com/manmadediy-uploads-production/photos/17768/offermanwood2_span.jpg")
+user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+user.save!
+
+puts "----------------------------------------"
+puts "[LOG] creating HANS's address..."
+
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Meteorensingel 156",
+    postcode: "1033CC",
+    addressable: user,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] creating HANS' first skill, listings and bookings..."
+
+
+skill = Skill.create!(
+    name: "Woodworking",
+    category: "Woodworking",
+    user_id: user.id,
+    )
+
+listing = Listing.create!(
+    title: "Building wooden furniture with Hans",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Master",
+    description: "Forget Ikea, I will teach you to make beautiful tables that will last decades!"
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Dam 20",
+    postcode: "1012NP",
+    addressable: listing
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: "Pending",
+    listing_id: listing.id,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] HANS Completed ..."
+
+puts "----------------------------------------"
+puts "[LOG] creating ARNOLD..."
+
+user = User.new
+user.first_name = "Arnold"
+user.last_name = "Golding"
+# Email should be first_name@boomzy.me
+user.email = "arnold@boomzy.me"
+# Password should be test123
+user.password = 'test123'
+user.password_confirmation = 'test123'
+user.bio = "I have traveled all over the world with my accordian. My traveling days might be behind me, but I am happy staying put and playing on the porch everyday. My granddaughter set this up for me!"
+user.motivation = "Playing solo is wonderful, but I miss teaching and playing with others. Come jam with me :)"
+file = URI.open("https://images.pexels.com/photos/228842/pexels-photo-228842.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+user.save!
+
+puts "----------------------------------------"
+puts "[LOG] creating ARNOLD's address..."
+
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Plantage Kerklaan 61",
+    postcode: "1018CX",
+    addressable: user,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] creating ARNOLD' first skill, listings and bookings..."
+
+
+skill = Skill.create!(
+    name: "Accordian Accords",
+    category: "Music",
+    user_id: user.id,
+    )
+
+listing = Listing.create!(
+    title: "Building wooden furniture with Hans",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Master",
+    description: "Play a song for me and I'll teach you to play it on the accordian."
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Korte Leidsedwarsstraat 111",
+    postcode: "1017PX",
+    addressable: listing
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: "Accepted",
+    listing_id: listing.id,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] ARNOLD Completed ..."
 
 
 
@@ -218,9 +406,9 @@ puts "[LOG] SUSAN Completed ..."
 # puts "[LOG] STARTING SEED GENERATION..."
 
 
-# # --------------------
-# # CREATE USERS - ADMIN
-# # --------------------
+# --------------------
+#  CREATE USERS - ADMIN
+# --------------------
 # puts "----------------------------------------"
 # puts "[LOG] creating ADMIN users..."
 # a = 0
