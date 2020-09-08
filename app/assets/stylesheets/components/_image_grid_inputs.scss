@@ -22,17 +22,15 @@
 }
 
 
-@media (max-width: 920px) {
+
+@media (max-width: 1200px) {
   .radio-button-image-grid {
-  grid-template-columns: 1fr;
-  justify-content: centered;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-
-@media (max-width: 920px) {
+@media (max-width: 991px) {
   .radio-button-image-grid {
-  grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 }
-
