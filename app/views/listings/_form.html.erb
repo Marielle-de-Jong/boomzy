@@ -3,26 +3,23 @@
     <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-6">
         <h3 class="text-center">What would you like to teach?</h3>
         <br>
-
-
         <%= @listing.errors.full_messages if Rails.env.development? %>
-
-        <%= simple_form_for(@listing) do |f| %>
-        <%= f.input :title %>
-        <%= f.input :description %>
-        <%= f.input :skill_level, collection: ["Beginner", "Intermediate", "Advanced", "Master"] %>
-        <%= f.simple_fields_for :skill_attributes, @listing.skill do |ff|%>
-                    <%= ff.input :name, label: "Skill name" %>
-                    <%= ff.input :category, as: :select, collection: Skill.pluck(:category).uniq %>
-                  <% end %>
-        <%= f.simple_fields_for :address_attributes, @listing.address do |ff|%>
-                    <%= ff.hidden_field :id %>
-                    <%= ff.input :address_line_1 %>
-                    <%= ff.input :address_line_2 %>
-                    <%= ff.input :city %>
-                    <%= ff.input :postcode %>
-                  <% end %>
-        <%= f.submit "Let's Teach!", :class => "button standard accent" %>
+          <%= simple_form_for(@listing) do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :skill_level, collection: ["Beginner", "Intermediate", "Advanced", "Master"] %>
+          <%= f.simple_fields_for :skill_attributes, @listing.skill do |ff|%>
+                      <%= ff.input :name, label: "Skill name" %>
+                      <%= ff.input :category, as: :select, collection: Skill.pluck(:category).uniq %>
+                    <% end %>
+          <%= f.simple_fields_for :address_attributes, @listing.address do |ff|%>
+                      <%= ff.hidden_field :id %>
+                      <%= ff.input :address_line_1 %>
+                      <%= ff.input :address_line_2 %>
+                      <%= ff.input :city %>
+                      <%= ff.input :postcode %>
+                    <% end %>
+          <%= f.submit "Let's Teach!", :class => "button standard accent" %>
         <% end %>
     </div>
   </div>
