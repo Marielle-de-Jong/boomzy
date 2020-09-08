@@ -4,7 +4,7 @@
       <%= simple_form_for @review, url: listing_reviews_path do |f| %>
         <%= f.input :content %>
         <%= f.input :rating, collection: (1..5).to_a, label: "Rate #{@listing.user.first_name}" %>
-        <%= f.submit "Send your review" %>
+        <%= f.submit "Send your review", :class => "button standard accent"  %>
       <% end %>
     </div>
   </div>
