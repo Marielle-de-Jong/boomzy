@@ -1,0 +1,56 @@
+.acct-listing-card {
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-items: center;
+  &:hover {
+    background: $accent;
+  }
+}
+
+.card-img {
+  display:flex;
+  align-items: end;
+}
+.image-title {
+  color: white;
+  opacity: .8;
+  text-align: center;
+  padding: 10px;
+}
+
+
+.listings-box a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.listing-card-info {
+  position: relative;
+}
+
+.l-edit {
+  position: absolute;
+  bottom: -60px;
+  right: 5px;
+}
+
+.l-skill {
+  position: absolute;
+  top: -50px;
+  right: 5px;
+}
+
+
+// .card-product {
+//   height: 120px;
+//   display: flex;
+// }
+
+// .card-product img {
+//   height: 100%;
+//   width: 120px;
+//   object-fit: cover;
+// }
