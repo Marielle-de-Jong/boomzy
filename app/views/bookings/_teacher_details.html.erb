@@ -1,0 +1,22 @@
+<h5>About your teacher</h5>
+<br>
+<div class="teacher-image-name d-flex align-items-center">
+  <% if @booking.listing.user.photo.attached? %>
+  <div class="teacher-image mr-3">
+    <%= cl_image_tag @booking.listing.user.photo.key, class: "avatar-large" %>
+  </div>
+  <% end %>
+  <div class="teacher-profile-details">
+    <p class="m-0"><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
+    <p class="m-0"> Member since <%= (Date.today - Date.parse("#{@booking.listing.user.created_at}")).to_i %> days </p>
+  </div>
+</div>
+<br>
+<h6> <%= @booking.listing.user.first_name %>'s bio</h6>
+<br>
+<p><%= @booking.listing.user.bio %></p>
+<br>
+<h6>What motivates <%= @booking.listing.user.first_name %> to teach <%= @booking.listing.title %></h6>
+<br>
+<p><%=  @booking.listing.user.motivation %></p>
+<br>

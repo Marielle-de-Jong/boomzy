@@ -11,46 +11,12 @@
       <h3>Thanks for booking <%= @booking.listing.title %> with <%= @booking.listing.user.first_name%> <%= @booking.listing.user.last_name %></h3>
       <br>
       <p>You've booked this learning experience for <%= @booking.date %>.</p>
-
-
-      <% if @booking.status == "Pending" %>
-        <p>Your booking is currently <strong>pending</strong>. You'll hear from us again once <%= @booking.listing.user.first_name %> has accepted.</p>
-        <p>In the meantime, learn more about your teacher below. </p>
-      <% elsif @booking.status == "Accepted" %>
-        <p><%= @booking.listing.user.first_name %> has <strong> accepted</strong> your booking. You can see their details below and start reaching out via the chat on the right to make an appointment. </p>
-      <% elsif @booking.status == "Denied" %>
-        <p>Unfortunately <%= @booking.listing.user.first_name %> will has <strong>declined</strong> your booking. Feel free to book one of our other learning experiences. </p>
-      <% end %>
-
+      <%= render 'booking_status' %>
       <br>
-      <h5>About your teacher</h5>
+      <%= render 'teacher_details' %>
+      <h5>Reviews about <%= @booking.listing.user.first_name %></h5>
       <br>
-      <div class="teacher-image-name d-flex align-items-center">
-        <% if @booking.listing.user.photo.attached? %>
-        <div class="teacher-image mr-3">
-          <%= cl_image_tag @booking.listing.user.photo.key, class: "avatar-large" %>
-        </div>
-        <% end %>
-        <div class="teacher-profile-details">
-          <p class="m-0"><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
-          <p class="m-0"> Member since <%= (Date.today - Date.parse("#{@booking.listing.user.created_at}")).to_i %> days </p>
-        </div>
-      </div>
-      <br>
-      <h6> <%= @booking.listing.user.first_name %>'s bio</h6>
-      <br>
-      <p><%= @booking.listing.user.bio %></p>
-      <br>
-      <h6>What motivates <%= @booking.listing.user.first_name %> to teach <%= @booking.listing.title %></h6>
-      <br>
-      <p><%=  @booking.listing.user.motivation %></p>
-      <br>
-      <h6>Reviews about <%= @booking.listing.user.first_name %></h6>
-      <br>
-      <% @booking.listing.user.reviews.each do |review| %>
-        <p><%= render "shared/review-score", user: @average_rating %> | Reviews: <%= @booking.listing.user.reviews.count %></p>
-        <p><%= review.content %></p>
-      <% end %>
+      <%= render 'teacher_reviews' %>
       <br>
       <br>
     </div>
