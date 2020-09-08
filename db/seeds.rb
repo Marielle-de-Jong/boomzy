@@ -2,105 +2,6 @@
 require 'faker'
 require "open-uri"
 
-puts "Start time = #{Time.now}"
-puts "Emptying database"
-
-Review.destroy_all
-Booking.destroy_all
-Listing.destroy_all
-Skill.destroy_all
-User.destroy_all
-
-
-puts "----------------------------------------"
-puts "[LOG] creating BRIAN..."
-
-brian = User.new
-brian.first_name = "Brian"
-brian.last_name = "Stephens"
-brian.email = "brian.stephens@gmail.com"
-brian.password = 'test123'
-brian.password_confirmation = 'test123'
-brian.bio = "My name's Brian, originally from Pennsylvania, I've been a mechanic for more than 40 years. Retired last year to spend time with my wife, family and 3 dogs – Albert, James and Edward."
-brian.motivation = "Some kind of knowledge as a mechanic is a life skill, I want to teach others how to fix up a car a bike or boat so they can get the most out of it."
-file = URI.open(`https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-v9LCpss0okuO61n9fM0DVoxY4xc3tw6ClA&usqp=CAU`)
-brian.photo.attach(io: file, filename: "#{brian.first_name.downcase}.jpg", content_type: 'image/jpg')
-brian.save!
-
-Address.create(
-    city: "Amsterdam",
-    address_line_1: "Westzaanstraat 10",
-    postcode: "1013NG",
-    addressable: user
-    )
-
-puts "----------------------------------------"
-puts "[LOG] creating BRIAN's skills, listings and bookings..."
-
-skill = Skill.create!(
-    name: Car Maintenace,
-    category: Mechanics,
-    user_id: brian.id
-    )
-
-listing = Listing.create!(
-    title: Fixing your car with Brian,
-    user_id: brian.id,
-    skill_id: skill,
-    skill_level: "Master",
-    description: "I've been fixing cars for 40 years, come along and we'll discuss what's wrong with your car and how to get it back on the road!"
-    )
-
-Address.create(
-    city: "Amsterdam",
-    address_line_1: "Westzaanstraat 10",
-    postcode: "1013NG",
-    addressable: listing
-    )
-
-booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
-
-
-skill = Skill.create!(
-    name: Bike Maintenace,
-    category: Mechanics,
-    user_id: brian.id
-    )
-
-listing = Listing.create!(
-    title: Fixing your bike,
-    user_id: brian.id,
-    skill_id: skill,
-    skill_level: "Master",
-    description: "Bikes are the gateway to mechanics, I can teach you to change a tyre or realign your gears and everything in between."
-    )
-
-Address.create(
-    city: "Amsterdam",
-    address_line_1: "Westzaanstraat 10",
-    postcode: "1013NG",
-    addressable: listing
-    )
-
-booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
-
-puts "----------------------------------------"
-puts "[LOG] BRIAN Completed ..."
-
-
-
-
-
 CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening)
 STATUS = %w(Pending Accepted Denied)
 LEVELS = %w(Beginner Intermediate Advanced Master)
@@ -138,6 +39,117 @@ ADMINS = [
   ["Will", "will@test.com"],
   ["Alex", "alex@test.com"]
 ]
+
+
+puts "Start time = #{Time.now}"
+puts "Emptying database"
+
+Review.destroy_all
+Booking.destroy_all
+Listing.destroy_all
+Skill.destroy_all
+User.destroy_all
+
+
+puts "----------------------------------------"
+puts "[LOG] creating BRIAN..."
+
+user = User.new
+user.first_name = "Brian"
+user.last_name = "Stephens"
+# Email should be first_name@boomzy.me
+user.email = "brian@boomzy.me"
+# Password should be test123
+user.password = 'test123'
+user.password_confirmation = 'test123'
+user.bio = "My name's Brian, originally from Pennsylvania, I've been a mechanic for more than 40 years. Retired last year to spend time with my wife, family and 3 dogs – Albert, James and Edward."
+user.motivation = "Some kind of knowledge as a mechanic is a life skill, I want to teach others how to fix up a car a bike or boat so they can get the most out of it."
+file = URI.open("https://s3.envato.com/files/99665157/268025.jpg")
+user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+user.save!
+
+puts "----------------------------------------"
+puts "[LOG] creating BRIAN's address..."
+
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Westzaanstraat 10",
+    postcode: "1013NG",
+    addressable: user,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] creating BRIAN's first skill, listings and bookings..."
+
+
+skill = Skill.create!(
+    name: "Car Maintenace",
+    category: "Mechanics",
+    user_id: user.id,
+    )
+
+listing = Listing.create!(
+    title: "Fixing your car with Brian",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Master",
+    description: "I've been fixing cars for 40 years, come along and we'll discuss what's wrong with your car and how to get it back on the road!"
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Westzaanstraat 10",
+    postcode: "1013NG",
+    addressable: listing
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: STATUS.sample,
+    listing_id: listing.id,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] creating BRIAN's first skill, listings and bookings..."
+
+
+skill = Skill.create!(
+    name: "Bike Maintenace",
+    category: "Mechanics",
+    user_id: user.id,
+    )
+
+listing = Listing.create!(
+    title: "Fixing your bike",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Master",
+    description: "Bikes are the gateway to mechanics, I can teach you to change a tyre or realign your gears and everything in between."
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Westzaanstraat 10",
+    postcode: "1013NG",
+    addressable: listing,
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: STATUS.sample,
+    listing_id: listing.id,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] BRIAN Completed ..."
+
+
+
+
+
 
 
 
