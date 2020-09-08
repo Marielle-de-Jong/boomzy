@@ -1,5 +1,10 @@
+
 .listing-index-grid {
+  justify-content: center;
+}
+.listing-index-grid {
+  margin: 25px 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px 10px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1em;
 }
