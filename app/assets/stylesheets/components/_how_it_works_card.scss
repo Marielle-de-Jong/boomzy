@@ -1,3 +1,10 @@
 .how-it-works-card > img {
   width: 80px;
 }
+
+.how-it-works-card{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
