@@ -10,7 +10,7 @@
       <p>Hi <%= @booking.user.first_name%>,</p>
       <h3>Thanks for booking <%= @booking.listing.title %> with <%= @booking.listing.user.first_name%> <%= @booking.listing.user.last_name %></h3>
       <br>
-      <p>You've booked this learning experience for <%= @booking.date %>.</p>
+      <p>• You've booked this learning experience for <%= @booking.date %>.</p>
       <%= render 'booking_status' %>
       <br>
       <%= render 'teacher_details' %>
