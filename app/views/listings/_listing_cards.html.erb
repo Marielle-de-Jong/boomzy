@@ -23,15 +23,10 @@
             <% end %>
             <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
           </div>
-          <p class="skill-level-info"> Skill level: <%= listing.skill_level %> </p>
+          <p class="card-category"><%= listing.skill.name %></p>
         </div>
         <div class="card-description">
           <p><%= listing.description %></p>
-        </div>
-        <div class="card-info">
-          <div class="card-categories">
-            <p class="card-category">Horse riding (TBF)</p>
-          </div>
         </div>
       </div>
     <% end %>
