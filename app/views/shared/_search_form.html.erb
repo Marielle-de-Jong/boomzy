@@ -6,17 +6,17 @@
     <div id="section-2">
       <%= simple_form_for :listing, id: "section-2", url: listings_path, method: :get,
       wrapper: :inline_form,
-      html: { class: "form-inline" },
+      html: { class: "form" },
       wrapper_mappings: {
         boolean: :inline_boolean
       } do |f| %>
-
+      <div class="search-fields">
       <%= f.input :skills, wrapper_html: { class: "search-field1-wrapper"}, collection: %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening), selected: 1, input_html: { class: "search-field1", name: "skill" } %>
 
       <%= f.input :address, wrapper_html: { class: "search-field2-wrapper"}, input_html:  { class: "search-field2", name: "address", placeholder: "Location" } %>
 
-      <%= f.button :submit, class: "button standard accent fill", value: "Search" %>
-
+      <%= f.button :submit, class: "search-button", value: "Search" %>
+  </div>
       <% end %>
     </div>
     <br>

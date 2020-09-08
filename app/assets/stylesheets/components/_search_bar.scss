@@ -8,9 +8,19 @@
   width:100%;
 }
 
+.search-but{
+  display: flex;
+  justify-content: center;
+}
+
+.search-fields{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .search-field1-wrapper{
-  width: 42% !important;
-  margin: 10px;
+  width: 40% !important;
 }
 
 .search-field1{
@@ -31,8 +41,8 @@
 }
 
 .search-field2-wrapper{
-  width: 42% !important;
-  margin-right: 10px
+  width: 40% !important;
+
 }
 
 .search-field2{
@@ -53,8 +63,11 @@
   border: 3px solid $accent;
 }
 
-#search-button{
-  margin: 10px;
+.search-button{
+  background: $accent;
+  border-radius: 5px;
+  height: 40px;
+  width: 20%;
 }
 
 #section-2{
@@ -63,9 +76,8 @@
   width: 100%;
 }
 
-.form-inline{
+.form{
   width: 100%;
-  margin-left: -27px;
 }
 
 .search-text{
