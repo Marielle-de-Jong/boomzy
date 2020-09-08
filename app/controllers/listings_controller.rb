@@ -17,6 +17,7 @@ class ListingsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @review = Review.new
     if @listing.user.reviews.length > 0
       @average_rating = @listing.user.average_rating(@listing.user)
     else
@@ -56,10 +57,10 @@ class ListingsController < ApplicationController
 
   def add_image
     if params[:listing]
-      search_results = Unsplash::Collection.search(params[:listing][:image_keyword], page = 1, per_page = 9)
+      search_results = Unsplash::Collection.search(params[:listing][:image_keyword])
       if search_results.any?
         collection = search_results.first
-        @urls = collection.photos.map { |photo| photo.urls.small }
+        @urls = collection.photos.first(9).map { |photo| photo.urls.small }
       else
         @urls = []
       end
