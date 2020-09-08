@@ -2,9 +2,6 @@
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
   <div class="form-group string optional listing_image_keyword">
     <fieldset class="form-group radio_buttons optional listing_listing_image">
-      <legend class="col-form-label pt-0">
-        Listing image
-      </legend>
       <input type="hidden" name="listing[listing_image]" value="">
       <div class="radio-button-image-grid">
           <% @urls.each_with_index do |url, index| %>

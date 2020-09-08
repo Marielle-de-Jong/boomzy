@@ -20,3 +20,19 @@
   object-fit: cover;
   height: 300px;
 }
+
+
+@media (max-width: 920px) {
+  .radio-button-image-grid {
+  grid-template-columns: 1fr;
+  justify-content: centered;
+  }
+}
+
+
+@media (max-width: 920px) {
+  .radio-button-image-grid {
+  grid-template-columns: 1fr;
+  }
+}
+
