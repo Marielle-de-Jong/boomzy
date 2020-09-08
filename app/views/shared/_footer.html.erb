@@ -13,11 +13,11 @@
       <div class="footer-link-column">
         <ul>
           <li class="footer-column-head">Categories</li>
-          <li><%= link_to "Mechanics", "#", class: "footer-link"%></li>
-          <li><%= link_to "Crafts", "#", class: "footer-link" %></li>
-          <li><%= link_to "Sports", "#", class: "footer-link" %></li>
-          <li><%= link_to "Woodworking", "#", class: "footer-link" %></li>
-          <li><%= link_to "Gardening", "#", class: "footer-link" %></li>
+          <li><%= link_to "Photography", listings_path(skill: "Photography"), class: "footer-link"%></li>
+          <li><%= link_to "Crafts", listings_path(skill: "Crafts"), class: "footer-link" %></li>
+          <li><%= link_to "Painting", listings_path(skill: "Painting"), class: "footer-link" %></li>
+          <li><%= link_to "Woodworking", listings_path(skill: "Woodworking"), class: "footer-link" %></li>
+          <li><%= link_to "Gardening", listings_path(skill: "Gardening"), class: "footer-link" %></li>
         </ul>
       </div>
       <div class="footer-link-column">
