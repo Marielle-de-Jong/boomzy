@@ -1,23 +1,22 @@
 <div class="navbar">
   <div class="navbar-left">
-  <!-- Drop down menu on left -->
-  <div class="dropdown">
-    <%= image_tag "burger_menu", class: "burger-menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <% if user_signed_in? %>
-      <%= link_to "Home", root_path, class: "dropdown-item" %>
-      <%= link_to "My Profile", account_path, class: "dropdown-item" %>
-      <%= link_to "Add Skill", "#" , class: "dropdown-item" %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-      <% else %>
-      <%= link_to "Log In", new_user_session_path, class: "dropdown-item" %>
-      <%= link_to "Sign Up", new_user_registration_path, class: "dropdown-item" %>
-      <% end %>
+    <div class="dropdown">
+      <%= image_tag "burger_menu", class: "burger-menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% if user_signed_in? %>
+        <%= link_to "My Profile", account_path, class: "dropdown-item" %>
+        <%= link_to "My Listings", account_path, class: "dropdown-item" %>
+        <%= link_to "My Bookings", account_path, class: "dropdown-item" %>
+        <%= link_to "Create New Listing", account_path, class: "dropdown-item" %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <% else %>
+        <%= link_to "Log In", new_user_session_path, class: "dropdown-item" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "dropdown-item" %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <!-- central logo -->
-  <div>
-    <%= link_to "BOOMZY", root_path,  class: "nav-logo" %>
+    <div class="boomzy-logo">
+      <%= link_to "BOOMZY", root_path,  class: "nav-logo" %>
   </div>
   </div>
   <!-- User menu on right -->
