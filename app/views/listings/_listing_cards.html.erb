@@ -21,9 +21,9 @@
             <% else %>
               <img src="<%= image_path 'avatar' %>" class="avatar" />
             <% end %>
-            <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+            <p><%= listing.user.first_name %> </p>
           </div>
-          <p class="card-category"><%= listing.skill.name %></p>
+          <p class="card-category"><%= listing.skill.category %></p>
         </div>
         <div class="card-description">
           <p><%= listing.description %></p>
