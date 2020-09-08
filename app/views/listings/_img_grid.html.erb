@@ -2,9 +2,6 @@
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
   <div class="form-group string optional listing_image_keyword">
     <fieldset class="form-group radio_buttons optional listing_listing_image">
-      <legend class="col-form-label pt-0">
-        Listing image
-      </legend>
       <input type="hidden" name="listing[listing_image]" value="">
       <div class="radio-button-image-grid">
           <% @urls.each_with_index do |url, index| %>
@@ -18,5 +15,12 @@
       </div>
     </fieldset>
   </div>
-  <input type="submit" name="commit" value="Submit" class="button standard accent" data-disable-with="Let's Teach!">
+  <div class="img-modal-footer" style="">
+    <div class="footer-button">
+      <button type="button" class="button standard accent" style="ml-1" data-dismiss="modal">Close</button>
+    </div>
+    <div class="footer-button">
+      <input type="submit" name="commit" value="Submit" class="button standard accent fill" style="ml-1" data-disable-with="Let's Teach!">
+    </div>
+  </div>
 </form>

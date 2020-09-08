@@ -43,6 +43,7 @@
         <p> - "<%= review.content %>" </p>
       <% end %>
       <%= link_to 'Leave a review', new_listing_review_path(@listing.user), class: "button standard accent fill" %>
+      <p>
       <% if @listing.user.has_socials? %>
         <h6><%= @listing.user.first_name %> socials</h6>
         <div class="listing-socials d-flex socials">
