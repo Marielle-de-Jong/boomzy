@@ -1,80 +1,20 @@
 <%= render 'shared/banner' %>
+<%= render "shared/search_form" %>
+<%= render "shared/category_card" %>
 
-<div class="container">
-  <br>
-  <h4>What would you like to learn?</h4>
-  <br>
-  <div id="section-2">
-    <%= simple_form_for :listing, id: "section-2", url: listings_path, method: :get,
-    wrapper: :inline_form,
-    html: { class: "form-inline" },
-    wrapper_mappings: {
-      boolean: :inline_boolean
-    } do |f| %>
-
-    <%= f.input :skills, collection: %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening), input_html: { class: "mb-2 mr-sm-2", name: "skill" } %>
-    <%= f.input :address, input_html: { class: "mb-2 mr-sm-2", name: "address" } %>
-
-    <%= f.button :submit, class: "button standard accent fill" %>
-    <% end %>
-  </div>
-
-  <br>
-
-  <h4>Categories</h4>
-  <br>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="category-card col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-      <%= image_tag("crafts.jpg") %>
-      <div class="category-title">
-        <h6>Crafts</h6>
-      </div>
-    </div>
-    <div class="category-card col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-      <%= image_tag("woodwork.jpg") %>
-      <div class="category-title">
-        <h6>Woodworking</h6>
-      </div>
-    </div>
-    <div class="category-card col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-      <%= image_tag("painting.jpg") %>
-      <div class="category-title">
-        <h6>Painting</h6>
-      </div>
-    </div>
-    <div class="category-card col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-      <%= image_tag("music.jpg") %>
-      <div class="category-title">
-        <h6>Music</h6>
-      </div>
-    </div>
-    <div class="category-card col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-      <%= image_tag("writing.jpg") %>
-      <div class="category-title">
-        <h6>Writing</h6>
-      </div>
-    </div>
-    <div class="category-card col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-      <%= image_tag("entrepreneurship.jpg") %>
-      <div class="category-title">
-        <h6>Entrepreneurship</h6>
-      </div>
-    </div>
-    <div class="category-card col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-      <%= image_tag("photography.jpg") %>
-      <div class="category-title">
-        <h6>Photography</h6>
-      </div>
-    </div>
-    <div class="category-card col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-      <%= image_tag("drawing.jpg") %>
-      <div class="category-title">
-        <h6>Drawing</h6>
-      </div>
-    </div>
+<div class="recent-reviews bg-white">
+  <div class="container">
+    <br>
+    <br>
+    <h4>Recent reviews</h4>
+    <br>
+    <p>..</p>
+    <p>..</p>
+    <p>..</p>
+    <p>..</p>
+    <br>
   </div>
 </div>
+
+
 
