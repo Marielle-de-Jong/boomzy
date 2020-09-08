@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @listing = Listing.find(params[:listing_id])
     @review = Review.new(review_params)
-    @review.user_id = @listing.user.id
+    @review.user = @listing.user
     if @review.save
       redirect_to listing_path(@listing)
       flash[:alert] = "Review created."

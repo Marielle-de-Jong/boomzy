@@ -1,0 +1,13 @@
+<div class="collapse" id="reviewAccordian">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <%= simple_form_for @review, url: listing_reviews_path(@listing), :method => :post do |f| %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate #{@listing.user.first_name}" %>
+          <%= f.input :content %>
+          <%= f.submit "Submit review", :class => "button standard accent fill" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
