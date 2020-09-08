@@ -1,22 +1,22 @@
 .acct-listing-card {
   overflow: hidden;
   display: flex;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 5px rgba(0,0,0,0.2);
   align-items: center;
-  &:hover {
-    background: $accent;
-  }
+  background-color: $background;
 }
 
-.card-img {
-  display:flex;
-  align-items: end;
-}
+
+
 .image-title {
   color: white;
-  opacity: .8;
+  opacity: .9;
   text-align: center;
   padding: 10px;
+}
+
+.acct-listing-card {
+  display: flex;
 }
 
 
@@ -27,20 +27,64 @@
   }
 }
 
-.listing-card-info {
-  position: relative;
+.listings-box {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
 }
 
-.l-edit {
-  position: absolute;
-  bottom: -60px;
-  right: 5px;
+.l-description {
+  padding: 20px;
 }
 
-.l-skill {
-  position: absolute;
-  top: -50px;
-  right: 5px;
+@media screen and (max-width: 800px) {
+  .acct-listing-card {
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    width: 330px;
+  }
+
+  .l-edit {
+    margin: 10px;
+    text-align: right;
+    margin-right: 5px;
+
+  }
+
+  .l-skill {
+    margin-top: 10px;
+    text-align: right;
+    margin-right: 5px;
+  }
+  .listing-card-info {
+    background-color: $background;
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  .acct-listing-card {
+    justify-self: center;
+    align-items: center;
+  }
+
+  .listing-card-info {
+    position: relative;
+  }
+
+  .l-edit {
+    position: absolute;
+    bottom: -60px;
+    right: 5px;
+  }
+
+  .l-skill {
+    position: absolute;
+    top: -50px;
+    right: 5px;
+  }
 }
 
 
