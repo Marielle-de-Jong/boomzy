@@ -1,0 +1,26 @@
+<form class="simple_form edit_listing" id="edit_listing_1" novalidate="novalidate" action="<%= post_add_image_path(@listing) %>" accept-charset="UTF-8" method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <div class="form-group string optional listing_image_keyword">
+    <fieldset class="form-group radio_buttons optional listing_listing_image">
+      <input type="hidden" name="listing[listing_image]" value="">
+      <div class="radio-button-image-grid">
+          <% @urls.each_with_index do |url, index| %>
+          <div class="form-check">
+            <input class="form-check-input radio_buttons optional" name="listing[listing_image]" type="radio" value="<%= url %>" id="url-<%= index %>">
+            <label class="form-check-label collection_radio_buttons" for="url-<%= index %>">
+              <%= image_tag url %>
+            </label>
+          </div>
+          <% end %>
+      </div>
+    </fieldset>
+  </div>
+  <div class="img-modal-footer" style="">
+    <div class="footer-button">
+      <button type="button" class="button standard accent" style="ml-1" data-dismiss="modal">Close</button>
+    </div>
+    <div class="footer-button">
+      <input type="submit" name="commit" value="Submit" class="button standard accent fill" style="ml-1" data-disable-with="Let's Teach!">
+    </div>
+  </div>
+</form>

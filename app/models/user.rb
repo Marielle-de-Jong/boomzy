@@ -16,7 +16,9 @@ class User < ApplicationRecord
   def average_rating(user)
     review_array = []
     user.reviews.each { |review| review_array << review.rating }
-    average_rating = review_array.sum / user.reviews.size
+    if review_array.count != 0
+      average_rating = review_array.sum / user.reviews.size
+    end
   end
 
   def has_socials?

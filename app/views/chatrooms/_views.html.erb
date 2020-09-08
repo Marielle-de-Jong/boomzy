@@ -1,3 +1,5 @@
+
+<script src="https://unpkg.com/@daily-co/daily-js"></script>
 <div id="messages" data-chatroom-id="<%= @chatroom.id %>" style="overflow-y: auto; height:400px;">
   <% @chatroom.messages.each do |message| %>
   <div class="message-container" id="message-<%= message.id %>">
@@ -10,8 +12,15 @@
   <% end %>
 
 </div>
+<div class="chat-call-buttons">
+  <div class="chat-button">
+    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "full-width") do |f| %>
+    <%= f.input :content, label: false, placeholder: "Your message", wrapper_html: {class: "full-width"} %>
+    <div class="call-button">
+      <%= f.submit class: "button standard accent fill", value: "Send Message" %>
+      <button data-key="<%= @room %>" class="button standard accent fill" id="vid-call-btn"><i class="fas fa-phone-alt"></i> Start a video call now</button>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-<%= simple_form_for([ @chatroom, @message ], remote: true) do |f| %>
-<%= f.input :content, label: false, placeholder: "Your message" %>
-<%= f.submit class: "button standard accent fill" %>
-<% end %>

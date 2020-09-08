@@ -1,0 +1,25 @@
+<div class="search-form-background bg-white mt-0">
+  <div class="container" id="scroll-target">
+    <br>
+    <br>
+    <h3>What would you like to learn?</h3>
+    <div id="section-2">
+      <%= simple_form_for :listing, id: "section-2", url: listings_path, method: :get,
+      wrapper: :inline_form,
+      html: { class: "form-inline" },
+      wrapper_mappings: {
+        boolean: :inline_boolean
+      } do |f| %>
+
+      <%= f.input :skills, wrapper_html: { class: "search-field1-wrapper"}, collection: %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening), selected: 1, input_html: { class: "search-field1", name: "skill" } %>
+
+      <%= f.input :address, wrapper_html: { class: "search-field2-wrapper"}, input_html:  { class: "search-field2", name: "address", placeholder: "Location" } %>
+
+      <%= f.button :submit, class: "button standard accent fill", value: "Search" %>
+
+      <% end %>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>

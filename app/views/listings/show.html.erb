@@ -2,15 +2,20 @@
   <% if @listing.listing_image %>
   <div class="listings-show-banner">
     <%= image_tag(@listing.listing_image, alt: "banner", class:"listings-show-image") %>
-    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent" %>
+    <button type="button" class="button standard accent" id="change-image-button" data-toggle="modal" data-target="#exampleModalCenter">Change Image </button>
   </div>
   <% else %>
   <div class="listings-show-banner">
     <%= image_tag('homepage_banner.jpg', class:"listings-show-image") %>
-    <%= link_to 'Change image', add_image_path(@listing), class: "button standard accent" %>
+    <button type="button" class="button standard accent" id="change-image-button" data-toggle="modal" data-target="#exampleModalCenter">Change Image </button>
   </div>
   <% end %>
 </div>
+
+<%= render "modal_image"  %>
+
+</div>
+
 <br>
 <br>
 <div class="container">
@@ -18,9 +23,7 @@
     <div class="listing-infos col-12 col-sm-12 col-md-8 col-lg-8">
       <h2><%= @listing.title %></h2>
       <div class="listing-top-infos d-flex", style="color:grey;">
-        <!-- render "shared/review-score", user: @average_rating -->
-        <% @average_rating = @listing.user.average_rating(@listing.user) %>
-        <p class="mr-4"><i class="fas fa-star"></i> <%= @average_rating %> (<%= @listing.user.reviews.count %>)</p>
+        <p class="mr-4"> <%= render "shared/review-score", user: @average_rating %> | Reviews: <%= @listing.user.reviews.count %></p>
         <p class="mr-4"><%= @listing.address.city%>, The Netherlands</p>
         <p class="mr-4">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
         <p class="mr-4"> <%= @listing.skill_level %> class</p>
@@ -37,21 +40,28 @@
       <br>
       <h6><%= @listing.user.first_name %>'s Reviews </h6>
       <% @listing.user.reviews.each do |review| %>
-        <p> - "<%= review.content %>" </p>
       <% end %>
+
+      <p>
+        <button class="button standard accent" type="button" data-toggle="collapse" data-target="#reviewAccordian" aria-expanded="false" aria-controls="collapseExample">
+          Leave a review
+        </button>
+        <%= render "review_accordian"  %>
+      </p>
+      <p>
       <% if @listing.user.has_socials? %>
-        <h6><%= @listing.user.first_name %> socials</h6>
-        <div class="listing-socials d-flex socials">
-          <% if @listing.user.linkedin_link? %>
-          <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <% elsif @listing.user.twitter_link? %>
-          <a href="<%= @listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
-          <% elsif @listing.user.instagram_link? %>
-          <a href="<%= @listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <% elsif @listing.user.facebook_link?%>
-          <a href="<%= @listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
-          <% end %>
-        </div>
+      <h6><%= @listing.user.first_name %> socials</h6>
+      <div class="listing-socials d-flex socials">
+        <% if @listing.user.linkedin_link? %>
+        <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <% elsif @listing.user.twitter_link? %>
+        <a href="<%= @listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
+        <% elsif @listing.user.instagram_link? %>
+        <a href="<%= @listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <% elsif @listing.user.facebook_link?%>
+        <a href="<%= @listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
+        <% end %>
+      </div>
       <% end %>
     </div>
     <div class="listing-booking-form col-12 col-sm-12 col-md-4 col-lg-4">
