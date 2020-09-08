@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<!-- HTML Meta Tags -->
-<title>Boomzy - Master what other people already know</title>
-<meta name="description" content="Boomzy links skilled people with people who want to learn a skill">
 <!-- Google / Search Engine Tags -->
 <meta itemprop="name" content="Boomzy - Master what other people already know">
 <meta itemprop="description" content="Boomzy links skilled people with people who want to learn a skill">
@@ -21,32 +15,3 @@
 <meta name="twitter:title" content="Boomzy - Master what other people already know">
 <meta name="twitter:description" content="Boomzy links skilled people with people who want to learn a skill">
 <meta name="twitter:image" content="http://boomzy-meet.herokuapp.com/assets/homepage_banner-25f195588ef2020e90ca4f708bcdae7d46cf76141707bd066fb254dfcb8486c9.jpg">
-
-<!-- Favicon -->
-<%= favicon_link_tag asset_path('boomzy_icon.jpg') %>
-
-
-  <title>Boomzy</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-</head>
-
-<body class="<%= params[:controller] %>-<%= params[:action] %>">
-  <div class="page-container">
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-
-    <%= yield %>
-
-
-    <%= render 'shared/footer' %>
-  </div>
-
-</body>
-</html>
-

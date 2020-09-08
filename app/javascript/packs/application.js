@@ -45,7 +45,6 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initVideoCall();
   initStarRating();
-  initScroll();
 });
 
 
