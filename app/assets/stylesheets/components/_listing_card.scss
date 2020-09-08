@@ -1,8 +1,22 @@
 .listing-card{
-  margin: 10px 0px;
-  height: 430px;
+  margin: 10px;
+  height: 415px;
   width: 350px;
   display: flex-column;
+  background: $background;
+}
+
+.listing-card-border {
+  padding: 10px;
+  transition: background .5s;
+}
+
+.listing-card-border:hover {
+  background-color: $accent;
+  transition: background .5s;
+}
+
+.listing-card-border-fill {
   background: $background;
 }
 
@@ -15,8 +29,8 @@
 }
 
 .listing-card-img{
-  height: 250px;
-  width: 350px;
+  // height: 250px;
+  width: 100%;
   background: $background;
   display: flex;
   justify-content: center;
@@ -37,7 +51,7 @@
 }
 
 .listing-card-info{
-  margin: 20px;
+  margin:0 5px;
   font-size: 14px;
 
 }
@@ -47,15 +61,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 5px;
 }
 
 .card-description > p {
-  margin: 0px 0px 6px 0px;
+  margin: 10px 0;
   min-height: 63px;
-}
-
-.card-categories{
-  display: flex;
+  font-size: 13px;
 }
 
 .card-user{
@@ -63,30 +75,36 @@
   justify-content: center;
   align-items: center;
   border-top: 1px solid #F4F7F6;
-  padding: 6px 0px;
 }
 
 .card-user > p {
-  margin: 0 0 0 6px;
+  // margin: 0 0 0 6px;
   align-items: center;
 }
 
+.card-categories{
+  display: flex;
+  align-content: center;
+  padding-bottom: 5px;
+}
 
 .card-category{
+  margin: 0px;
+  display: flex;
+  align-content: center;
   margin-right: 5px;
   font-weight: lighter;
   color: $white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 2px 5px;
-  height: auto;
   width: auto;
   background: $purple;
   border-radius: 20px;
   font-size: small;
 }
-
+.teacher-first-name {
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
 .skill-level-info {
   margin: 0px;
 }
