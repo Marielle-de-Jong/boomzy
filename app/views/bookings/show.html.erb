@@ -1,61 +1,81 @@
 <div class="container">
+  <div class="row">
+    <% if @booking.status == "Accepted" %>
+    <div class="col-sm-12 col-md-12 col-lg-8">
+    <% else %>
+    <div class="col-12">
+    <% end %>
+      <br>
+      <br>
+      <p>Hi <%= @booking.user.first_name%>,</p>
+      <h3>Thanks for booking <%= @booking.listing.title %> with <%= @booking.listing.user.first_name%> <%= @booking.listing.user.last_name %></h3>
+      <br>
+      <p>You've booked this learning experience for <%= @booking.date %>.</p>
 
-  <div class="booking-details">
-    <h6> Your booking is <%= @booking.status  %> </h6>
-    <h6> Date: <%= @booking.date %></h6>
-  </div>
 
-  <div class="teacher-bio">
-
-    <div class="teacher-card-image">
-      <% if @booking.listing.user.photo.attached? %>
-      <img src="<%= cl_image_path @booking.listing.user.photo.key %>"/>
+      <% if @booking.status == "Pending" %>
+        <p>Your booking is currently <strong>pending</strong>. You'll hear from us again once <%= @booking.listing.user.first_name %> has accepted.</p>
+        <p>In the meantime, learn more about your teacher below. </p>
+      <% elsif @booking.status == "Accepted" %>
+        <p><%= @booking.listing.user.first_name %> has <strong> accepted</strong> your booking. You can see their details below and start reaching out via the chat on the right to make an appointment. </p>
+      <% elsif @booking.status == "Denied" %>
+        <p>Unfortunately <%= @booking.listing.user.first_name %> will has <strong>declined</strong> your booking. Feel free to book one of our other learning experiences. </p>
       <% end %>
-      <div class="teacher-name">
-        <%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %>
-      </div>
-      <p> Member for <%= (Date.today - Date.parse("#{@booking.listing.user.created_at}")).to_i %> days </p>
-    </div>
-    <div class="teacher-card-details">
-      <h4>Meet your teacher</h4>
-      <div class="user-bio">
-        <h5>Bio</h5>
-        <p><%=  @booking.listing.user.bio %></p>
-      </div>
-      <div class="user-motivation">
-        <h5>Motivation</h5>
-        <p><%=  @booking.listing.user.motivation %></p>
-      </div>
-      <%= link_to "Teacher's Profile", account_path(@booking.listing.user), class: 'button fill standard accent teacher profile'%>
-    </div>
-  </div>
-  <br>
-  <br>
-  <br>
 
-  <div class="booking-show-grid">
-    <div class="chat-card">
-      <div class="video-call">
-        <h1>
-          Chat here
-        </h1>
-      </div>
-      <div class="chat-buttons">
-        <div class="chatroom">
-          <%= render "chatrooms/views", chatroom: @chatroom, message: @message, room: @room%>
+      <br>
+      <h5>About your teacher</h5>
+      <br>
+      <div class="teacher-image-name d-flex align-items-center">
+        <% if @booking.listing.user.photo.attached? %>
+        <div class="teacher-image mr-3">
+          <%= cl_image_tag @booking.listing.user.photo.key, class: "avatar-large" %>
+        </div>
+        <% end %>
+        <div class="teacher-profile-details">
+          <p class="m-0"><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
+          <p class="m-0"> Member since <%= (Date.today - Date.parse("#{@booking.listing.user.created_at}")).to_i %> days </p>
         </div>
       </div>
+      <br>
+      <h6> <%= @booking.listing.user.first_name %>'s bio</h6>
+      <br>
+      <p><%= @booking.listing.user.bio %></p>
+      <br>
+      <h6>What motivates <%= @booking.listing.user.first_name %> to teach <%= @booking.listing.title %></h6>
+      <br>
+      <p><%=  @booking.listing.user.motivation %></p>
+      <br>
+      <h6>Reviews about <%= @booking.listing.user.first_name %></h6>
+      <br>
+      <% @booking.listing.user.reviews.each do |review| %>
+        <p><%= render "shared/review-score", user: @average_rating %> | Reviews: <%= @booking.listing.user.reviews.count %></p>
+        <p><%= review.content %></p>
+      <% end %>
+      <br>
+      <br>
     </div>
-
-      <div class="map-container" id="map"
-      style="width: 400px; height: 550px;"
-      data-markers="<%= @marker.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+    <% if @booking.status == "Accepted" %>
+      <div class="col-sm-12 col-md-12 col-lg-4">
+        <br>
+        <br>
+          <div class="chat-card">
+            <div class="video-call">
+              <h5>Chat with <%=@booking.listing.user.first_name  %></h5>
+            </div>
+            <div class="chat-buttons">
+              <div class="chatroom">
+                <%= render "chatrooms/views", chatroom: @chatroom, message: @message, room: @room%>
+              </div>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="map-container mt-5" id="map"
+  style="width: 100vw; height: 550px;"
+  data-markers="<%= @marker.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-</div>
 
-<div class="nav-buttons">
-  <%= link_to 'Back to My Profile', account_path, class: 'button standard accent fill' %>
-</div>
