@@ -1,8 +1,8 @@
 <% if @booking.status == "Pending" %>
-<p>Your booking is currently <strong>pending</strong>. You'll hear from us again once <%= @booking.listing.user.first_name %> has accepted.</p>
-<p>In the meantime, learn more about your teacher below. </p>
+<p>• Your booking is currently <strong>pending</strong>. You'll hear from us again once <%= @booking.listing.user.first_name %> has accepted.</p>
+<p>• In the meantime, learn more about your teacher below. </p>
 <% elsif @booking.status == "Accepted" %>
-<p><%= @booking.listing.user.first_name %> has <strong> accepted</strong> your booking. You can see their details below and start reaching out via the chat on the right to make an appointment. </p>
+<p>• <%= @booking.listing.user.first_name %> has <strong> accepted</strong> your booking. You can see their details below and start reaching out via the chat on the right to make an appointment. </p>
 <% elsif @booking.status == "Denied" %>
-<p>Unfortunately <%= @booking.listing.user.first_name %> will has <strong>declined</strong> your booking. Feel free to book one of our other learning experiences. </p>
+<p>• Unfortunately <%= @booking.listing.user.first_name %> will has <strong>declined</strong> your booking. Feel free to book one of our other learning experiences. </p>
 <% end %>

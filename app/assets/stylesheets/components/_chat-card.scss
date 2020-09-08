@@ -1,8 +1,8 @@
 .chat-card{
   padding: 15px;
-  background: $light-gray;
+  background: $background;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 146px);
   position: relative;
 }
 
@@ -15,5 +15,5 @@
   justify-content: space-evenly;
   position: absolute;
   width: 100%;
-  margin:-54px 0px 0px -14px;
+  margin:-84px 0px 0px -14px;
 }

@@ -7,16 +7,14 @@
   </div>
   <% end %>
   <div class="teacher-profile-details">
-    <p class="m-0"><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></p>
+    <h6 class="m-0"><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></h6>
     <p class="m-0"> Member since <%= (Date.today - Date.parse("#{@booking.listing.user.created_at}")).to_i %> days </p>
   </div>
 </div>
 <br>
 <h6> <%= @booking.listing.user.first_name %>'s bio</h6>
-<br>
 <p><%= @booking.listing.user.bio %></p>
 <br>
 <h6>What motivates <%= @booking.listing.user.first_name %> to teach <%= @booking.listing.title %></h6>
-<br>
 <p><%=  @booking.listing.user.motivation %></p>
 <br>

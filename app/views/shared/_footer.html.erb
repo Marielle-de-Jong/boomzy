@@ -1,5 +1,5 @@
-<!-- <div class="footer-container"> -->
-  <div class="container d-flex flex-wrap justify-content-between mt-5">
+<div class="footer-container">
+  <div class="container d-flex flex-wrap justify-content-between mt-5 mb-4">
     <div class="footer-logo p-0">
       <li>
         <%= link_to "BOOMZY", root_path,  class: "nav-logo" %>
@@ -11,7 +11,7 @@
 
     <div class="footer-links">
       <div class="footer-link-column">
-        <ul>
+        <ul class="footer-padding">
           <li class="footer-column-head">Categories</li>
           <li><%= link_to "Photography", listings_path(skill: "Photography"), class: "footer-link"%></li>
           <li><%= link_to "Crafts", listings_path(skill: "Crafts"), class: "footer-link" %></li>
@@ -42,6 +42,6 @@
       </div>
     </div>
   </div>
-  <div class="footer-end">
   </div>
-<!-- </div> -->
+  <div class="footer-end">
+</div>
