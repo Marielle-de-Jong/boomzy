@@ -20,6 +20,7 @@ class BookingsController < ApplicationController
         lng: @booking.listing.address.longitude,
         image_url: helpers.asset_url('icons/sewing-machine.svg')
       }]
+    @review = Review.new
   end
 
   def status?

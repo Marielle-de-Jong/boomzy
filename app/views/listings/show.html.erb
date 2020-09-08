@@ -40,7 +40,6 @@
       <br>
       <h6><%= @listing.user.first_name %>'s Reviews </h6>
       <% @listing.user.reviews.each do |review| %>
-        <p>  - "<%= review.content %>" </p>
       <% end %>
 
       <p>
@@ -51,18 +50,18 @@
       </p>
       <p>
       <% if @listing.user.has_socials? %>
-        <h6><%= @listing.user.first_name %> socials</h6>
-        <div class="listing-socials d-flex socials">
-          <% if @listing.user.linkedin_link? %>
-          <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <% elsif @listing.user.twitter_link? %>
-          <a href="<%= @listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
-          <% elsif @listing.user.instagram_link? %>
-          <a href="<%= @listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <% elsif @listing.user.facebook_link?%>
-          <a href="<%= @listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
-          <% end %>
-        </div>
+      <h6><%= @listing.user.first_name %> socials</h6>
+      <div class="listing-socials d-flex socials">
+        <% if @listing.user.linkedin_link? %>
+        <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <% elsif @listing.user.twitter_link? %>
+        <a href="<%= @listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
+        <% elsif @listing.user.instagram_link? %>
+        <a href="<%= @listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <% elsif @listing.user.facebook_link?%>
+        <a href="<%= @listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
+        <% end %>
+      </div>
       <% end %>
     </div>
     <div class="listing-booking-form col-12 col-sm-12 col-md-4 col-lg-4">
