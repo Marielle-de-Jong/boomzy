@@ -1,6 +1,6 @@
 .listing-card{
-  margin: 10px 0px;
-  height: 430px;
+  margin: 10px 10px;
+  height: 415px;
   width: 350px;
   display: flex-column;
   background: $background;
@@ -37,7 +37,7 @@
 }
 
 .listing-card-info{
-  margin: 20px;
+  margin:0 10px;
   font-size: 14px;
 
 }
@@ -50,7 +50,7 @@
 }
 
 .card-description > p {
-  margin: 0px 0px 6px 0px;
+  margin: 5px 0px 5px 0px;
   min-height: 63px;
 }
 
@@ -63,7 +63,6 @@
   justify-content: center;
   align-items: center;
   border-top: 1px solid #F4F7F6;
-  padding: 6px 0px;
 }
 
 .card-user > p {
