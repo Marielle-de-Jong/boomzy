@@ -1,9 +1,10 @@
 <div class="search-form-background bg-white mt-0">
-  <div class="container">
+  <div class="search-container">
     <br>
     <br>
-    <h4>What would you like to learn?</h4>
-    <br>
+    <div class="search-text">
+    <h3>What would you like to learn?</h3>
+    </div>
     <div id="section-2">
       <%= simple_form_for :listing, id: "section-2", url: listings_path, method: :get,
       wrapper: :inline_form,
@@ -12,10 +13,12 @@
         boolean: :inline_boolean
       } do |f| %>
 
-      <%= f.input :skills, collection: %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening), input_html: { class: "mb-2 mr-sm-2", name: "skill" } %>
-      <%= f.input :address, input_html: { class: "mb-2 mr-sm-2", name: "address" } %>
+          <%= f.input :skills, wrapper_html: { class: "search-field1-wrapper"}, collection: %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening), selected: 1, input_html: { class: "search-field1", name: "skill" } %>
 
-      <%= f.button :submit, class: "button standard accent fill" %>
+          <%= f.input :address, wrapper_html: { class: "search-field2-wrapper"}, input_html:  { class: "search-field2", name: "address", placeholder: "location" } %>
+
+          <%= f.button :submit, class: "button standard accent fill", value: "Search" %>
+
       <% end %>
     </div>
     <br>
