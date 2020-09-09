@@ -10,9 +10,22 @@
 
 .footer-logo {
    list-style: none;
-   padding: 50px;
    p{
     opacity: 0.5;
+  }
+}
+
+#footer-logo{
+  text-decoration: none;
+  color: $text;
+  align-text: left;
+  font-size: 250%;
+  font-family: 'Hind', sans-serif;
+  font-weight: lighter;
+  opacity: 75%;
+
+  &:hover{
+    opacity: 50%;
   }
 }
 
