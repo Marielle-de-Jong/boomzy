@@ -37,17 +37,14 @@
 
 }
 
-// .booking-imgs {
-// }
-.booking-info {
-  display: grid;
-}
-
-
 @media screen and (max-width: 800px) {
   .profile-container {
     flex-direction: column-reverse;
     justify-self: center;
     align-items: center;
   }
+}
+
+.bg-gray {
+  background-color: $background;
 }
