@@ -27,13 +27,16 @@
     <div class="listing-infos col-12 col-sm-12 col-md-8 col-lg-8">
       <h2><%= @listing.title %></h2>
       <div class="listing-top-infos d-flex flex-wrap", style="color:grey;">
-        <p class="mr-4"> <%= render "shared/review-score", user: @average_rating %> | <%= @listing.user.reviews.count %> reviews</p>
+        <% if @listing.user.reviews.count != 0 %>
+          <p class="mr-4"> <%= render "shared/review-score", user: @average_rating %> | <%= @listing.user.reviews.count %> reviews</p>
+        <% end %>
         <p class="mr-4"><%= @listing.address.city%>, The Netherlands</p>
         <p class="mr-4">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
         <p class="mr-4"> <%= @listing.skill_level %> class</p>
       </div>
       <br>
       <br>
+      <h5>About the class</h5>
       <%= @listing.description %> </p>
       <br>
       <h5>About <%= @listing.user.first_name %></h5>
@@ -48,9 +51,7 @@
         <p> No reviews... yet </p>
         <br>
       <% else %>
-        <% @listing.user.reviews.each do |review| %>
-          <%= render 'teacher_reviews' %>
-        <% end %>
+        <%= render 'teacher_reviews' %>
       <% end %>
 
       <% if @listing.user.has_socials? %>
@@ -67,10 +68,6 @@
         <% end %>
       </div>
       <% end %>
-      <br>
-      <h6><%= @listing.user.first_name %>'s Reviews </h6>
-      <br>
-      <%= render 'teacher_reviews' %>
       <br>
     </div>
     <div class="listing-booking-form col-12 col-sm-12 col-md-4 col-lg-4">
