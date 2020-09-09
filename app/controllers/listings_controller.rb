@@ -16,10 +16,14 @@ class ListingsController < ApplicationController
       @listings = @listings
     end
 
-    @listing_addresses = Address.where(addressable_type: "Listing")
+    @listing_addresses = []
+    @listings.each do |listing|
+      @listing_addresses << listing.address
+    end
+    # @listing_addresses = Address.where(addressable_type: "Listing")
 
 
-    @markers = @listing_addresses.geocoded.map do |address|
+    @markers = @listing_addresses.map do |address|
       {
         lat: address.latitude,
         lng: address.longitude,
