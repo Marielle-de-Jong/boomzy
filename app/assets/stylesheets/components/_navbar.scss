@@ -21,10 +21,9 @@
   width: auto;
   background-color: $background;
   border: none;
-  margin: 32px 0px 0px -16px;
+  margin: 26px 0px 0px -16px;
   border-radius: 0px;
   min-width: 260px;
-
 }
 
 .dropdown-item {
@@ -59,11 +58,6 @@ a#nav-logo{
   padding: 5px;
   position: absolute;
   margin-top: -25px;
-
-  &:hover{
-    height: 50px;
-    width: 50px;
-  }
 }
 
 .burger-menu img{

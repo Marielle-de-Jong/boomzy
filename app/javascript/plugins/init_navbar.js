@@ -23,7 +23,7 @@ const initNavbar = () => {
       burger.style.height = "45px";
       burger.style.width = "45px";
       navbar.style.opacity = "1";
-      dropdown.style.margin = "32px 0px 0px -16px";
+      dropdown.style.margin = "26px 0px 0px -16px";
       navLogo.style.fontSize = "35px";
     }
   }
