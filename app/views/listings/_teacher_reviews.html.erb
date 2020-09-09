@@ -1,0 +1,22 @@
+<div class="reviews_container">
+  <div class="row">
+    <% @listing.user.reviews.each do |review| %>
+      <div class="single-review col-12 col-sm-12 col-md 6 col-lg-6 col-xl-6">
+        <% if review.rating == 5 %>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <% elsif review.rating == 4 %>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+        <% elsif review.rating == 3 %>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <% elsif review.rating == 2 %>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <% elsif review.rating == 1 %>
+        <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <% end %>
+        <p><strong>"<%= review.content %>"</strong></p>
+        <p><%= review.created_at.strftime("Reviewed on %d %B %Y") %></p>
+        <br>
+      </div>
+    <% end %>
+  </div>
+</div>

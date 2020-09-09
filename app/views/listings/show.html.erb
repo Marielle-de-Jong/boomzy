@@ -42,10 +42,15 @@
       <h6><%= @listing.user.first_name %> offers this class because </h6>
       <p> <%= @listing.user.motivation %> </p>
       <br>
-      <h6><%= @listing.user.first_name %>'s Reviews </h6>
-      <% @listing.user.reviews.each do |review| %>
+
+      <h5>Reviews about <%= @listing.user.first_name %></h5>
+      <% if @listing.user.reviews.count == 0 %>
+        <p> No reviews... yet </p>
+      <% else %>
+        <% @listing.user.reviews.each do |review| %>
+          <%= render 'teacher_reviews' %>
+        <% end %>
       <% end %>
-      <p>
       <% if @listing.user.has_socials? %>
       <h6><%= @listing.user.first_name %> socials</h6>
       <div class="listing-socials d-flex socials">
