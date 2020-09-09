@@ -2,6 +2,7 @@
   <div class="row">
     <% @booking.listing.user.reviews.each do |review| %>
       <div class="single-review col-12 col-sm-12 col-md 6 col-lg-6 col-xl-6">
+        <div style="color:#49C5B6", class="mb-2">
         <% if review.rating == 5 %>
         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         <% elsif review.rating == 4 %>
@@ -13,8 +14,9 @@
         <% elsif review.rating == 1 %>
         <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
         <% end %>
-        <p><strong>"<%= review.content %>"</strong></p>
-        <p><%= review.created_at.strftime("Reviewed on %d %B %Y") %></p>
+        </div>
+        <p style="color:#444444"><strong>"<%= review.content %>"</strong></p>
+        <p style="font-style: italic"><%= review.created_at.strftime("Reviewed on %d %B %Y") %></p>
         <br>
       </div>
     <% end %>

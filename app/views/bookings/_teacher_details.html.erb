@@ -8,7 +8,7 @@
   <% end %>
   <div class="teacher-profile-details">
     <h6 class="m-0"><%= @booking.listing.user.first_name %> <%= @booking.listing.user.last_name %></h6>
-    <p class="m-0"> Member since <%= (Date.today - Date.parse("#{@booking.listing.user.created_at}")).to_i %> days </p>
+    <p class="m-0", style="font-style: italic"> Member since <%= (Date.today - Date.parse("#{@booking.listing.user.created_at}")).to_i %> days </p>
   </div>
 </div>
 <br>
