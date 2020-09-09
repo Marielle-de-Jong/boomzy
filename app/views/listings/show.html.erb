@@ -22,8 +22,8 @@
   <div class="row">
     <div class="listing-infos col-12 col-sm-12 col-md-8 col-lg-8">
       <h2><%= @listing.title %></h2>
-      <div class="listing-top-infos d-flex", style="color:grey;">
-        <p class="mr-4"> <%= render "shared/review-score", user: @average_rating %> | Reviews: <%= @listing.user.reviews.count %></p>
+      <div class="listing-top-infos d-flex flex-wrap", style="color:grey;">
+        <p class="mr-4"> <%= render "shared/review-score", user: @average_rating %> | <%= @listing.user.reviews.count %> reviews</p>
         <p class="mr-4"><%= @listing.address.city%>, The Netherlands</p>
         <p class="mr-4">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
         <p class="mr-4"> <%= @listing.skill_level %> class</p>
@@ -38,19 +38,8 @@
       <h6><%= @listing.user.first_name %> offers this class because </h6>
       <p> <%= @listing.user.motivation %> </p>
       <br>
-      <h6><%= @listing.user.first_name %>'s Reviews </h6>
-      <% @listing.user.reviews.each do |review| %>
-      <% end %>
-
-      <p>
-        <button class="button standard accent" type="button" data-toggle="collapse" data-target="#reviewAccordian" aria-expanded="false" aria-controls="collapseExample">
-          Leave a review
-        </button>
-        <%= render "review_accordian"  %>
-      </p>
-      <p>
       <% if @listing.user.has_socials? %>
-      <h6><%= @listing.user.first_name %> socials</h6>
+      <h6><%= @listing.user.first_name %>'s socials</h6>
       <div class="listing-socials d-flex socials">
         <% if @listing.user.linkedin_link? %>
         <a href="<%= @listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -63,6 +52,16 @@
         <% end %>
       </div>
       <% end %>
+      <br>
+      <h6><%= @listing.user.first_name %>'s Reviews </h6>
+      <br>
+      <%= render 'teacher_reviews' %>
+        <button class="button standard accent" type="button" data-toggle="collapse" data-target="#reviewAccordian" aria-expanded="false" aria-controls="collapseExample">
+          Leave a review
+        </button>
+        <%= render "review_accordian"  %>
+        <br>
+      </p>
     </div>
     <div class="listing-booking-form col-12 col-sm-12 col-md-4 col-lg-4">
       <h5>Free experience</h5>
