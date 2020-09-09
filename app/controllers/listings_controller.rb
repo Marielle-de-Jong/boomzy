@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :edit, :destroy, :update, :add_image, :post_add_image]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
 
   def index
     if params[:address].present?
