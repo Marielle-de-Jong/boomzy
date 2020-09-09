@@ -15,6 +15,18 @@ class ListingsController < ApplicationController
     else
       @listings = @listings
     end
+
+    @listing_addresses = Address.where(addressable_type: "Listing")
+    @markers = @listing_addresses.geocoded.map do |address|
+      {
+        lat: address.latitude,
+        lng: address.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { address: address }),
+        image_url: helpers.asset_url('icons/sewing-machine.svg')
+
+      }
+    end
+
   end
 
   def show
