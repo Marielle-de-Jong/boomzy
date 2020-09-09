@@ -5,3 +5,13 @@
   max-height: 190px;
   margin-bottom: 32px;
 }
+
+@media (max-width: 991px) {
+  .listing-booking-form {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    bottom: 0;
+  }
+}
+
+

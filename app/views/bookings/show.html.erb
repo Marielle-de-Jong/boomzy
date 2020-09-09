@@ -16,15 +16,15 @@
       <%= render 'teacher_details' %>
       <h5>Reviews about <%= @booking.listing.user.first_name %></h5>
       <br>
-      <%= render 'teacher_reviews' %>
-      <br>
       <% if current_user == @booking.user %>
         <button class="button standard accent" type="button" data-toggle="collapse" data-target="#reviewAccordian" aria-expanded="false" aria-controls="collapseExample">
           Leave a review
         </button>
+        <br>
         <%= render "review_accordian"  %>
         <br>
       <% end %>
+      <%= render 'teacher_reviews' %>
       <br>
     </div>
     <% if @booking.status == "Accepted" %>
