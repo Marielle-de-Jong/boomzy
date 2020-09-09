@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 80px;
+  height: 60px;
   background-color: $background;
   z-index: 5;
   position: fixed;
@@ -44,7 +44,7 @@ a#nav-logo{
   text-decoration: none;
   color: $text;
   align-text: center;
-  font-size: 250%;
+  font-size: 35px;
   font-family: 'Hind', sans-serif;
   font-weight: lighter;
 
@@ -54,8 +54,8 @@ a#nav-logo{
 }
 
 .burger-menu{
-  height: 49px;
-  width: 49px;
+  height: 45px;
+  width: 45px;
   padding: 5px;
   position: absolute;
   margin-top: -25px;
@@ -85,10 +85,21 @@ a#nav-logo{
 }
 
 a.navbar-btn{
-  text-decoration: none;
-  color: $text;
-  font-size: 2vw;
-  &:hover{
-    opacity: 0.8;
+    text-decoration: none;
+    color: $text;
+    font-size: 20px;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+
+@media (max-width: 960px){
+  a.navbar-btn{
+    text-decoration: none;
+    color: $text;
+    font-size: 12px;
+    &:hover{
+      opacity: 0.8;
+    }
   }
 }
