@@ -1,0 +1,103 @@
+.card-header-title {
+  background-color: $accent;
+  font-weight: lighter;
+}
+
+.card-listing-header > p {
+  font-style: italic;
+}
+
+.card-listing-bottom {
+  padding: 8px;
+  background-color: $background;
+}
+
+.card-listing-header > p {
+  margin: 0;
+}
+
+.card-listing {
+  max-width: 300px;
+  padding: 0px;
+  margin: 10px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.1);
+}
+
+.listing-image-container{
+  width: 300px;
+  background: $background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.listing-image{
+  background-size: cover;
+  background-position: center;
+  width: 300px;
+  height: 200px;
+}
+
+.skill-categories {
+  display: flex;
+  align-content: center;
+  margin: 4px 0px 8px 0px;
+  font-weight: lighter;
+  padding: 4px 8px;
+  width: auto;
+  border-radius: 20px;
+  font-size: small;
+  font-weight: bold;
+}
+
+.skill-categories > p {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.red-category {
+  background: #FF4E4E;
+  color: $white;
+}
+
+.green-category {
+  background: $accent;
+  color: $white;
+}
+
+.purple-category {
+  background: $purple;
+  color: $white;
+}
+
+.yellow-category {
+  background-color: #FEF7C1;
+}
+
+.level-image {
+  width: 35px;
+  margin: 4px 0px 8px 0px;
+}
+
+.listing-user{
+  display: flex;
+  align-items: center;
+  border-top: 1px solid $accent;
+  padding-top: 6px;
+}
+
+.card-user > p {
+  // margin: 0 0 0 6px;
+  align-items: center;
+}
+
+.card-bottom-infos {
+  min-height: 47px;
+}
+
+.listing-image > h1 {
+  color: white;
+  padding: 8px;
+  font-weight: lighter;
+}
