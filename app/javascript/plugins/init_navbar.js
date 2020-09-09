@@ -19,12 +19,12 @@ const initNavbar = () => {
       dropdown.classList.add("transition")
       navLogo.classList.add("transition")
     } else {
-      navbar.style.height = "80px";
-      burger.style.height = "49px";
-      burger.style.width = "49px";
+      navbar.style.height = "60px";
+      burger.style.height = "45px";
+      burger.style.width = "45px";
       navbar.style.opacity = "1";
-      dropdown.style.margin = "32px 0px 0px -16px";
-      navLogo.style.fontSize = "40px";
+      dropdown.style.margin = "26px 0px 0px -16px";
+      navLogo.style.fontSize = "35px";
     }
   }
 };
