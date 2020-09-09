@@ -1,5 +1,5 @@
 <div class="navbar">
-  <div class="navbar-left">
+  <div class="navbar-burger">
     <div class="dropdown">
       <%= image_tag "burger_menu", class: "burger-menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -15,14 +15,16 @@
         <% end %>
       </div>
     </div>
+    </div>
     <div class="boomzy-logo">
-      <%= link_to "BOOMZY", root_path,  class: "nav-logo" %>
+      <%= link_to "BOOMZY", root_path,  id: "nav-logo" %>
   </div>
-  </div>
+  <div class="navbar-right">
   <!-- User menu on right -->
     <% if !user_signed_in? %>
     <%= link_to "SIGN IN", new_user_session_path, class: "navbar-btn" %>
     <% else %>
     <%= link_to "#{current_user.first_name} #{current_user.last_name}", account_path, class: "navbar-btn" %>
   <% end %>
+  </div>
 </div>
