@@ -36,23 +36,22 @@
       <br>
       <%= @listing.description %> </p>
       <br>
-      <h6>About <%= @listing.user.first_name %></h6>
+      <h5>About <%= @listing.user.first_name %></h5>
       <p> <%= @listing.user.bio %> </p>
       <br>
-      <h6><%= @listing.user.first_name %> offers this class because </h6>
+      <h5><%= @listing.user.first_name %> offers this class because </h5>
       <p> <%= @listing.user.motivation %> </p>
       <br>
-      <h6><%= @listing.user.first_name %>'s Reviews </h6>
-      <% @listing.user.reviews.each do |review| %>
-      <% end %>
 
-      <p>
-        <button class="button standard accent" type="button" data-toggle="collapse" data-target="#reviewAccordian" aria-expanded="false" aria-controls="collapseExample">
-          Leave a review
-        </button>
-        <%= render "review_accordian"  %>
-      </p>
-      <p>
+      <h5>Reviews about <%= @listing.user.first_name %></h5>
+      <% if @listing.user.reviews.count == 0 %>
+        <p> No reviews... yet </p>
+        <br>
+      <% else %>
+        <% @listing.user.reviews.each do |review| %>
+          <%= render 'teacher_reviews' %>
+        <% end %>
+      <% end %>
       <% if @listing.user.has_socials? %>
       <h6><%= @listing.user.first_name %> socials</h6>
       <div class="listing-socials d-flex socials">

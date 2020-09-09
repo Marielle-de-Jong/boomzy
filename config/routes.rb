@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :skills, only: [:new, :create, :destroy]
   resources :listings do
-    resources :reviews, only: [:new, :create]
-    resources :bookings, shallow: true
+    resources :bookings, shallow: true do
+      resources :reviews, only: [:new, :create]
+    end
   end
 
   # resources :bookings, only: :show do
