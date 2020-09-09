@@ -18,9 +18,9 @@
           </div>
           <div class="l-description">
             <div class="l-title">
-              <h4> <%= booking.listing.title %> with <%= booking.listing.user.first_name %></h4>
+              <h5> <%= booking.listing.title %> with <%= booking.listing.user.first_name %></h5>
             </div>
-            <h6> <%= booking.listing.description %> </h6>
+            <p> <%= booking.listing.description %> </p>
           </div>
           <div class="l-edit">
             <%= link_to 'Details', booking_path(booking) %> |
