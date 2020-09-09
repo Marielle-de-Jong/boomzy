@@ -17,6 +17,8 @@ class ListingsController < ApplicationController
     end
 
     @listing_addresses = Address.where(addressable_type: "Listing")
+
+
     @markers = @listing_addresses.geocoded.map do |address|
       {
         lat: address.latitude,
