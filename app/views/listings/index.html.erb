@@ -70,7 +70,7 @@
             <% end %>
           </div>
         </div>
-        <p class="mb-2"><%= truncate(listing.description, length: 70)%></p>
+        <p class="mb-2"><%= truncate(listing.description, length: 65)%></p>
         <div class="listing-user">
           <% if listing.user.photo.attached? %>
           <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar avatar-shawdow" />
