@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="map-user">
+    <h4><%= @booking.listing.user.first_name %></h4>
+    <img src="<%= cl_image_path @booking.listing.user.photo.key %>" alt="avatar">
+  </div>
+</div>
+

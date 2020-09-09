@@ -8,7 +8,7 @@ class AddressController < ApplicationController
         lat: address.latitude,
         lng: address.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { address: address }),
-        image_url: helpers.asset_url('icons/sewing-machine.svg')
+        image_url: helpers.asset_url('icons/pin.svg')
 
       }
     end

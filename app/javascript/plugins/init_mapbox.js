@@ -8,7 +8,7 @@ const initMapbox = () => {
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/alexander101010/ckevfwip515b919nt8cknq3wu'
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
@@ -19,8 +19,8 @@ const initMapbox = () => {
       element.className = 'marker';
       element.style.backgroundImage = `url('${marker.image_url}')`;
       element.style.backgroundSize = 'contain';
-      element.style.width = '25px';
-      element.style.height = '25px';
+      element.style.width = '75px';
+      element.style.height = '75px';
 
 
       new mapboxgl.Marker(element)
