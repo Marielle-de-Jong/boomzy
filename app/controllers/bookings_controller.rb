@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
       [{
         lat: @booking.listing.address.latitude,
         lng: @booking.listing.address.longitude,
-        image_url: helpers.asset_url('icons/sewing-machine.svg')
+        image_url: helpers.asset_url('icons/pin.svg')
       }]
     @review = Review.new
   end
