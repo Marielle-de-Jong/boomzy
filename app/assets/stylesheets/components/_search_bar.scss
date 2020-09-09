@@ -23,7 +23,7 @@
 }
 
 .button-container{
-  height: 4rem;
+  height: 3rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid $accent;
   border-left: none;
@@ -40,12 +40,12 @@
 }
 
 .search-form-control .form-control {
-  height: 4rem;
+  height: 3rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid $accent;
   background: $white;
   color: $text;
-  font-size: 25px;
+  font-size: 16px;
   margin-top: 5px;
   position:relative;
 }
@@ -89,5 +89,9 @@
 
 #skill-filter{
   border-radius: 15px;
+}
+
+.form-width {
+  max-width: 200px;
 }
 
