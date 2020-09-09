@@ -30,9 +30,9 @@
         <% if @listing.user.reviews.count != 0 %>
           <p class="mr-4"> <%= render "shared/review-score", user: @average_rating %> | <%= @listing.user.reviews.count %> reviews</p>
         <% end %>
-        <p class="mr-4"><%= @listing.address.city%>, The Netherlands</p>
-        <p class="mr-4">With <%= @listing.user.first_name %>   <%= @listing.user.last_name %> </p>
-        <p class="mr-4"> <%= @listing.skill_level %> class</p>
+        <p class="mr-4"><i class="fas fa-map-marker-alt"></i> <%= @listing.address.city%></p>
+        <p class="mr-4"><i class="fas fa-user"></i> <%= @listing.user.first_name %></p>
+        <p class="mr-4"><i class="fas fa-signal"></i> <%= @listing.skill_level %></p>
       </div>
       <br>
       <br>
