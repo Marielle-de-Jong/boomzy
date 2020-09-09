@@ -1,38 +1,35 @@
 <div class="bookings-box">
-  <% @user.bookings.each do |booking| %>
   <% if @user.bookings.nil? %>
     <h3>You do not currently have any bookings. <%= link_to 'Search Listings', listings_path, class: "button standard accent fill" %></h3>
   <% else %>
-    <h3 id="bookings">Things you've booked</h3>
-
-      <div class="container booking-card">
-        <div class="booking-imgs">
+    <h3 id="bookings">Learning</h3>
+  <% @user.bookings.each do |booking| %>
+      <div class="acct-listing-card">
           <% if booking.listing.listing_image.present? %>
               <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= booking.listing.listing_image %>);">
-                <div><h3 class="image-title"><%= booking.listing.title %></h3></div>
               </div>
             <% else %>
               <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
-                <div><h3 class="image-title"><%= booking.listing.title %></h3></div>
               </div>
-            <% end %>
-        </div>
-        <div class="booking-info">
-          <p> Your booking for <%= booking.date %> is: <%= booking.status %></p>
-
-          <h3> <%= booking.listing.title %> </h3>
-          <h4> <%= booking.listing.description %> </h4>
-
+          <% end %>
+        <div class="listing-card-info">
+          <div class="l-skill">
+          <p> Your booking for <%= booking.date %> is <strong><%= booking.status %></strong></p>
+          </div>
+          <div class="l-description">
+            <div class="l-title">
+              <h5> <%= booking.listing.title %> with <%= booking.listing.user.first_name %></h5>
+            </div>
+            <p> <%= booking.listing.description %> </p>
+          </div>
+          <div class="l-edit">
+            <%= link_to 'Details', booking_path(booking) %> |
+            <%= link_to booking_path(booking), method: :delete do %>
+               <i class="far fa-trash-alt"></i>
+              <% end %>
+          </div>
         </div>
       </div>
-
-
-
-    <p> Teacher: <%= booking.listing.user.first_name %> </p>
-    <p> Student: <%= booking.user.first_name %> <%= booking.user.last_name %> </p>
-    <p> Listing skill level: <%= booking.listing.skill_level %> </p>
-    <%= link_to "Details", booking_path(booking) %>
-    <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
     <% end %>
   <% end %>
 
