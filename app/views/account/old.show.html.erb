@@ -1,1 +1,210 @@
-old.show.html.erb
+<div class="container">
+
+  <div class="teacher-bio">
+    <div class="teacher-card-image">
+      <% if @user.photo.attached? %>
+      <img src="<%= cl_image_path @user.photo.key %>"/>
+      <% end %>
+      <div class="teacher-name">
+        <%= @user.first_name %> <%= @user.last_name %>
+      </div>
+       <p> Member for <%= (Date.parse("#{@user.created_at}") - Date.today).to_i %> days </p>
+    </div>
+    <div class="teacher-card-details">
+      <div class="user-bio">
+        <h5>Bio</h5>
+        <p><%=  @user.bio %></p>
+      </div>
+      <div class="user-motivation">
+        <h5>Motivation</h5>
+        <p><%=  @user.motivation %></p>
+      </div>
+    </div>
+  </div>
+
+
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">My listings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-confirmed-bookings" role="tab" aria-controls="pills-contact" aria-selected="false">My bookings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-requested-bookings" role="tab" aria-controls="pills-contact" aria-selected="false">My booking requests</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div>
+        <%= simple_form_for @user, url: account_path, method: "patch" do |f| %>
+        <% f.hidden_field :id, value: current_user.id %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :email %>
+        <%= f.input :date_of_birth %>
+        <%= f.input :bio %>
+        <%= f.simple_fields_for :skill_attributes, @skill do |ff|%>
+        <%= ff.input :name %>
+        <%= ff.input :category %>
+        <% end %>
+        <%= f.simple_fields_for :address_attributes, @user.address do |ff|%>
+        <%= ff.hidden_field :id %>
+        <%= ff.input :address_line_1 %>
+        <%= ff.input :address_line_2 %>
+        <%= ff.input :city %>
+        <%= ff.input :postcode %>
+        <% end %>
+        <%= f.input :facebook_link %>
+        <%= f.input :linkedin_link %>
+        <%= f.input :instagram_link %>
+        <%= f.input :twitter_link %>
+        <%= f.input :motivation %>
+        <%= f.submit "Submit", class: "button standard accent fill"%>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div class="row">
+        <% @listings.each do |listing| %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="listing-card">
+            <%= link_to listing do %>
+            <div class="listing-card-img">
+              <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+                <h1><%= listing.title %></h1>
+              </div>
+            </div>
+            <div class="listing-card-info">
+              <div class="card-description">
+                <p><%= listing.description %></p>
+              </div>
+              <div class="card-info">
+                <div class="card-categories">
+                  <p class="card-category">Horse riding (TBF)</p>
+                </div>
+                <div class="card-level">
+                  <div class="card-user">
+                    <% if listing.user.photo.attached? %>
+                    <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar" />
+                    <% else %>
+                    <img src="<%= image_path 'avatar' %>" class="avatar" />
+                    <% end %>
+                    <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+                  </div>
+                  <p>
+                    <%= link_to listing, method: :delete do %>
+                    <i class="far fa-trash-alt"></i>
+                    <% end %>
+                    <%= link_to 'Edit', edit_listing_path(listing) %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <%= link_to "Create new listing", new_listing_path %>
+      </div>
+
+      <div class="tab-pane fade" id="pills-confirmed-bookings" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <% @user.bookings.each do |booking| %>
+        <% if @user.bookings.nil? %>
+          <h3>You do not currently have any bookings. <%= link_to 'Search Listings', listings_path, class: "button standard accent fill" %></h3>
+        <% end %>
+        <div class="container border booking-card">
+          <div class="booking-imgs">
+            <img src="#" alt="Image of booking">
+            <% if booking.listing.user.photo.attached? %>
+              <img src="<%= cl_image_path booking.listing.user.photo.key %>" class="avatar" />
+            <% else %>
+              <img src="<%= image_path 'avatar' %>" class="avatar" />
+            <% end %>
+            <% if booking.user.photo.attached? %>
+              <img src="<%= cl_image_path booking.user.photo.key %>" class="avatar" />
+            <% else %>
+              <img src="<%= image_path 'avatar' %>" class="avatar" />
+            <% end %>
+          </div>
+          <div class="booking-info">
+            <p> <%= booking.date %> </p>
+            <p></p>
+
+            <%= booking.status %>
+            <h3> <%= booking.listing.title %> </h3>
+            <h4> <%= booking.listing.description %> </h4>
+
+          </div>
+        </div>
+
+
+
+          <p> Teacher name: <%= booking.listing.user.first_name %> </p>
+          <p> Booking user first name: <%= booking.user.first_name %> </p>
+          <p> Booking user last name: <%= booking.user.last_name %> </p>
+          <p> Booking status: <%= booking.status %> </p>
+          <p> Listing skill level: <%= booking.listing.skill_level %> </p>
+          <%= link_to "Details", booking_path(booking) %>
+          <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
+        <% end %>
+      </div>
+      <div class="tab-pane fade" id="pills-requested-bookings" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <% @user.listings.each do |listing| %>
+          <% listing.bookings.each do |booking| %>
+          <div class="container border">
+            <p><%= booking.listing.title %></p>
+            <p> Booking date: <%= booking.date %> | <%= booking.status %></p>
+            <p> <%= booking.user.first_name %> <%= booking.user.last_name %> wants to sign up for a class with you!</p>
+            <p> <%= booking.listing.description %> </p>
+            <p> | <%= booking.listing.skill_level %> |</p>
+            <div class="status-btns">
+              <% if booking.status == "Pending" %>
+              <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "button standard accent fill"%></div>
+              <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "button standard accent fill"%></div>
+              <% end %>
+              <% if booking.status != "Cancelled" %>
+                <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "button standard accent fill"%></div>
+              <% end %>
+              <div class="status-btn"><%= link_to 'Booking Details', booking_path(booking), method: :get, class: "btn btn-outline-primary"%></div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  ------------------
+  --
+
+        <div class="card-description">
+          <p><%= listing.description %></p>
+        </div>
+        <div class="card-info">
+          <div class="card-categories">
+            <p class="card-category">Horse riding (TBF)</p>
+          </div>
+          <div class="card-level">
+            <div class="card-user">
+              <% if listing.user.photo.attached? %>
+              <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar" />
+              <% else %>
+              <img src="<%= image_path 'avatar' %>" class="avatar" />
+              <% end %>
+              <p><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+            </div>
+            <p>
+              <%= link_to listing, method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+              <% end %>
+              <%= link_to 'Edit', edit_listing_path(listing) %></p>
+            </div>
+          </div>
+ -->
+
