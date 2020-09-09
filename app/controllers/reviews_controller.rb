@@ -6,11 +6,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @listing = Listing.find(params[:listing_id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @review.user = @listing.user
+    @review.user = @booking.listing.user
     if @review.save
-      redirect_to listing_path(@listing)
+      redirect_to booking_path(@booking)
       flash[:alert] = "Review created."
     else
       flash[:alert] = "Something went wrong."

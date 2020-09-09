@@ -18,6 +18,11 @@
       <br>
       <%= render 'teacher_reviews' %>
       <br>
+      <button class="button standard accent" type="button" data-toggle="collapse" data-target="#reviewAccordian" aria-expanded="false" aria-controls="collapseExample">
+        Leave a review
+      </button>
+      <%= render "review_accordian"  %>
+      <br>
       <br>
     </div>
     <% if @booking.status == "Accepted" %>
