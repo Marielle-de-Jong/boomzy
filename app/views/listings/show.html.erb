@@ -45,13 +45,6 @@
       <h6><%= @listing.user.first_name %>'s Reviews </h6>
       <% @listing.user.reviews.each do |review| %>
       <% end %>
-
-      <p>
-        <button class="button standard accent" type="button" data-toggle="collapse" data-target="#reviewAccordian" aria-expanded="false" aria-controls="collapseExample">
-          Leave a review
-        </button>
-        <%= render "review_accordian"  %>
-      </p>
       <p>
       <% if @listing.user.has_socials? %>
       <h6><%= @listing.user.first_name %> socials</h6>
