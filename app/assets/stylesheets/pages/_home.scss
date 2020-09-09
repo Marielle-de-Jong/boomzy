@@ -2,3 +2,16 @@
 html {
   scroll-behavior: smooth;
 }
+
+.banner-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-buttons {
+  justify-item: center;
+}
+
+.scroll-btn {
+  margin-top: 100px;
+}

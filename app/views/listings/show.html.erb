@@ -2,12 +2,16 @@
   <% if @listing.listing_image %>
   <div class="listings-show-banner">
     <%= image_tag(@listing.listing_image, alt: "banner", class:"listings-show-image") %>
-    <button type="button" class="button standard accent" id="change-image-button" data-toggle="modal" data-target="#exampleModalCenter">Change Image </button>
+    <% if current_user == @listing.user %>
+      <button type="button" class="button standard accent" id="change-image-button" data-toggle="modal" data-target="#exampleModalCenter">Change Image </button>
+    <% end %>
   </div>
   <% else %>
   <div class="listings-show-banner">
     <%= image_tag('homepage_banner.jpg', class:"listings-show-image") %>
-    <button type="button" class="button standard accent" id="change-image-button" data-toggle="modal" data-target="#exampleModalCenter">Change Image </button>
+    <% if current_user == @listing.user %>
+      <button type="button" class="button standard accent" id="change-image-button" data-toggle="modal" data-target="#exampleModalCenter">Change Image </button>
+    <% end %>
   </div>
   <% end %>
 </div>
@@ -32,12 +36,23 @@
       <br>
       <%= @listing.description %> </p>
       <br>
-      <h6>About <%= @listing.user.first_name %></h6>
+      <h5>About <%= @listing.user.first_name %></h5>
       <p> <%= @listing.user.bio %> </p>
       <br>
-      <h6><%= @listing.user.first_name %> offers this class because </h6>
+      <h5><%= @listing.user.first_name %> offers this class because </h5>
       <p> <%= @listing.user.motivation %> </p>
       <br>
+
+      <h5>Reviews about <%= @listing.user.first_name %></h5>
+      <% if @listing.user.reviews.count == 0 %>
+        <p> No reviews... yet </p>
+        <br>
+      <% else %>
+        <% @listing.user.reviews.each do |review| %>
+          <%= render 'teacher_reviews' %>
+        <% end %>
+      <% end %>
+
       <% if @listing.user.has_socials? %>
       <h6><%= @listing.user.first_name %>'s socials</h6>
       <div class="listing-socials d-flex socials">
