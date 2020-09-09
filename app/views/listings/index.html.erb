@@ -1,9 +1,15 @@
+
+
 <div class="container">
   <br>
   <br>
-  <div class="row justify-content-center">
+  <p><%= @listings.count %> learning experiences on offer</p>
+  <h2>Learn from people near you</h2>
+  <br>
+  <div class="row justify-content-between">
     <% @listings.each do |listing| %>
     <div class="card-listing col-12 col-md-4 col-lg-3">
+      <%= link_to listing do %>
       <div class="listing-image-container">
         <% if listing.listing_image.present? %>
         <div class="listing-image" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= listing.listing_image %>);">
@@ -57,6 +63,7 @@
               <p class="teacher-first-name"><%= listing.user.first_name %> <%= listing.user.last_name %></p>
           </div>
       </div>
-    </div>
     <% end %>
+    </div>
+  <% end %>
   </div>
