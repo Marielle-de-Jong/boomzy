@@ -1,85 +1,93 @@
 .search-container{
-  width: 100%;
+  background: $accent;
+  display:flex;
   justify-content: center;
-}
-
-.search-bar{
-  justify-content: center;
-  width:100%;
-}
-
-.search-but{
-  display: flex;
-  justify-content: center;
-}
-
-.search-fields{
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.search-field1-wrapper{
-  width: 40% !important;
-}
-
-.search-field1{
-  width: 100% !important;
-  border-radius: 5px;
-  border: 2px solid $accent;
-  margin: 5px;
-  padding: 5px;
-  height: 40px;
-}
-
-.search-field1:focus{
-  border: 3px solid $accent;
-}
-
-.search-field1:hover{
-  border: 3px solid $accent;
-}
-
-.search-field2-wrapper{
-  width: 40% !important;
-
-}
-
-.search-field2{
-  width: 100% !important;
-  border-radius: 5px;
-  border: 2px solid $accent;
-  margin: 5px;
-  padding: 5px;
-  height: 40px;
-
-}
-
-.search-field2:focus{
-  border: 3px solid $accent;
-}
-
-.search-field2:hover{
-  border: 3px solid $accent;
-}
-
-.search-button{
-  background: $accent;
-  border-radius: 5px;
-  height: 40px;
-  width: 20%;
-}
-
-#section-2{
-  justify-content: center;
+.search-form-control {
+  width: 100%;
   display: flex;
-  width: 100%;
+  justify-content: space-evenly;
 }
 
-.form{
-  width: 100%;
+.search-form-control .search-group{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.search-text{
-  margin-left: 12%;
+.search-form-control .btn {
+  border-radius: 5px;
+  margin: 5px;
 }
+
+.button-container{
+  height: 4rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid $accent;
+  border-left: none;
+  background: $accent;
+  color: $text;
+  font-size: 25px;
+  margin-top: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 15px 15px 0px;
+  padding: 2px;
+}
+
+.search-form-control .form-control {
+  height: 4rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid $accent;
+  background: $white;
+  color: $text;
+  font-size: 25px;
+  margin-top: 5px;
+  position:relative;
+}
+
+#skill-query{
+  border-radius: 15px 0px 0px 15px;
+}
+
+#skill-query:hover{
+  border: 2px solid $accent;
+}
+
+#location-query{
+  border-right: none;
+}
+
+#location-query:hover{
+  border: 2px solid $accent;
+  border-right: none;
+  + .button-container{
+    border: 2px solid $accent;
+    border-left: none;
+  }
+}
+
+
+
+.search-form-control .form-control::placeholder {
+  color: $text;
+}
+
+.search-form-control .form-control:focus {
+  border: 2px solid $accent;
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  + .button-container{
+    border: 2px solid $accent;
+    border-left: none;
+  }
+}
+
+#skill-filter{
+  border-radius: 15px;
+}
+
