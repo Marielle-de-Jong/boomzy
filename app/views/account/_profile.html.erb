@@ -1,34 +1,35 @@
 <div class="profile-container">
-
-  <div class="profile-text">
-    <div class="profile-name">
-      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    </div>
-    <div class="profile-bio">
-      <p><%=  @user.bio %></p>
-      <p><%=  @user.motivation %></p>
-    </div>
-    <div class="profile-info">
-      <div class="profile-infos">
-        <h3>General Info</h3>
-        <% if @user.date_of_birth? %>
-        <p>@user.date_of_birth</p>
-        <% end %>
-        <p><%= @user.address.address_line_1%>, <%= @user.address.postcode %> <%= @user.address.city %></p>
-        <p><%= @user.email %></p>
-      </div>
-      <!-- <div class="profile-edit">
-        <p>TODO edit button</p>
-      </div> -->
-    </div>
-
-  </div>
-
-  <div class="profile-photo">
+  <h3 class="mb-3 mt-5">Profile</h3>
+  <div class="">
     <% if @user.photo.attached? %>
-      <img src="<%= cl_image_path @user.photo.key %>" alt="profile avatar">
+      <img src="<%= cl_image_path @user.photo.key %>" alt="profile avatar" class="avatar-extra-large">
     <% end %>
   </div>
 
 
+<!--   <div class="profile-text"> -->
+    <div class="profile-name mt-3", style="color:#49C5B6">
+      <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+    </div>
+    <div class="profile-bio mt-3">
+      <h5>My bio</h5>
+      <p><%=  @user.bio %></p>
+      <h5>My motivation to teach</h5>
+      <p><%=  @user.motivation %></p>
+    </div>
+    <div class="profile-info">
+      <div class="profile-infos">
+        <h5 class="mb-3">General Info</h5>
+        <% if @user.date_of_birth? %>
+        <p><%=  @user.date_of_birth %> </p>
+        <% end %>
+        <p><i class="fas fa-map-marker-alt"></i> <%= @user.address.address_line_1%>, <%= @user.address.postcode %> <%= @user.address.city %></p>
+        <p><i class="fas fa-envelope"></i>  <%= @user.email %></p>
+      </div>
+      <!-- <div class="profile-edit">
+        <p>TODO edit button</p>
+      </div> -->
+<!--     </div> -->
+
+  </div>
 </div>

@@ -1,18 +1,25 @@
-.profile-container {
-  display: flex;
-  padding: 15px;
-  margin: 20px 10px;
-}
+// .profile-container {
+//   padding: 15px;
+//   margin: 20px 10px;
+// }
 
+.account-listings-card {
+  background-color: $background;
+  padding: 16px;
+}
 .profile-text {
   margin-left: 10px;
   padding: 20px;
 }
 
+.booking-account-card {
+  background-color: $background;
+  padding: 16px;
+}
 
 .profile-info {
   p {
-    opacity: .7;
+    // opacity: .7;
     // padding: 5px;
   }
   display: flex;

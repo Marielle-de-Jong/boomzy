@@ -1,9 +1,29 @@
-<div class="listings-box">
-  <% if @listings.nil? %>
-    <h3>You have a lot to offer! Your listings will appear here when you make them.</h3>
-  <% else %>
-    <h3 id="listings">Your Listings</h3>
-    <% @listings.each do |listing| %>
+<!-- <div class="listings-box"> -->
+<!-- <div class="container"> -->
+<% if @listings.nil? %>
+  <h3>You have a lot to offer! Your listings will appear here when you make them.</h3>
+<% else %>
+<!--     <h3 id="listings">Your Listings</h3> -->
+<h3 class=mt-4>Your listings</h3>
+
+<% @listings.each do |listing| %>
+<div class="account-listings-card mt-3">
+  <h5>Title: <%= listing.title %></h5>
+  <p>Description: <%= listing.description %></p>
+  <p>Skill level: <%= listing.skill_level %></p>
+  <p> Skill name: <%= listing.skill.name %></p>
+  <p> Category: <%= listing.skill.category %></p>
+  <% listing.bookings.each do |booking| %>
+  <p><strong> Booked by <%= booking.user.first_name %> <%= booking.user.last_name %> on <%=  booking.created_at %></strong></p>
+  <p>Image of user that booked can go here class = avatar</p>
+  <% end %>
+</div>
+<% end %>
+
+
+
+
+<!--     <% @listings.each do |listing| %>
       <div class="acct-listing-card">
         <% if listing.listing_image.present? %>
           <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= listing.listing_image %>);">
@@ -32,5 +52,6 @@
   <% end %>
   <div class="create-listing">
     <%= link_to "Create new listing", new_listing_path, class: "button standard accent fill" %>
-  </div>
-</div>
+  </div> -->
+<!-- </div> -->
+<!-- </div> -->

@@ -1,4 +1,8 @@
-<div class="bookings-box">
+<h3 class="mt-3">My booking requests</h3>
+
+
+
+ <div class="bookings-box">
   <h3 id="teachings">Teaching</h3>
   <% @user.listings.each do |listing| %>
     <% if listing.bookings.nil? %>
@@ -30,5 +34,6 @@
     <% end %>
   <% end %>
 </div>
+
 
 
