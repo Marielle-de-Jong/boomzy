@@ -1,12 +1,62 @@
 <div class="container">
-<!--   <div class="top-buttons">
-    <div class="button standard accent fill"><%= link_to "Create new listing", new_listing_path %></div>
-    <div class="button standard accent"><%= link_to "Back", root_path %></div>
-    <div class="button standard accent fill"><%= link_to "See people near you!", users_map_path %></div>
+  <br>
+  <br>
+  <div class="row justify-content-center">
+    <% @listings.each do |listing| %>
+    <div class="card-listing col-12 col-md-4 col-lg-3">
+      <div class="listing-image-container">
+        <% if listing.listing_image.present? %>
+        <div class="listing-image" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= listing.listing_image %>);">
+          <h1><%= listing.title %></h1>
+        </div>
+        <% else %>
+        <div class="listing-image" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+          <h1><%= listing.title %></h1>
+        </div>
+        <% end %>
+      </div>
+      <div class="card-listing-bottom">
+        <div class="card-bottom-infos d-flex justify-content-between align-items-center">
+          <% if listing.skill != nil %>
+          <% if listing.skill.category == 'Crafts' || listing.skill.category == 'Woodworking' %>
+          <div class="skill-categories red-category d-inline">
+            <p><%= listing.skill.category %></p>
+          </div>
+          <% elsif listing.skill.category == 'Painting' || listing.skill.category == 'Music' %>
+          <div class="d-inline skill-categories green-category d-inline">
+            <p class="display-inline-block"><%= listing.skill.category %></p>
+            <p><%= listing.skill.category %></p>
+          </div>
+          <% elsif listing.skill.category == 'Writing' || listing.skill.category == 'Entrepreneurship' %>
+          <div class="d-inline skill-categories purple-category d-inline">
+            <p class="display-inline-block"><%= listing.skill.category %></p>
+          </div>
+          <% elsif listing.skill.category == 'Photography' || listing.skill.category == 'Drawing' || listing.skill.category == 'Gardening' %>
+          <div class="d-inline skill-categories yellow-category d-inline">
+            <p class="display-inline-block"><%= listing.skill.category %></p>
+          </div>
+          <% end %>
+          <% end %>
+          <div class="skill-level-image">
+            <% if listing.skill_level == "Advanced" %>
+            <%= image_tag 'advanced-01.svg', class: "level-image" %>
+            <% elsif listing.skill_level == "Beginner" %>
+            <%= image_tag 'beginner-03.svg', class: "level-image" %>
+            <% elsif listing.skill_level == "Intermediate" %>
+            <%= image_tag 'intermediate-02.svg', class: "level-image" %>
+            <% end %>
+          </div>
+        </div>
+        <p class="mb-2"><%= truncate(listing.description, length: 70)%></p>
+                  <div class="listing-user">
+              <% if listing.user.photo.attached? %>
+              <img src="<%= cl_image_path listing.user.photo.key %>" class="avatar avatar-shawdow" />
+              <% else %>
+              <img src="<%= image_path 'avatar' %>" class="avatar" />
+              <% end %>
+              <p class="teacher-first-name"><%= listing.user.first_name %> <%= listing.user.last_name %></p>
+          </div>
+      </div>
+    </div>
+    <% end %>
   </div>
-   -->
-  <div class="listing-index-grid">
-    <%= render "listing_cards" %>
-  </div>
-</div>
-

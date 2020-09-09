@@ -4,7 +4,7 @@ require "open-uri"
 
 CATEGORIES = %w(Crafts Woodworking Painting Music Writing Entrepreneurship Photography Drawing Gardening)
 STATUS = %w(Pending Accepted Denied)
-LEVELS = %w(Beginner Intermediate Advanced Master)
+LEVELS = %w(Beginner Intermediate Advanced)
 
 # Addresses for user. Not sure how Polymorphic assoc. affects these, if at all.
 STREETS_ZIPS = [
@@ -93,7 +93,7 @@ listing = Listing.create!(
     title: "Fixing your car with Brian",
     user_id: user.id,
     skill_id: skill.id,
-    skill_level: "Master",
+    skill_level: "Advanced",
     description: "I've been fixing cars for 40 years, come along and we'll discuss what's wrong with your car and how to get it back on the road!"
     )
 
@@ -125,7 +125,7 @@ listing = Listing.create!(
     title: "Fixing your bike",
     user_id: user.id,
     skill_id: skill.id,
-    skill_level: "Master",
+    skill_level: "Advanced",
     description: "Bikes are the gateway to mechanics, I can teach you to change a tyre or realign your gears and everything in between."
     )
 
@@ -188,7 +188,7 @@ listing = Listing.create!(
     title: "Taking portraits with Susan",
     user_id: user.id,
     skill_id: skill.id,
-    skill_level: "Master",
+    skill_level: "Advanced",
     description: "I have been a professional photographer for years, let me teach you about lighting and field of depth, my specialties"
     )
 
@@ -314,7 +314,7 @@ listing = Listing.create!(
     title: "Building wooden furniture with Hans",
     user_id: user.id,
     skill_id: skill.id,
-    skill_level: "Master",
+    skill_level: "Advanced",
     description: "Forget Ikea, I will teach you to make beautiful tables that will last decades!"
     )
 
@@ -377,7 +377,7 @@ listing = Listing.create!(
     title: "Building wooden furniture with Hans",
     user_id: user.id,
     skill_id: skill.id,
-    skill_level: "Master",
+    skill_level: "Advanced",
     description: "Play a song for me and I'll teach you to play it on the accordian."
     )
 

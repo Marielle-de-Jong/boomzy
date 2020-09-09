@@ -1,0 +1,26 @@
+<% if listing.skill != nil %>
+  <% if listing.skill.category == 'Crafts' || listing.skill.category == 'Woodworking' %>
+    <div class="skill-categories red-category d-flex">
+      <p> <%= listing.skill.category %></p>
+      <% if listing.skill_level == "Advanced" %>
+        <%= image_tag 'advanced.svg' %>
+      <% elsif listing.skill_level == "Beginner" %>
+        <%= image_tag 'beginner.svg', class: "level-image" %>
+      <% elsif listing.skill_level == "Intermediate" %>
+        <%= image_tag 'beginner.svg' %>
+      <% end %>
+    </div>
+  <% elsif listing.skill.category == 'Painting' || listing.skill.category == 'Music' %>
+    <div class="skill-categories green-category">
+      <p> <%= listing.skill.category %></p>
+    </div>
+  <% elsif listing.skill.category == 'Writing' || listing.skill.category == 'Entrepreneurship' %>
+    <div class="skill-categories purple-category">
+      <p> <%= listing.skill.category %></p>
+    </div>
+  <% elsif listing.skill.category == 'Photography' || listing.skill.category == 'Drawing' || listing.skill.category == 'Gardening' %>
+    <div class="skill-categories yellow-category">
+      <p> <%= listing.skill.category %></p>
+    </div>
+  <% end %>
+<% end %>
