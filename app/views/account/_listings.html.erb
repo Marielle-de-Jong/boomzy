@@ -1,5 +1,5 @@
 <div class="listings-box">
-  <% if @listings.empty? %>
+  <% if @listings.nil? %>
     <h3>You have a lot to offer! Your listings will appear here when you make them.</h3>
 
   <% else %>
@@ -20,7 +20,8 @@
             <p><%= listing.skill.name %> | <%= listing.skill_level %></p>
           </div>
           <div class="l-description">
-            <%= listing.description %>
+            <h5><%= listing.description %></h5>
+
           </div>
           <div class="l-edit">
             <%= link_to 'Details', listing_path(listing) %> |
@@ -33,5 +34,5 @@
       </div>
     <% end %>
   <% end %>
-  <%= link_to "Create new listing", new_listing_path %>
+  <%= link_to "Create new listing", new_listing_path, class: "button standard accent fill"%>
 </div>

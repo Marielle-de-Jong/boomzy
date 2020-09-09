@@ -1,1 +1,39 @@
-_bookings.html.erb
+<div class="bookings-box">
+  <% @user.bookings.each do |booking| %>
+  <% if @user.bookings.nil? %>
+    <h3>You do not currently have any bookings. <%= link_to 'Search Listings', listings_path, class: "button standard accent fill" %></h3>
+  <% else %>
+    <h3 id="bookings">Things you've booked</h3>
+
+      <div class="container booking-card">
+        <div class="booking-imgs">
+          <% if booking.listing.listing_image.present? %>
+              <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= booking.listing.listing_image %>);">
+                <div><h3 class="image-title"><%= booking.listing.title %></h3></div>
+              </div>
+            <% else %>
+              <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url( <%= image_path('homepage_banner')%>);">
+                <div><h3 class="image-title"><%= booking.listing.title %></h3></div>
+              </div>
+            <% end %>
+        </div>
+        <div class="booking-info">
+          <p> Your booking for <%= booking.date %> is: <%= booking.status %></p>
+
+          <h3> <%= booking.listing.title %> </h3>
+          <h4> <%= booking.listing.description %> </h4>
+
+        </div>
+      </div>
+
+
+
+    <p> Teacher: <%= booking.listing.user.first_name %> </p>
+    <p> Student: <%= booking.user.first_name %> <%= booking.user.last_name %> </p>
+    <p> Listing skill level: <%= booking.listing.skill_level %> </p>
+    <%= link_to "Details", booking_path(booking) %>
+    <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
+    <% end %>
+  <% end %>
+
+</div>
