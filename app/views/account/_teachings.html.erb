@@ -1,0 +1,39 @@
+<div class="bookings-box">
+  <h3 id="teachings">Teaching</h3>
+  <% @user.listings.each do |listing| %>
+    <% if listing.bookings.nil? %>
+      <h4>Currently you have no teaching engagements</h4>
+    <% else %>
+      <% listing.bookings.each do |booking| %>
+        <div class="request-details">
+          <div class="request-avatar">
+            <% if booking.user.photo.attached? %>
+                <img src="<%= cl_image_path booking.user.photo.key %>" class="avatar-large" />
+            <% end %>
+          </div>
+          <div class="request-info">
+            <h5><%= booking.listing.title %> | <%= booking.status %></h5>
+            <p> <%= booking.user.first_name %> wants to book a session with you on <%= booking.date %>!</p>
+          </div>
+          <div class="status-buttons">
+            <% if booking.status == "Pending" %>
+              <div class="status-btn"><%= link_to 'Confirm', confirm_path(booking), method: :post, class: "button standard accent"%></div>
+              <div class="status-btn"><%= link_to 'Decline', decline_path(booking), method: :post, class: "button standard btn-danger"%></div>
+            <% end %>
+            <% if booking.status != "Cancelled" %>
+              <div class="status-btn"><%= link_to 'Cancel', cancel_path(booking), method: :post, class: "button standard btn-outline-danger"%></div>
+            <% end %>
+            <div class="status-btn"><%= link_to 'Details', booking, method: :get, class: "button standard accent fill"%></div>
+
+          </div>
+
+
+
+      </div>
+
+    <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+

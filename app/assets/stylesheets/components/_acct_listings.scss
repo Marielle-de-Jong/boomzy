@@ -3,10 +3,9 @@
   display: flex;
   // box-shadow: 0 0 5px rgba(0,0,0,0.2);
   align-items: center;
-  background-color: $background;
+  // background-color: $background;
+  margin: 20px 10px;
 }
-
-
 
 .image-title {
   color: white;
@@ -15,10 +14,19 @@
   padding: 10px;
 }
 
+.create-listing {
+  justify-content: end;
+}
+
 .acct-listing-card {
   display: flex;
 }
 
+.l-skill {
+  margin-top: 10px;
+  text-align: right;
+  margin-right: 5px;
+}
 
 .listings-box a {
   text-decoration: none;
@@ -36,6 +44,23 @@
 
 .l-description {
   padding: 20px;
+  h4 {
+    text-align: center;
+  }
+}
+
+.request-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.status-btn {
+  margin: 5px;
 }
 
 @media screen and (max-width: 800px) {
@@ -53,11 +78,6 @@
 
   }
 
-  .l-skill {
-    margin-top: 10px;
-    text-align: right;
-    margin-right: 5px;
-  }
   .listing-card-info {
     background-color: $background;
   }
@@ -71,30 +91,25 @@
   }
 
   .listing-card-info {
-    position: relative;
+    // position: relative;
   }
 
   .l-edit {
-    position: absolute;
-    bottom: -60px;
-    right: 5px;
+    text-align: right;
   }
 
   .l-skill {
-    position: absolute;
-    top: -50px;
-    right: 5px;
+    text-align: right;
+
+  .l-title {
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  img {
+    margin: 5px;
   }
 }
 
+  }
+}
 
-// .card-product {
-//   height: 120px;
-//   display: flex;
-// }
-
-// .card-product img {
-//   height: 100%;
-//   width: 120px;
-//   object-fit: cover;
-// }
