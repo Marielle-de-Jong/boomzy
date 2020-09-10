@@ -194,7 +194,7 @@ listing = Listing.create!(
   user_id: user.id,
   skill_id: skill.id,
   skill_level: "Advanced",
-  description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder."
+  description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder.",
   listing_image: "https://sonoranglass.org/wp-content/uploads/2016/07/Beginning-Glassblowing-Paperweights-3-800x533.jpg"
   )
 
@@ -566,7 +566,7 @@ listing = Listing.create!(
   user_id: user.id,
   skill_id: skill.id,
   skill_level: "Advanced",
-  description: "This class is for someone that has already attended my class for beginners. I will teach you all the more tricky tricks to make a beautiful rug."
+  description: "This class is for someone that has already attended my class for beginners. I will teach you all the more tricky tricks to make a beautiful rug.",
   listing_image: "https://images.unsplash.com/photo-1560577572-bb4eb0076aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=822&q=80"
   )
 Address.create(
@@ -647,7 +647,7 @@ listing = Listing.create!(
   user_id: user.id,
   skill_id: skill.id,
   skill_level: "Advanced",
-  description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder."
+  description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder.",
   listing_image: "https://images.unsplash.com/photo-1565556601977-f2241a07ab32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1182&q=80"
   )
 Address.create(
