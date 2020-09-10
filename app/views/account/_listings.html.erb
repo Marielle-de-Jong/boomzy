@@ -2,38 +2,41 @@
   <h3>You have a lot to offer! Your listings will appear here when you make them.</h3>
 <% else %>
 <% end %>
+
 <h3 class="mt-4" id="listings">Your listings</h3>
 
+
 <div class="container">
-<div class="row">
-<% @listings.each do |listing| %>
-  <div class="account-listings-card mt-4 col-sm-12 col-md-6 mr-4">
-    <h5 class="mb-3"><%= listing.title %></h5>
-    <p><%= listing.description %></p>
-    <p><%= listing.skill_level %></p>
-    <p><%= listing.skill.name %></p>
-    <% if listing.skill != nil %>
-      <% if listing.skill.category == 'Crafts' || listing.skill.category == 'Woodworking' %>
-        <div class="skill-categories red-category d-inline">
-          <p> <%= listing.skill.category %></p>
-        </div>
-      <% elsif listing.skill.category == 'Painting' || listing.skill.category == 'Music' %>
-        <div class="skill-categories green-category d-inline">
-          <p> <%= listing.skill.category %></p>
-        </div>
-      <% elsif listing.skill.category == 'Writing' || listing.skill.category == 'Entrepreneurship' %>
-        <div class="skill-categories purple-category d-inline">
-          <p> <%= listing.skill.category %></p>
-        </div>
-      <% elsif listing.skill.category == 'Photography' || listing.skill.category == 'Drawing' || listing.skill.category == 'Gardening' %>
-        <div class="skill-categories yellow-category d-inline">
-          <p> <%= listing.skill.category %></p>
-        </div>
+  <div class="row">
+  <% @listings.each do |listing| %>
+    <div class="account-listings-card mt-4 col-sm-12 col-md-6 mr-4">
+      <h5 class="mb-3"><%= listing.title %></h5>
+      <p><%= listing.description %></p>
+      <p><%= listing.skill_level %></p>
+      <p><%= listing.skill.name %></p>
+      <% if listing.skill != nil %>
+        <% if listing.skill.category == 'Crafts' || listing.skill.category == 'Woodworking' %>
+          <div class="skill-categories red-category d-inline">
+            <p> <%= listing.skill.category %></p>
+          </div>
+        <% elsif listing.skill.category == 'Painting' || listing.skill.category == 'Music' %>
+          <div class="skill-categories green-category d-inline">
+            <p> <%= listing.skill.category %></p>
+          </div>
+        <% elsif listing.skill.category == 'Writing' || listing.skill.category == 'Entrepreneurship' %>
+          <div class="skill-categories purple-category d-inline">
+            <p> <%= listing.skill.category %></p>
+          </div>
+        <% elsif listing.skill.category == 'Photography' || listing.skill.category == 'Drawing' || listing.skill.category == 'Gardening' %>
+          <div class="skill-categories yellow-category d-inline">
+            <p> <%= listing.skill.category %></p>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+  <% end %>
   </div>
-<% end %>
-</div>
+<%= link_to 'Create a Listing', new_listing_path, class: "button standard accent mt-3" %>
 </div>
 
 
