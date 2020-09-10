@@ -400,33 +400,96 @@ puts "[LOG] ARNOLD Completed ..."
 
 
 
+puts "----------------------------------------"
+puts "[LOG] creating ALEX..."
+
+user = User.new
+user.first_name = "Alex"
+user.last_name = "Botwinick"
+# Email should be first_name@boomzy.me
+user.email = "alex@boomzy.me"
+# Password should be test123
+user.password = 'test123'
+user.password_confirmation = 'test123'
+user.bio = "Former philosophy student turned barista/writer. Born in the Finger Lakes in Upstate New York and just moved to Europe at the new year after a decade living in NYC. Into footy and social justice. And books."
+user.motivation = "I've learnt some great skills at Le Wagon, but I'm always learning."
+file = URI.open("https://avatars3.githubusercontent.com/u/62389585?s=400&u=aea24e31a86a8bdf2c351edfcea1112100e37996&v=4")
+user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+user.save!
+
+puts "----------------------------------------"
+puts "[LOG] creating Alex's address..."
+
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Eerste Atjehstraat 164",
+    postcode: "1094KX",
+    addressable: user,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] creating Alex' first skill, listings and bookings..."
+
+
+skill = Skill.create!(
+    name: "Ruby on Rails",
+    category: "Programming",
+    user_id: user.id,
+    )
+
+listing = Listing.create!(
+    title: "Learn Rails with Alex",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "I've built some great projects on Rails, come and learn how to build web apps like Boomzy"
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Eerste Atjehstraat 164",
+    postcode: "1094KX",
+    addressable: listing
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: "Accepted",
+    listing_id: listing.id,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] ALEX Completed ..."
 
 
 
-# puts "[LOG] STARTING SEED GENERATION..."
+
+puts "[LOG] STARTING SEED GENERATION..."
 
 
 # --------------------
 #  CREATE USERS - ADMIN
 # --------------------
-# puts "----------------------------------------"
-# puts "[LOG] creating ADMIN users..."
-# a = 0
-# ADMINS.each do |admin|
-#   user = User.new
-#   user.first_name = admin[0]
-#   user.last_name = "Admin"
-#   user.email = admin[1]
-#   user.password = 'admin1'
-#   user.password_confirmation = 'admin1'
-#   user.bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo imperdiet turpis, eget imperdiet dolor facilisis quis."
-#   user.motivation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo imperdiet turpis"
-#   file_admin = URI.open("https://source.unsplash.com/900x900/?headshot")
-#   user.photo.attach(io: file_admin, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
-#   user.save!
-#   a += 1
-# end
-# puts "[LOG] #{a} ADMINS created"
+puts "----------------------------------------"
+puts "[LOG] creating ADMIN users..."
+a = 0
+ADMINS.each do |admin|
+  user = User.new
+  user.first_name = admin[0]
+  user.last_name = "Admin"
+  user.email = admin[1]
+  user.password = 'admin1'
+  user.password_confirmation = 'admin1'
+  user.bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo imperdiet turpis, eget imperdiet dolor facilisis quis."
+  user.motivation = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo imperdiet turpis"
+  file_admin = URI.open("https://source.unsplash.com/900x900/?headshot")
+  user.photo.attach(io: file_admin, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
+  user.save!
+  a += 1
+end
+puts "[LOG] #{a} ADMINS created"
 
 
 # # -------------------
@@ -544,34 +607,34 @@ puts "[LOG] ARNOLD Completed ..."
 # end
 # puts "[LOG] #{Booking.count} BOOKINGS created"
 
-# # ---------------
-# # CREATE CHATROOMS
-# # ---------------
-# puts "----------------------------------------"
-# puts "[LOG] creating CHATROOMS..."
+# ---------------
+# CREATE CHATROOMS
+# ---------------
+puts "----------------------------------------"
+puts "[LOG] creating CHATROOMS..."
 
-# Booking.all.each do |booking|
-#   chatroom = Chatroom.new
-#   chatroom.booking = booking
-#   chatroom.save
-# end
-# puts "[LOG] #{Chatroom.count} CHATROOMS created"
+Booking.all.each do |booking|
+  chatroom = Chatroom.new
+  chatroom.booking = booking
+  chatroom.save
+end
+puts "[LOG] #{Chatroom.count} CHATROOMS created"
 
-# # ---------------
-# # CREATE REVIEWS
-# # ---------------
-# puts "----------------------------------------"
-# puts "[LOG] creating REVIEWS..."
+# ---------------
+# CREATE REVIEWS
+# ---------------
+puts "----------------------------------------"
+puts "[LOG] creating REVIEWS..."
 
-# Booking.all.each do |booking|
-#   review = Review.create!(
-#     content: "My meeting was so great!",
-#     rating: rand(1..5),
-#     user_id: User.all.sample.id
-#     )
-# end
+Booking.all.each do |booking|
+  review = Review.create!(
+    content: "My meeting was so great!",
+    rating: rand(1..5),
+    user_id: User.all.sample.id
+    )
+end
 
-# puts "[LOG] #{Review.count} REVIEWS created"
+puts "[LOG] #{Review.count} REVIEWS created"
 
 puts "----------------------------------------"
 puts "[LOG] End time: #{Time.now}"
