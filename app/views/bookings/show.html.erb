@@ -2,50 +2,61 @@
   <div class="row">
     <% if @booking.status == "Accepted" %>
     <div class="col-sm-12 col-md-12 col-lg-8">
-    <% else %>
-    <div class="col-12">
-    <% end %>
-      <br>
-      <br>
-      <p>Hi <%= @booking.user.first_name%>,</p>
-      <h3>Thanks for booking <%= @booking.listing.title %> with <%= @booking.listing.user.first_name%> <%= @booking.listing.user.last_name %></h3>
-      <br>
-      <p>• You've booked this learning experience for <%= @booking.date %>.</p>
-      <%= render 'booking_status' %>
-      <br>
-      <%= render 'teacher_details' %>
-      <h5>Reviews about <%= @booking.listing.user.first_name %></h5>
-      <br>
-      <% if current_user == @booking.user %>
+      <% else %>
+      <div class="col-12">
+        <% end %>
+        <br>
+        <br>
+
+        <% if current_user == @booking.user%>
+
+        <h3>Thanks for booking <%= @booking.listing.title %>  </h3>
+        <br>
+        <p>• You've booked this learning experience for <%= @booking.date %>.</p>
+        <%= render 'booking_status' %>
+        <br>
+        <%= render 'teacher_details' %>
+        <h5>Reviews about <%= @booking.listing.user.first_name %></h5>
+        <br>
+        <% if current_user == @booking.user %>
         <button class="button standard accent" type="button" data-toggle="collapse" data-target="#reviewAccordian" aria-expanded="false" aria-controls="collapseExample">
           Leave a review
         </button>
         <br>
         <%= render "review_accordian"  %>
         <br>
-      <% end %>
-      <%= render 'teacher_reviews' %>
-      <br>
-    </div>
-    <% if @booking.status == "Accepted" %>
+        <% end %>
+        <%= render 'teacher_reviews' %>
+        <br>
+        <% elsif current_user == @booking.listing.user %>
+
+        <h3><%= @booking.user.first_name %> has booked <%= @booking.listing.title %>  </h3>
+        <br>
+        <p>• The booking date is <%= @booking.date %> </p>
+        <%= render 'booking_status' %>
+        <br>
+        <%= render 'student_details' %>
+        <% end %>
+      </div>
+      <% if @booking.status == "Accepted" %>
       <div class="col-sm-12 col-md-12 col-lg-4">
         <br>
         <br>
-          <div class="chat-card">
-            <div class="video-call">
-              <h5>Chat with <%=@booking.listing.user.first_name  %></h5>
-            </div>
-            <div class="chat-buttons">
-              <div class="chatroom">
-                <%= render "chatrooms/views", chatroom: @chatroom, message: @message, room: @room%>
-              </div>
+        <div class="chat-card">
+          <div class="video-call">
+            <h5>Chat with <%=@booking.listing.user.first_name  %></h5>
+          </div>
+          <div class="chat-buttons">
+            <div class="chatroom">
+              <%= render "chatrooms/views", chatroom: @chatroom, message: @message, room: @room%>
             </div>
           </div>
+        </div>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="map-container mt-5" id="map"
+  <div class="map-container mt-5" id="map"
   style="width: 100vw; height: 550px;"
   data-markers="<%= @marker.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
