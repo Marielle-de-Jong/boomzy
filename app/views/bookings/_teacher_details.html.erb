@@ -3,7 +3,7 @@
 <div class="teacher-image-name d-flex align-items-center">
   <% if @booking.listing.user.photo.attached? %>
   <div class="teacher-image mr-3">
-    <%= cl_image_tag @booking.listing.user.photo.key, class: "avatar-large" %>
+    <%= cl_image_tag @booking.listing.user.photo.key, class:"avatar-large" %>
   </div>
   <% end %>
   <div class="teacher-profile-details">
