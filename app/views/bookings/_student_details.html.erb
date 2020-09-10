@@ -1,0 +1,18 @@
+<h5>About your student</h5>
+<br>
+<div class="teacher-image-name d-flex align-items-center">
+  <% if @booking.user.photo.attached? %>
+  <div class="teacher-image mr-3">
+    <%= cl_image_tag @booking.user.photo.key, class:"avatar-large" %>
+  </div>
+  <% end %>
+  <div class="teacher-profile-details">
+    <h6 class="m-0"><%= @booking.user.first_name %> <%= @booking.user.last_name %></h6>
+    <p class="m-0", style="font-style: italic"> Member since <%= (Date.today - Date.parse("#{@booking.listing.user.created_at}")).to_i %> days </p>
+  </div>
+</div>
+<br>
+<h6> <%= @booking.user.first_name %>'s bio</h6>
+<p><%= @booking.user.bio %></p>
+<br>
+<br>
