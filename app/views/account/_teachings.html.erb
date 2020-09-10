@@ -23,7 +23,7 @@
         <a href="<%= booking.listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
         <% end %>
       </div>
-      <div class="st-buttons d-flex">
+      <div class="st-buttons d-flex mt-2">
         <% if booking.status == "Pending" %>
         <div class="status-btn"><%= link_to 'Confirm', confirm_path(booking), method: :post, class: "button standard accent fill"%></div>
 
