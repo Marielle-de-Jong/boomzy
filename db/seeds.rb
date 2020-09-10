@@ -92,12 +92,13 @@ skill = Skill.create!(
   )
 
 listing = Listing.create!(
-  title: "Learn Rails with Alex",
-  user_id: user.id,
-  skill_id: skill.id,
-  skill_level: "Advanced",
-  description: "I've built some great projects on Rails, come and learn how to build web apps like Boomzy"
-  )
+    title: "Learn Rails with Alex",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "I've built some great projects on Rails, come and learn how to build web apps like Boomzy",
+    listing_image: "https://www.spacesworks.com/wp-content/uploads/2016/06/coding-in-the-classroom.png"
+    )
 
 Address.create(
   city: "Amsterdam",
@@ -290,12 +291,13 @@ skill = Skill.create!(
   )
 
 listing = Listing.create!(
-  title: "Taking portraits with Susan",
-  user_id: user.id,
-  skill_id: skill.id,
-  skill_level: "Advanced",
-  description: "I have been a professional photographer for years, let me teach you about lighting and field of depth, my specialties"
-  )
+    title: "Taking portraits with Susan",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "I have been a professional photographer for years, let me teach you about lighting and field of depth, my specialties",
+    listing_image: "https://www.dichroma-photography.com/images/exhibitions_current/37normal_file1.jpg"
+    )
 
 Address.create(
   city: "Amsterdam",
@@ -325,8 +327,8 @@ user.email = "katya@boomzy.me"
 # Password should be test123
 user.password = 'test123'
 user.password_confirmation = 'test123'
-user.bio = "I have been a photographer for over 40 years and I am always looking for new subjects. I moved to Amsterdam last year with my partner and am still looking to build a community here."
-user.motivation = "Photography and art are so important in difficult times like these. I hope to share the knowledge I've gained with people eager to learn!"
+user.bio = "I tend to keep pretty busy, but sewing projects have always been a regular and calming part of my life. I moved to Amsterdam last year with my partner and am still looking to build a community here."
+user.motivation = "Art is so important in difficult times like these. I hope to share the knowledge I've gained with people eager to learn!"
 file = URI.open("https://images.unsplash.com/photo-1547212371-eb5e6a4b590c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80")
 user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
 user.save!
@@ -353,12 +355,13 @@ skill = Skill.create!(
   )
 
 listing = Listing.create!(
-  title: "Needlepoint for Beginners",
-  user_id: user.id,
-  skill_id: skill.id,
-  skill_level: "Advanced",
-  description: "Come learn with me! I have always enjoyed teaching and miss meeting new people."
-  )
+    title: "Needlepoint for Beginners",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "Come learn with me! I have always enjoyed teaching and miss meeting new people.",
+    listing_image: "https://cdn.shopify.com/s/files/1/0015/0077/4503/files/Flower_Thread_1440x640.jpg?v=1593203256"
+    )
 
 Address.create(
   city: "Amsterdam",
@@ -416,12 +419,13 @@ skill = Skill.create!(
   )
 
 listing = Listing.create!(
-  title: "Building wooden furniture with Hans",
-  user_id: user.id,
-  skill_id: skill.id,
-  skill_level: "Advanced",
-  description: "Forget Ikea, I will teach you to make beautiful tables that will last decades!"
-  )
+    title: "Building wooden furniture with Hans",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "Forget Ikea, I will teach you to make beautiful tables that will last decades!",
+    listing_image: "https://www.talk-business.co.uk/wp-content/uploads/2017/09/shutterstock_382064236-632x422.jpg"
+    )
 
 Address.create(
   city: "Amsterdam",
@@ -473,18 +477,19 @@ puts "[LOG] creating ARNOLD' first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-  name: "Accordian Accords",
-  category: "Music",
-  user_id: user.id,
-  )
+    name: "Accordian",
+    category: "Music",
+    user_id: user.id,
+    )
 
 listing = Listing.create!(
-  title: "Building wooden furniture with Hans",
-  user_id: user.id,
-  skill_id: skill.id,
-  skill_level: "Advanced",
-  description: "Play a song for me and I'll teach you to play it on the accordian."
-  )
+    title: "Accordian Arcadia",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "Play a song for me and I'll teach you to play it on the accordian. Put me on your youtube.",
+    listing_image: "https://i2-prod.manchestereveningnews.co.uk/incoming/article15457371.ece/ALTERNATES/s615/0_221118accordian1.jpg"
+    )
 
 Address.create(
   city: "Amsterdam",
@@ -784,6 +789,7 @@ listing = Listing.create!(
   listing_image: "https://images1.sw-cdn.net/product/picture/710x528_11092560_7288612_1459338919.jpg",
   description: "Personally, I like to sculpt boats, but I hear these days that cats do very well on the internet, so here we scult pets."
   )
+
 Address.create(
   city: "Amsterdam",
   address_line_1: "Spijkerkade 10",
@@ -804,12 +810,13 @@ skill = Skill.create!(
   user_id: user.id,
   )
 listing = Listing.create!(
-  title: "Clay self-portaiture",
-  user_id: user.id,
-  skill_id: skill.id,
-  skill_level: "Advanced",
-  description: "Build your face in clay for a beatutiful, make beatutiful Christmas presents."
-  )
+    title: "Clay self-portaiture",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "Build your face in clay for a beatutiful, make beatutiful Christmas presents.",
+    listing_image: "https://cms.qz.com/wp-content/uploads/2018/04/rtx338ot-e1522796667949.jpg?quality=75&strip=all&w=1400"
+    )
 Address.create(
   city: "Amsterdam",
   address_line_1: "Spijkerkade 10",
@@ -827,7 +834,7 @@ puts "[LOG] JANET Completed ..."
 puts "----------------------------------------"
 puts "[LOG] creating Mandy..."
 user = User.new
-user.first_name = "Vazquez"
+user.first_name = "Mandy"
 user.last_name = "Vazquez"
 # Email should be first_name@boomzy.me
 user.email = "mandy@boomzy.me"
