@@ -75,43 +75,43 @@ puts "[LOG] creating Alex's address..."
 
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Eerste Atjehstraat 164",
-    postcode: "1094KX",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Eerste Atjehstraat 164",
+  postcode: "1094KX",
+  addressable: user,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] creating Alex' first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Ruby on Rails",
-    category: "Programming",
-    user_id: user.id,
-    )
+  name: "Ruby on Rails",
+  category: "Programming",
+  user_id: user.id,
+  )
 
 listing = Listing.create!(
-    title: "Learn Rails with Alex",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "I've built some great projects on Rails, come and learn how to build web apps like Boomzy"
-    )
+  title: "Learn Rails with Alex",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "I've built some great projects on Rails, come and learn how to build web apps like Boomzy"
+  )
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Eerste Atjehstraat 164",
-    postcode: "1094KX",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Eerste Atjehstraat 164",
+  postcode: "1094KX",
+  addressable: listing
+  )
 
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] ALEX Completed ..."
@@ -140,77 +140,77 @@ puts "[LOG] creating Thijs's address..."
 
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Ferdinand Bolstraat 143",
-    postcode: "1072LH",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Ferdinand Bolstraat 143",
+  postcode: "1072LH",
+  addressable: user,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] creating THIJS's first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Glassblowing",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Glassblowing",
+  category: "Crafts",
+  user_id: user.id,
+  )
 
 listing = Listing.create!(
-    title: "Make a vase out of glass",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Intermediate",
-    description: "Learn how to make a vase from glass",
-    listing_image: "https://images.unsplash.com/photo-1593208946258-1940798d63cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-    )
+  title: "Make a vase out of glass",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Intermediate",
+  description: "Learn how to make a vase from glass",
+  listing_image: "https://images.unsplash.com/photo-1593208946258-1940798d63cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+  )
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Ferdinand Bolstraat 143",
-    postcode: "1072LH",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Ferdinand Bolstraat 143",
+  postcode: "1072LH",
+  addressable: listing
+  )
 
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: STATUS.sample,
+  listing_id: listing.id,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] creating THIJS's first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Pattern making",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Pattern making",
+  category: "Crafts",
+  user_id: user.id,
+  )
 
 listing = Listing.create!(
-    title: "Advanced glassblowing",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder."
-    listing_image: "https://images.unsplash.com/photo-1593208946258-1940798d63cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-    )
+  title: "Advanced glassblowing",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder."
+  listing_image: "https://images.unsplash.com/photo-1593208946258-1940798d63cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+  )
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Ferdinand Bolstraat 143",
-    postcode: "1072LH",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Ferdinand Bolstraat 143",
+  postcode: "1072LH",
+  addressable: listing,
+  )
 
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] THIJS Completed ..."
@@ -221,32 +221,32 @@ puts "[LOG] creating BRIAN's first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Bike Maintenace",
-    category: "Mechanics",
-    user_id: user.id,
-    )
+  name: "Bike Maintenace",
+  category: "Mechanics",
+  user_id: user.id,
+  )
 
 listing = Listing.create!(
-    title: "Fixing your bike",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "Bikes are the gateway to mechanics, I can teach you to change a tyre or realign your gears and everything in between."
-    )
+  title: "Fixing your bike",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "Bikes are the gateway to mechanics, I can teach you to change a tyre or realign your gears and everything in between."
+  )
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Westzaanstraat 10",
-    postcode: "1013NG",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Westzaanstraat 10",
+  postcode: "1013NG",
+  addressable: listing,
+  )
 
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] BRIAN Completed ..."
@@ -273,43 +273,43 @@ puts "[LOG] creating SUSAN's address..."
 
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Willem Passtoorsstraat 104",
-    postcode: "1073HX",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Willem Passtoorsstraat 104",
+  postcode: "1073HX",
+  addressable: user,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] creating SUSAN's first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Portrait Photography",
-    category: "Photography",
-    user_id: user.id,
-    )
+  name: "Portrait Photography",
+  category: "Photography",
+  user_id: user.id,
+  )
 
 listing = Listing.create!(
-    title: "Taking portraits with Susan",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "I have been a professional photographer for years, let me teach you about lighting and field of depth, my specialties"
-    )
+  title: "Taking portraits with Susan",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "I have been a professional photographer for years, let me teach you about lighting and field of depth, my specialties"
+  )
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Willem Passtoorsstraat 104",
-    postcode: "1073HX",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Willem Passtoorsstraat 104",
+  postcode: "1073HX",
+  addressable: listing
+  )
 
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Pending",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Pending",
+  listing_id: listing.id,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] SUSAN Completed ..."
@@ -336,43 +336,43 @@ puts "[LOG] creating KATYA's address..."
 
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Rooseveltlaan 124",
-    postcode: "1078NW",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Rooseveltlaan 124",
+  postcode: "1078NW",
+  addressable: user,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] creating KATYA's first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Needlepoint",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Needlepoint",
+  category: "Crafts",
+  user_id: user.id,
+  )
 
 listing = Listing.create!(
-    title: "Needlepoint for Beginners",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "Come learn with me! I have always enjoyed teaching and miss meeting new people."
-    )
+  title: "Needlepoint for Beginners",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "Come learn with me! I have always enjoyed teaching and miss meeting new people."
+  )
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Prinsengracht 279",
-    postcode: "1016GW",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Prinsengracht 279",
+  postcode: "1016GW",
+  addressable: listing
+  )
 
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Pending",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Pending",
+  listing_id: listing.id,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] KATYA Completed ..."
@@ -399,43 +399,43 @@ puts "[LOG] creating HANS's address..."
 
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Meteorensingel 156",
-    postcode: "1033CC",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Meteorensingel 156",
+  postcode: "1033CC",
+  addressable: user,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] creating HANS' first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Woodworking",
-    category: "Woodworking",
-    user_id: user.id,
-    )
+  name: "Woodworking",
+  category: "Woodworking",
+  user_id: user.id,
+  )
 
 listing = Listing.create!(
-    title: "Building wooden furniture with Hans",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "Forget Ikea, I will teach you to make beautiful tables that will last decades!"
-    )
+  title: "Building wooden furniture with Hans",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "Forget Ikea, I will teach you to make beautiful tables that will last decades!"
+  )
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Dam 20",
-    postcode: "1012NP",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Dam 20",
+  postcode: "1012NP",
+  addressable: listing
+  )
 
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Pending",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Pending",
+  listing_id: listing.id,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] HANS Completed ..."
@@ -462,43 +462,43 @@ puts "[LOG] creating ARNOLD's address..."
 
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Plantage Kerklaan 61",
-    postcode: "1018CX",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Plantage Kerklaan 61",
+  postcode: "1018CX",
+  addressable: user,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] creating ARNOLD' first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Accordian Accords",
-    category: "Music",
-    user_id: user.id,
-    )
+  name: "Accordian Accords",
+  category: "Music",
+  user_id: user.id,
+  )
 
 listing = Listing.create!(
-    title: "Building wooden furniture with Hans",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "Play a song for me and I'll teach you to play it on the accordian."
-    )
+  title: "Building wooden furniture with Hans",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "Play a song for me and I'll teach you to play it on the accordian."
+  )
 
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Korte Leidsedwarsstraat 111",
-    postcode: "1017PX",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Korte Leidsedwarsstraat 111",
+  postcode: "1017PX",
+  addressable: listing
+  )
 
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id,
+  )
 
 puts "----------------------------------------"
 puts "[LOG] ARNOLD Completed ..."
@@ -522,65 +522,65 @@ user.save!
 puts "----------------------------------------"
 puts "[LOG] creating Zeynep's address..."
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Hugo de Grootplein 10 H",
-    postcode: "1052KW",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Hugo de Grootplein 10 H",
+  postcode: "1052KW",
+  addressable: user,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating Zeynep's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Turkish Rug Making",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Turkish Rug Making",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Learn to make a Turkish rug",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Intermediate",
-    description: "I have made over 40 Turkish rugs and my family many more. I would love to teach you how to go about this",
-    listing_image: "https://images.unsplash.com/photo-1560577572-bb4eb0076aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=822&q=80"
-    )
+  title: "Learn to make a Turkish rug",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Intermediate",
+  description: "I have made over 40 Turkish rugs and my family many more. I would love to teach you how to go about this",
+  listing_image: "https://images.unsplash.com/photo-1560577572-bb4eb0076aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=822&q=80"
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Hugo de Grootplein 10 H",
-    postcode: "1052KW",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Hugo de Grootplein 10 H",
+  postcode: "1052KW",
+  addressable: listing
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: STATUS.sample,
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating Zeynep's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Advanced Turkish Rug Making",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Advanced Turkish Rug Making",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Turkish Rug Making for advanced learners",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "This class is for someone that has already attended my class for beginners. I will teach you all the more tricky tricks to make a beautiful rug."
-    listing_image: "https://images.unsplash.com/photo-1560577572-bb4eb0076aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=822&q=80"
-    )
+  title: "Turkish Rug Making for advanced learners",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "This class is for someone that has already attended my class for beginners. I will teach you all the more tricky tricks to make a beautiful rug."
+  listing_image: "https://images.unsplash.com/photo-1560577572-bb4eb0076aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=822&q=80"
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Overtoom 459H",
-    postcode: "1054LE",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Overtoom 459H",
+  postcode: "1054LE",
+  addressable: listing,
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] Zeynep Completed ..."
 
@@ -603,64 +603,65 @@ user.save!
 puts "----------------------------------------"
 puts "[LOG] creating BRIAN's address..."
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Ferdinand Bolstraat 143",
-    postcode: "1072LH",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Ferdinand Bolstraat 143",
+  postcode: "1072LH",
+  addressable: user,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating HANS's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Glassblowing",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Glassblowing",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Make a vase out of glass",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Intermediate",
-    description: "Learn how to make a vase from glass",
-    listing_image: "https://images.unsplash.com/photo-1593208946258-1940798d63cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-    )
+  title: "Make a vase out of glass",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Intermediate",
+  description: "Learn how to make a vase from glass",
+  listing_image: "https://images.unsplash.com/photo-1565556601977-f2241a07ab32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1182&q=80"
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Ferdinand Bolstraat 143",
-    postcode: "1072LH",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Ferdinand Bolstraat 143",
+  postcode: "1072LH",
+  addressable: listing
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: STATUS.sample,
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating Hans's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Pattern making",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Pattern making",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Advanced glassblowing",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder."
-    )
+  title: "Advanced glassblowing",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder."
+  listing_image: "https://images.unsplash.com/photo-1565556601977-f2241a07ab32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1182&q=80"
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Ferdinand Bolstraat 143",
-    postcode: "1072LH",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Ferdinand Bolstraat 143",
+  postcode: "1072LH",
+  addressable: listing,
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] Johan Completed ..."
 
@@ -682,64 +683,64 @@ user.save!
 puts "----------------------------------------"
 puts "[LOG] creating JOHANNA's address..."
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Bilderdijkstraat 197-1a",
-    postcode: "1053KS",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Bilderdijkstraat 197-1a",
+  postcode: "1053KS",
+  addressable: user,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating JOHANNA's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Sewing",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Sewing",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Learn to sew like a pro",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "I have been a fashion designer for 40+ years. Come over and I'll teach you the ropes.",
-    listing_image: "https://images.unsplash.com/photo-1578353022142-09264fd64295?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2516&q=80"
-    )
+  title: "Learn to sew like a pro",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "I have been a fashion designer for 40+ years. Come over and I'll teach you the ropes.",
+  listing_image: "https://images.unsplash.com/photo-1578353022142-09264fd64295?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2516&q=80"
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Bilderdijkstraat 197-1a",
-    postcode: "1053KS",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Bilderdijkstraat 197-1a",
+  postcode: "1053KS",
+  addressable: listing
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: STATUS.sample,
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating Johanna's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Pattern making",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Pattern making",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Learn to adjust your sewing patterns",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Beginner",
-    description: "Have you always wanted that perfect fitting pair of jeans or any other garment? Meet me at the local community house and I will help you with your project."
-    )
+  title: "Learn to adjust your sewing patterns",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Beginner",
+  description: "Have you always wanted that perfect fitting pair of jeans or any other garment? Meet me at the local community house and I will help you with your project."
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Van Baerlestraat 5",
-    postcode: "1071AL",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Van Baerlestraat 5",
+  postcode: "1071AL",
+  addressable: listing,
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id
+  )
 puts "----------------------------------------"
 puts "[LOG] Johanna Completed ..."
 
@@ -763,64 +764,64 @@ user.save!
 puts "----------------------------------------"
 puts "[LOG] creating JANET's address..."
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Spijkerkade 10",
-    postcode: "1021JS",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Spijkerkade 10",
+  postcode: "1021JS",
+  addressable: user,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating JANET's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Sculpture",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Sculpture",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Scult your pet",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Beginner",
-    listing_image: "https://images1.sw-cdn.net/product/picture/710x528_11092560_7288612_1459338919.jpg",
-    description: "Personally, I like to sculpt boats, but I hear these days that cats do very well on the internet, so here we scult pets."
-    )
+  title: "Scult your pet",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Beginner",
+  listing_image: "https://images1.sw-cdn.net/product/picture/710x528_11092560_7288612_1459338919.jpg",
+  description: "Personally, I like to sculpt boats, but I hear these days that cats do very well on the internet, so here we scult pets."
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Spijkerkade 10",
-    postcode: "1021JS",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Spijkerkade 10",
+  postcode: "1021JS",
+  addressable: listing,
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: STATUS.sample,
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating JANET's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Sculpture",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Sculpture",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Clay self-portaiture",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "Build your face in clay for a beatutiful, make beatutiful Christmas presents."
-    )
+  title: "Clay self-portaiture",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "Build your face in clay for a beatutiful, make beatutiful Christmas presents."
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Spijkerkade 10",
-    postcode: "1021JS",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Spijkerkade 10",
+  postcode: "1021JS",
+  addressable: listing,
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] JANET Completed ..."
 puts "----------------------------------------"
@@ -841,59 +842,59 @@ user.save!
 puts "----------------------------------------"
 puts "[LOG] creating MANDY's address..."
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Resedastraat 25",
-    postcode: "1031BJ",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Resedastraat 25",
+  postcode: "1031BJ",
+  addressable: user,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating Mandy's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Collage",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Collage",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Collage landscapes",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Beginner",
-    listing_image: "http://www.sharonhaffey.com/uploads/3/4/5/8/34581977/fullsizeoutput-21a2_orig.jpeg",
-    description: "Make a beatutiful collage landscape of your favorite place, please bring a photo with you."
-    )
+  title: "Collage landscapes",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Beginner",
+  listing_image: "http://www.sharonhaffey.com/uploads/3/4/5/8/34581977/fullsizeoutput-21a2_orig.jpeg",
+  description: "Make a beatutiful collage landscape of your favorite place, please bring a photo with you."
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Resedastraat 25",
-    postcode: "1031BJ",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Resedastraat 25",
+  postcode: "1031BJ",
+  addressable: listing,
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: STATUS.sample,
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating JANET's first skill, listings and bookings..."
 listing = Listing.create!(
-    title: "Collage Portraits",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "Build your face in collage, felt, wood and paper provided, make beatutiful Christmas presents."
-    )
+  title: "Collage Portraits",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "Build your face in collage, felt, wood and paper provided, make beatutiful Christmas presents."
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Resedastraat 25",
-    postcode: "1031BJ",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Resedastraat 25",
+  postcode: "1031BJ",
+  addressable: listing,
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Accepted",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Accepted",
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] MANDY Completed ..."
 
@@ -918,65 +919,65 @@ user.save!
 puts "----------------------------------------"
 puts "[LOG] creating KYRA's address..."
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Leidsestraat 7",
-    postcode: "1017NS",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Leidsestraat 7",
+  postcode: "1017NS",
+  addressable: user,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating KYRA's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Knitting",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Knitting",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Make your own scarf",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "I love to make scrafs for family members. Come and join me to learn how to make scarves for your friends & family!",
-    listing_image: "https://images.unsplash.com/photo-1485527691629-8e370684924c"
-    )
+  title: "Make your own scarf",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Advanced",
+  description: "I love to make scrafs for family members. Come and join me to learn how to make scarves for your friends & family!",
+  listing_image: "https://images.unsplash.com/photo-1485527691629-8e370684924c"
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Leidsestraat 7",
-    postcode: "1017NS",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Leidsestraat 7",
+  postcode: "1017NS",
+  addressable: listing
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: STATUS.sample,
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: STATUS.sample,
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating KYRA's first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Quilt-making",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Quilt-making",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "No-Sew Rag Quilt",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Beginner",
-    description: "Making your own quilty is easy, fun and you can use any material - I love to use old shirts. Come learn how to make a quilt of your own with me!",
-    listing_image: "https://images.unsplash.com/photo-1594526761005-4ccdbd608d2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-    )
+  title: "No-Sew Rag Quilt",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Beginner",
+  description: "Making your own quilty is easy, fun and you can use any material - I love to use old shirts. Come learn how to make a quilt of your own with me!",
+  listing_image: "https://images.unsplash.com/photo-1594526761005-4ccdbd608d2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Leidsestraat 7",
-    postcode: "1017NS",
-    addressable: listing,
-    )
+  city: "Amsterdam",
+  address_line_1: "Leidsestraat 7",
+  postcode: "1017NS",
+  addressable: listing,
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Pending",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Pending",
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "----------------------------------------"
 puts "[LOG] creating JUTTA..."
@@ -996,38 +997,38 @@ user.save!
 puts "----------------------------------------"
 puts "[LOG] creating JUTTA's address..."
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Admiraal de Ruijterweg 104",
-    postcode: "1056GP",
-    addressable: user,
-    )
+  city: "Amsterdam",
+  address_line_1: "Admiraal de Ruijterweg 104",
+  postcode: "1056GP",
+  addressable: user,
+  )
 puts "----------------------------------------"
 puts "[LOG] creating JUTTA'S first skill, listings and bookings..."
 skill = Skill.create!(
-    name: "Jewelry making",
-    category: "Crafts",
-    user_id: user.id,
-    )
+  name: "Jewelry making",
+  category: "Crafts",
+  user_id: user.id,
+  )
 listing = Listing.create!(
-    title: "Simple and Beautiful Earrings",
-    user_id: user.id,
-    skill_id: skill.id,
-    skill_level: "Beginner",
-    description: "Come join me and learn to make beautiful earrings!",
-    listing_image: "https://i.etsystatic.com/12835344/r/il/b7d968/1896231290/il_1588xN.1896231290_b2uo.jpg"
-    )
+  title: "Simple and Beautiful Earrings",
+  user_id: user.id,
+  skill_id: skill.id,
+  skill_level: "Beginner",
+  description: "Come join me and learn to make beautiful earrings!",
+  listing_image: "https://i.etsystatic.com/12835344/r/il/b7d968/1896231290/il_1588xN.1896231290_b2uo.jpg"
+  )
 Address.create(
-    city: "Amsterdam",
-    address_line_1: "Admiraal de Ruijterweg 104",
-    postcode: "1056GP",
-    addressable: listing
-    )
+  city: "Amsterdam",
+  address_line_1: "Admiraal de Ruijterweg 104",
+  postcode: "1056GP",
+  addressable: listing
+  )
 booking = Booking.create(
-    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
-    user_id: User.all.sample.id,
-    status: "Pending",
-    listing_id: listing.id,
-    )
+  date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+  user_id: User.all.sample.id,
+  status: "Pending",
+  listing_id: listing.id,
+  )
 puts "----------------------------------------"
 puts "[LOG] JUTTA Completed ..."
 
