@@ -25,7 +25,7 @@
       </div>
       <div class="st-buttons d-flex mt-2">
         <% if booking.status == "Pending" %>
-        <div class="status-btn"><%= link_to 'Confirm', confirm_path(booking), method: :post, class: "button standard accent fill"%></div>
+        <div class="status-btn ml-0"><%= link_to 'Confirm', confirm_path(booking), method: :post, class: "button standard accent fill"%></div>
 
         <div class="status-btn"><%= link_to 'Decline', decline_path(booking), method: :post, class: "button standard accent red-btn" %></div>
         <% end %>
