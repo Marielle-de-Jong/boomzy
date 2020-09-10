@@ -52,55 +52,56 @@ User.destroy_all
 
 
 puts "----------------------------------------"
-puts "[LOG] creating BRIAN..."
+puts "[LOG] creating Thijs..."
 
 user = User.new
-user.first_name = "Brian"
-user.last_name = "Stephens"
+user.first_name = "Thijs"
+user.last_name = "van Oosten"
 # Email should be first_name@boomzy.me
-user.email = "brian@boomzy.me"
+user.email = "thijs@boomzy.me"
 # Password should be test123
 user.password = 'test123'
 user.password_confirmation = 'test123'
-user.bio = "My name's Brian, originally from Pennsylvania, I've been a mechanic for more than 40 years. Retired last year to spend time with my wife, family and 3 dogs – Albert, James and Edward."
-user.motivation = "Some kind of knowledge as a mechanic is a life skill, I want to teach others how to fix up a car a bike or boat so they can get the most out of it."
-file = URI.open("https://s3.envato.com/files/99665157/268025.jpg")
+user.bio = "Thijs here. I've been a hobby glassblower for over 20 years. I have had so much fun and would now like to teach the next generation how to do this."
+user.motivation = "I feel everyone should be able to put their creativity into something they like. Glassblowing is such a beautiful art and makes for beautiful presents."
+file = URI.open("https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80")
 user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
 user.save!
 
 puts "----------------------------------------"
-puts "[LOG] creating BRIAN's address..."
+puts "[LOG] creating Thijs's address..."
 
 
 Address.create(
     city: "Amsterdam",
-    address_line_1: "Westzaanstraat 10",
-    postcode: "1013NG",
+    address_line_1: "Ferdinand Bolstraat 143",
+    postcode: "1072LH",
     addressable: user,
     )
 
 puts "----------------------------------------"
-puts "[LOG] creating BRIAN's first skill, listings and bookings..."
+puts "[LOG] creating THIJS's first skill, listings and bookings..."
 
 
 skill = Skill.create!(
-    name: "Car Maintenace",
-    category: "Mechanics",
+    name: "Glassblowing",
+    category: "Crafts",
     user_id: user.id,
     )
 
 listing = Listing.create!(
-    title: "Fixing your car with Brian",
+    title: "Make a vase out of glass",
     user_id: user.id,
     skill_id: skill.id,
-    skill_level: "Advanced",
-    description: "I've been fixing cars for 40 years, come along and we'll discuss what's wrong with your car and how to get it back on the road!"
+    skill_level: "Intermediate",
+    description: "Learn how to make a vase from glass",
+    listing_image: "https://images.unsplash.com/photo-1593208946258-1940798d63cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
     )
 
 Address.create(
     city: "Amsterdam",
-    address_line_1: "Westzaanstraat 10",
-    postcode: "1013NG",
+    address_line_1: "Ferdinand Bolstraat 143",
+    postcode: "1072LH",
     addressable: listing
     )
 
@@ -110,6 +111,42 @@ booking = Booking.create(
     status: STATUS.sample,
     listing_id: listing.id,
     )
+
+puts "----------------------------------------"
+puts "[LOG] creating THIJS's first skill, listings and bookings..."
+
+
+skill = Skill.create!(
+    name: "Pattern making",
+    category: "Crafts",
+    user_id: user.id,
+    )
+
+listing = Listing.create!(
+    title: "Advanced glassblowing",
+    user_id: user.id,
+    skill_id: skill.id,
+    skill_level: "Advanced",
+    description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder."
+    )
+
+Address.create(
+    city: "Amsterdam",
+    address_line_1: "Ferdinand Bolstraat 143",
+    postcode: "1072LH",
+    addressable: listing,
+    )
+
+booking = Booking.create(
+    date: Faker::Date.between(from: '2020-09-23', to: '2020-09-25'),
+    user_id: User.all.sample.id,
+    status: "Accepted",
+    listing_id: listing.id,
+    )
+
+puts "----------------------------------------"
+puts "[LOG] THIJS Completed ..."
+
 
 puts "----------------------------------------"
 puts "[LOG] creating BRIAN's first skill, listings and bookings..."
