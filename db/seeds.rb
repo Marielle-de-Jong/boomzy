@@ -195,6 +195,7 @@ listing = Listing.create!(
     skill_id: skill.id,
     skill_level: "Advanced",
     description: "In this class you can make any object you like and will support you with your project. Make for example a beautiful vase or candle holder."
+    listing_image: "https://images.unsplash.com/photo-1593208946258-1940798d63cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
     )
 
 Address.create(
@@ -566,6 +567,7 @@ listing = Listing.create!(
     skill_id: skill.id,
     skill_level: "Advanced",
     description: "This class is for someone that has already attended my class for beginners. I will teach you all the more tricky tricks to make a beautiful rug."
+    listing_image: "https://images.unsplash.com/photo-1560577572-bb4eb0076aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=822&q=80"
     )
 Address.create(
     city: "Amsterdam",
