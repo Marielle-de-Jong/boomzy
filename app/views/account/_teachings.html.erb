@@ -1,38 +1,46 @@
-<h3 class="mt-3">My booking requests</h3>
-
-
-
- <div class="bookings-box">
-  <h3 id="teachings">Teaching</h3>
-  <% @user.listings.each do |listing| %>
+<h3 class="mt-5" id="teachings">My booking requests</h3>
+<div class="container">
+  <div class="row">
+    <% @user.listings.each do |listing| %>
     <% if listing.bookings.nil? %>
-      <h4>Currently you have no teaching engagements</h4>
+    <h4>Currently you have no teaching engagements</h4>
     <% else %>
-      <% listing.bookings.each do |booking| %>
-        <div class="request-details">
-          <div class="request-avatar">
-            <% if booking.user.photo.attached? %>
-                <img src="<%= cl_image_path booking.user.photo.key %>" class="avatar-large" />
-            <% end %>
-          </div>
-          <div class="request-info">
-            <h5><%= booking.listing.title %> | <%= booking.status %></h5>
-            <p> <%= booking.user.first_name %> wants to book a session with you on <%= booking.date %>!</p>
-          </div>
-          <div class="status-buttons">
-            <% if booking.status == "Pending" %>
-              <div class="status-btn"><%= link_to 'Confirm', confirm_path(booking), method: :post, class: "button standard accent"%></div>
-              <div class="status-btn"><%= link_to 'Decline', decline_path(booking), method: :post, class: "button standard btn-danger"%></div>
-            <% end %>
-            <% if booking.status != "Cancelled" %>
-              <div class="status-btn"><%= link_to 'Cancel', cancel_path(booking), method: :post, class: "button standard btn-outline-danger"%></div>
-            <% end %>
-            <div class="status-btn"><%= link_to 'Details', booking, method: :get, class: "button standard accent fill"%></div>
-          </div>
+    <% listing.bookings.each do |booking| %>
+    <div class="account-listings-card mt-4 col-sm-12 col-md-6 mr-4">
+      <h5><%= booking.listing.title %> | <%= booking.status %></h5>
+      <p> <%= booking.user.first_name %> wants to book a session with you on <%= booking.date %>!</p>
+      <% if booking.user.photo.attached? %>
+      <img src="<%= cl_image_path booking.user.photo.key %>" class="avatar-large" />
+      <% end %>
+      <div class="listing-socials d-flex socials socials-large">
+        <% if booking.user.linkedin_link? %>
+        <a href="<%= booking.listing.user.linkedin_link %>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <% elsif booking.user.twitter_link? %>
+        <a href="<%= booking.listing.user.twitter_link %>" target="_blank"><i class="fab fa-twitter"></i></a>
+        <% elsif booking.user.instagram_link? %>
+        <a href="<%= booking.listing.user.facebook_link %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <% elsif booking.user.facebook_link?%>
+        <a href="<%= booking.listing.user.instagram_link %>" target="_blank"><i class="fab fa-instagram"></i></a>
+        <% end %>
       </div>
+      <div class="st-buttons d-flex">
+        <% if booking.status == "Pending" %>
+        <div class="status-btn"><%= link_to 'Confirm', confirm_path(booking), method: :post, class: "button standard accent fill"%></div>
+
+        <div class="status-btn"><%= link_to 'Decline', decline_path(booking), method: :post, class: "button standard accent red-btn" %></div>
+        <% end %>
+        <% if booking.status == "Accepted" %>
+        <div class="status-btn"><%= link_to 'Cancel', cancel_path(booking), method: :post, class: "button standard accent red-btn"%></div>
+        <% end %>
+        <div class="status-btn"><%= link_to 'Details', booking, method: :get, class: "button standard accent"%></div>
+      </div>
+    </div>
     <% end %>
     <% end %>
-  <% end %>
+    <% end %>
+  </div>
+      <br>
+    <br>
 </div>
 
 
