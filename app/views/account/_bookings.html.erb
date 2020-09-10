@@ -1,7 +1,8 @@
 <h3 class="mt-5" id="bookings">My bookings</h3>
 
-<% if @user.bookings.nil? %>
-<h6>You do not currently have any bookings. <%= link_to 'Search Listings', listings_path, class: "button standard accent fill" %></h6>
+<% if @user.bookings.count == 0 %>
+  <h6>You do not currently have any bookings. </h6>
+  <%= link_to 'Search Listings', listings_path, class: "button standard accent" %>
 <% else %>
 <div class="container">
   <div class="row">
@@ -36,6 +37,6 @@
       <% end %>
     </div>
     <% end %>
-    <% end %>
   </div>
 </div>
+<% end %>
