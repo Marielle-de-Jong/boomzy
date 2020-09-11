@@ -17,4 +17,18 @@ class ApplicationController < ActionController::Base
                                                         address_attributes: [:address_line_1, :address_line_2, :city, :postcode],
                                                         skill_attributes: [:name, :category]])
   end
+
+  protected
+
+  def after_sign_in_path_for(resource)
+    account_path
+  end
+
+  def after_sign_out_path_for(scope)
+    root_path
+  end
+
+  def after_sign_up_path_for(resource)
+    account_path
+  end
 end
