@@ -76,10 +76,10 @@ class ListingsController < ApplicationController
 
   def add_image
     if params[:listing]
-      search_results = Unsplash::Collection.search(params[:listing][:image_keyword])
+      search_results = Unsplash::Photo.search(params[:listing][:image_keyword])
       if search_results.any?
-        collection = search_results.first
-        @urls = collection.photos.first(9).map { |photo| photo.urls.small }
+        collection = search_results.first(9)
+        @urls = collection.map { |photo| photo["urls"].raw + "&h=400&w=400" }
       else
         @urls = []
       end
